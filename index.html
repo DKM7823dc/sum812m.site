@@ -6,42 +6,41 @@
     <title>INSIGNITY — 흐름을 읽는 감각</title>
 
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18091791740"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18091791740">
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'AW-18091791740');
-</script>
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'AW-18091791740');
+    </script>
 
-    <!-- Event snippet for 购买 conversion page
-In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
-<script>
-function gtag_report_conversion(url) {
-  var callback = function () {
-    if (typeof(url) != 'undefined') {
-      window.location = url;
-    }
-  };
-  gtag('event', 'conversion', {
-      'send_to': 'AW-18091791740/Px7zCLad1OccEPyq67JD',
-      'value': 1.0,
-      'currency': 'USD',
-      'transaction_id': '',
-      'event_callback': callback
-      // 'new_customer': true /* calculate dynamically, populate with true/false */,
-  });
-  return false;
-}
-</script>
-    
+    <!-- Event snippet for 购买 conversion page -->
+    <script>
+        function gtag_report_conversion(url) {
+            var callback = function() {
+                if (typeof(url) != 'undefined') {
+                    window.location = url;
+                }
+            };
+            gtag('event', 'conversion', {
+                'send_to': 'AW-18091791740/Px7zCLad1OccEPyq67JD',
+                'value': 1.0,
+                'currency': 'USD',
+                'transaction_id': '',
+                'event_callback': callback
+            });
+            return false;
+        }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <script>
         function k2() {
-            gtag_report_conversion('https://fgsjk.xyz/link/6cpdsh'); 
+            gtag_report_conversion('https://fgsjk.xyz/link/6cpdsh');
         }
     </script>
     <style>
@@ -262,12 +261,14 @@ function gtag_report_conversion(url) {
             pointer-events: none;
         }
         .hero .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: clamp(40px, 6vw, 72px);
-            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(32px, 5vw, 56px);
             position: relative;
             z-index: 2;
+        }
+        .hero-content {
+            width: 100%;
         }
         .hero-content .label-sm {
             border-left-color: #2563eb;
@@ -293,7 +294,7 @@ function gtag_report_conversion(url) {
             color: #4b5563;
             line-height: 1.75;
             margin-bottom: 24px;
-            max-width: 480px;
+            max-width: 100%;
         }
         .hero-btns {
             display: flex;
@@ -319,20 +320,25 @@ function gtag_report_conversion(url) {
         .hero-meta .dot {
             color: #2563eb;
         }
-        .hero-img {
+
+        /* ── hero banner image ── */
+        .hero-banner {
+            width: 100%;
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
             position: relative;
-        }
-        .hero-img img {
-            width: 100%;
-            height: 420px;
-            object-fit: cover;
-            display: block;
             background: #e5e7eb;
         }
-        .hero-img::after {
+        .hero-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            aspect-ratio: 16 / 7;
+            background: #e5e7eb;
+        }
+        .hero-banner::after {
             content: '';
             position: absolute;
             inset: 0;
@@ -938,11 +944,7 @@ function gtag_report_conversion(url) {
                 padding: 96px 0 56px;
             }
             .hero .container {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-            .hero-img img {
-                height: 260px;
+                gap: 28px;
             }
             .hero-content p {
                 max-width: 100%;
@@ -950,6 +952,13 @@ function gtag_report_conversion(url) {
             .hero-meta {
                 font-size: 0.7rem;
                 gap: 8px 16px;
+            }
+
+            .hero-banner {
+                border-radius: 12px;
+            }
+            .hero-banner img {
+                aspect-ratio: 16 / 9;
             }
 
             .why-intro {
@@ -1014,8 +1023,11 @@ function gtag_report_conversion(url) {
             .hero-content h1 {
                 font-size: 1.8rem;
             }
-            .hero-img img {
-                height: 200px;
+            .hero-banner {
+                border-radius: 10px;
+            }
+            .hero-banner img {
+                aspect-ratio: 16 / 10;
             }
             .btn {
                 padding: 11px 22px;
@@ -1044,6 +1056,12 @@ function gtag_report_conversion(url) {
             }
             .modal-body {
                 font-size: 0.8rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-banner img {
+                aspect-ratio: 16 / 6.5;
             }
         }
 
@@ -1098,8 +1116,8 @@ function gtag_report_conversion(url) {
                     <span>주간 소그룹 학습</span>
                 </div>
             </div>
-            <div class="hero-img">
-                <img src="img/abc.jpg?v=d" alt="" />
+            <div class="hero-banner">
+                <img src="img/abc.jpg?v=d" alt="INSIGNITY 배너" />
             </div>
         </div>
     </section>
