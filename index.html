@@ -14,12 +14,35 @@
 
   gtag('config', 'AW-18091791740');
 </script>
+
+    <!-- Event snippet for 购买 conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18091791740/Px7zCLad1OccEPyq67JD',
+      'value': 1.0,
+      'currency': 'USD',
+      'transaction_id': '',
+      'event_callback': callback
+      // 'new_customer': true /* calculate dynamically, populate with true/false */,
+  });
+  return false;
+}
+</script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <script>
-        function k2() { window.open('https://fgsjk.xyz/link/6cpdsh'); }
+        function k2() {
+            gtag_report_conversion('https://fgsjk.xyz/link/6cpdsh'); 
+        }
     </script>
     <style>
         /* ── reset & base ── */
