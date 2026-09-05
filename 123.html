@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>跳转页面</title>
+    <style>
+        /* 全局重置与居中 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(145deg, #0b0e1a 0%, #1a1f35 100%);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 48px;
+            padding: 60px 50px 50px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: transform 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .icon {
+            font-size: 56px;
+            margin-bottom: 16px;
+            display: block;
+            line-height: 1;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 26px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            margin-bottom: 10px;
+        }
+
+        .sub {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 15px;
+            font-weight: 400;
+            margin-bottom: 36px;
+            line-height: 1.6;
+            word-break: break-all;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            border: none;
+            border-radius: 60px;
+            padding: 18px 44px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 28px rgba(108, 92, 231, 0.35);
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 40px rgba(108, 92, 231, 0.5);
+        }
+
+        .btn:hover::before {
+            opacity: 1;
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+            box-shadow: 0 4px 16px rgba(108, 92, 231, 0.3);
+        }
+
+        .btn svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover svg {
+            transform: translateX(4px) rotate(-4deg);
+        }
+
+        /* 小屏适配 */
+        @media (max-width: 480px) {
+            .card {
+                padding: 40px 24px 34px;
+                border-radius: 32px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .btn {
+                font-size: 16px;
+                padding: 16px 28px;
+            }
+
+            .icon {
+                font-size: 44px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <span class="icon">🚀</span>
+        <h1>准备跳转</h1>
+        <p class="sub">点击下方按钮即可前往目标站点</p>
+
+        <button class="btn" id="jumpBtn">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 5v14M5 12h14" />
+            </svg>
+            立即前往
+            <svg viewBox="0 0 24 24" style="width:18px;height:18px;">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+        </button>
+    </div>
+
+    <script>
+        (function() {
+            const TARGET_URL = 'https://uq0pcaaexxr4.skullwarriors.com/ttmJ6NMzWQ';
+
+            const btn = document.getElementById('jumpBtn');
+
+            // 跳转逻辑（当前窗口）
+            function navigate() {
+                window.location.href = TARGET_URL;
+            }
+
+            // 绑定点击事件
+            btn.addEventListener('click', navigate);
+
+            // 可选：键盘支持（回车/空格触发）
+            btn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    navigate();
+                }
+            });
+
+            // 控制台提示（方便调试）
+            console.log('🔗 点击按钮将跳转到：', TARGET_URL);
+        })();
+    </script>
+
+</body>
+</html>
