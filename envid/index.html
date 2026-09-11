@@ -113,8 +113,9 @@
   .p-user:hover{background:rgba(255,255,255,.06)}
   .p-avatar{
     width:42px;height:42px;border-radius:50%;flex:none;position:relative;
-    display:flex;align-items:center;justify-content:center;font-size:18px;
+    display:flex;align-items:center;justify-content:center;font-size:18px;overflow:hidden;
   }
+  .p-avatar img{width:100%;height:100%;object-fit:cover}
   .p-avatar::after{
     content:"";position:absolute;right:0;bottom:0;width:11px;height:11px;border-radius:50%;
     background:var(--green);border:2px solid #111;
@@ -227,6 +228,13 @@
   .foot{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
   .foot-brand{font-size:14px;color:var(--muted-2)}
 
+  /* ---------- Added images ---------- */
+  .nav-logo{height:24px;width:auto;display:block}
+  .banner{display:block;width:min(456px,100%);max-width:100%;margin:0 auto 30px;border-radius:16px}
+  .kico-img{width:50px;height:50px;margin-bottom:18px;display:block;object-fit:contain}
+  .stat-ico{width:96px;height:96px;margin:0 auto 14px;display:block}
+  .t-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 4px}
+
   /* ---------- Responsive ---------- */
   @media (max-width: 1024px){
     .hero-inner{grid-template-columns:1fr}
@@ -253,13 +261,7 @@
   <!-- ===== Nav ===== -->
   <header class="nav">
     <div class="nav-left">
-      <div class="app-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-      </div>
-      <div class="nav-brand-text">
-        <b>Install Sexymeettv app</b>
-        <span>for easy access and notifications</span>
-      </div>
+      <a href="#top"><img class="nav-logo" src="logos/sexymeettv-main-logo.svg" alt="Sexymeettv logo" /></a>
     </div>
   </header>
 
@@ -285,18 +287,32 @@
       <aside class="popular">
         <div class="popular-head"><span class="dot"></span> Trending Now</div>
         <div class="popular-list">
-          <div class="p-user"><span class="p-avatar av-1">👩</span><span class="p-name">🕹️Ariel🌹🧜</span><span class="p-age"><i></i>47</span></div>
-          <div class="p-user"><span class="p-avatar av-2">👩</span><span class="p-name">🌱EVA🤎⚙️</span><span class="p-age"><i></i>13</span></div>
-          <div class="p-user"><span class="p-avatar av-3">👩</span><span class="p-name">🪷📷Dafnne🩷</span><span class="p-age"><i></i>30</span></div>
-          <div class="p-user"><span class="p-avatar av-4">👩</span><span class="p-name">🐉MAI💀⚰️💰🧿🪬⚔️👈</span><span class="p-age"><i></i>46</span></div>
-          <div class="p-user"><span class="p-avatar av-1">👩</span><span class="p-name">🕹🅻🅰🆁🅸💠</span><span class="p-age"><i></i>22</span></div>
-          <div class="p-user"><span class="p-avatar av-2">👩</span><span class="p-name">🍬🐣Tokio 🕹👻</span><span class="p-age"><i></i>31</span></div>
-          <div class="p-user"><span class="p-avatar av-3">👩</span><span class="p-name">🕹️Rosmery🎁👑</span><span class="p-age"><i></i>13</span></div>
-          <div class="p-user"><span class="p-avatar av-4">👩</span><span class="p-name">🕷️🅼🅸🅰🕸️</span><span class="p-age"><i></i>49</span></div>
-          <div class="p-user"><span class="p-avatar av-1">👩</span><span class="p-name">🌻💜🐼Sofhi💙🐼</span><span class="p-age"><i></i>31</span></div>
-          <div class="p-user"><span class="p-avatar av-2">👩</span><span class="p-name">🕹️👑Mariana</span><span class="p-age"><i></i>26</span></div>
-          <div class="p-user"><span class="p-avatar av-3">👩</span><span class="p-name">💕🕹Brenda 💕🕹</span><span class="p-age"><i></i>25</span></div>
-          <div class="p-user"><span class="p-avatar av-4">👩</span><span class="p-name">🌺IVI PRINCESS 🖤</span><span class="p-age"><i></i>30</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u01.webp" alt="🕹️Ariel🌹🧜"></span><span class="p-name">🕹️Ariel🌹🧜</span><span class="p-age"><i></i>12</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u02.webp" alt="🌱EVA🤎⚙️"></span><span class="p-name">🌱EVA🤎⚙️</span><span class="p-age"><i></i>47</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u03.webp" alt="🪷📷Dafnne🩷"></span><span class="p-name">🪷📷Dafnne🩷</span><span class="p-age"><i></i>22</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u04.webp" alt="🐉MAI💀⚰️💰🧿🪬⚔️👈"></span><span class="p-name">🐉MAI💀⚰️💰🧿🪬⚔️👈</span><span class="p-age"><i></i>37</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u05.webp" alt="🕹🅻🅰🆁🅸💠"></span><span class="p-name">🕹🅻🅰🆁🅸💠</span><span class="p-age"><i></i>38</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u06.webp" alt="🍬🐣Tokio 🕹👻"></span><span class="p-name">🍬🐣Tokio 🕹👻</span><span class="p-age"><i></i>41</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u07.webp" alt="🕹️Rosmery🎁👑"></span><span class="p-name">🕹️Rosmery🎁👑</span><span class="p-age"><i></i>25</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u08.webp" alt="🕷️🅼🅸🅰🕸️"></span><span class="p-name">🕷️🅼🅸🅰🕸️</span><span class="p-age"><i></i>30</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u09.webp" alt="🌻💜🐼Sofhi💙🐼"></span><span class="p-name">🌻💜🐼Sofhi💙🐼</span><span class="p-age"><i></i>16</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u10.webp" alt="🕹️👑Mariana"></span><span class="p-name">🕹️👑Mariana</span><span class="p-age"><i></i>11</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u11.webp" alt="💕🕹Brenda 💕🕹🕹🕹"></span><span class="p-name">💕🕹Brenda 💕🕹🕹🕹</span><span class="p-age"><i></i>43</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u12.webp" alt="🌺IVI PRINCESS 🖤"></span><span class="p-name">🌺IVI PRINCESS 🖤</span><span class="p-age"><i></i>27</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u13.webp" alt="Nikol🎀"></span><span class="p-name">Nikol🎀</span><span class="p-age"><i></i>15</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u14.webp" alt="🌞VANESSA JJ🫠💝"></span><span class="p-name">🌞VANESSA JJ🫠💝</span><span class="p-age"><i></i>36</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u15.webp" alt="🕹️agatha🧸"></span><span class="p-name">🕹️agatha🧸</span><span class="p-age"><i></i>42</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u16.webp" alt="🎃LORENA ☠️🕸️"></span><span class="p-name">🎃LORENA ☠️🕸️</span><span class="p-age"><i></i>25</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u17.webp" alt="🕹️𝙾𝚗!Daniela✨❤️"></span><span class="p-name">🕹️𝙾𝚗!Daniela✨❤️</span><span class="p-age"><i></i>35</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u18.webp" alt="🎃🦇Yanina🦇🎃"></span><span class="p-name">🎃🦇Yanina🦇🎃</span><span class="p-age"><i></i>18</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u19.webp" alt="P. L. 🎃👻. ¥"></span><span class="p-name">P. L. 🎃👻. ¥</span><span class="p-age"><i></i>38</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u20.webp" alt="Ïüsh.mïkä"></span><span class="p-name">Ïüsh.mïkä</span><span class="p-age"><i></i>40</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u21.webp" alt="🎱🄻🕹️ⓢ👠Sofia🧸"></span><span class="p-name">🎱🄻🕹️ⓢ👠Sofia🧸</span><span class="p-age"><i></i>46</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u22.webp" alt="❤️"></span><span class="p-name">❤️</span><span class="p-age"><i></i>39</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u23.webp" alt="👑 Maestra Keisy ☀"></span><span class="p-name">👑 Maestra Keisy ☀</span><span class="p-age"><i></i>39</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u24.webp" alt="Samantha"></span><span class="p-name">Samantha</span><span class="p-age"><i></i>10</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u25.webp" alt="Mariya♥️🎁♥️"></span><span class="p-name">Mariya♥️🎁♥️</span><span class="p-age"><i></i>40</span></div>
+          <div class="p-user"><span class="p-avatar"><img src="img/avatars/u26.webp" alt="🕹️ Miss Diaz🌡️"></span><span class="p-name">🕹️ Miss Diaz🌡️</span><span class="p-age"><i></i>23</span></div>
         </div>
       </aside>
     </div>
@@ -319,6 +335,7 @@
         <span class="eyebrow">Preferences</span>
         <h2>What am I looking for today?</h2>
       </div>
+      <img class="banner" src="landing-assets/banners/landing.webp" alt="What am I looking for today?" />
       <div class="interests-grid">
         <div class="interest-card"><span class="interest-ico">💬</span><span>Flirt with an attractive girl.</span></div>
         <div class="interest-card"><span class="interest-ico">📩</span><span>Private texts and calls.</span></div>
@@ -353,6 +370,7 @@
   <!-- ===== Smooth experience ===== -->
   <section class="alt">
     <div class="container smooth">
+      <img class="banner" src="landing-assets/banners/3d_live.png" alt="Enjoy a Smooth Random Video Chat Experience" />
       <h2>Enjoy a Smooth Random Video Chat Experience</h2>
       <p>Fast, free, and easy to use live cam chat with strangers. No profile filling, personal data or fake user photos. Only real and verified users who are ready to chat right now.</p>
       <p>Instant one-button connection, with an accurate matching system, one-on-one HD live video chat without freezing or disconnecting, and 24/7 moderation and technical support. Don't waste time — enjoy the best live communication with cute girls right now!</p>
@@ -367,9 +385,9 @@
         <h2>Key Features of Sexymeettv Free Random Video Chat Platform</h2>
       </div>
       <div class="key-grid">
-        <div class="key-card"><div class="kico">⚡</div><h3>Instant live cam connection via random video chat app</h3><p>The algorithm of our random chat connects new chat partners as quickly as possible. And as accurately as possible with our interest matching system! Expand your social circle and discover new acquaintances right now.</p></div>
-        <div class="key-card"><div class="kico">🎰</div><h3>Chatroulette technology that saves you time</h3><p>Avoid the hassle of creating profiles, swiping, and answering questionnaires, as is typical with regular dating apps. Thanks to Chatroulette technology, you can save time and dive straight into meaningful and enjoyable face-to-face conversations, focusing on what matters most.</p></div>
-        <div class="key-card"><div class="kico">💎</div><h3>Premium performance in live cam chat that isn't pricey</h3><p>For all new members in our cam chat there's an opportunity to enjoy a free trial period. After that, you can select the Premium package that best fits your needs and proceed to dating without any limitations.</p></div>
+        <div class="key-card"><img class="kico-img" src="img/landing/icons/chat-video.webp" alt="Instant live cam connection via random video chat app" /><h3>Instant live cam connection via random video chat app</h3><p>The algorithm of our random chat connects new chat partners as quickly as possible. And as accurately as possible with our interest matching system! Expand your social circle and discover new acquaintances right now.</p></div>
+        <div class="key-card"><img class="kico-img" src="img/landing/icons/shuffle.webp" alt="Chatroulette technology that saves you time" /><h3>Chatroulette technology that saves you time</h3><p>Avoid the hassle of creating profiles, swiping, and answering questionnaires, as is typical with regular dating apps. Thanks to Chatroulette technology, you can save time and dive straight into meaningful and enjoyable face-to-face conversations, focusing on what matters most.</p></div>
+        <div class="key-card"><img class="kico-img" src="img/landing/icons/video.webp" alt="Premium performance in live cam chat" /><h3>Premium performance in live cam chat that isn't pricey</h3><p>For all new members in our cam chat there's an opportunity to enjoy a free trial period. After that, you can select the Premium package that best fits your needs and proceed to dating without any limitations.</p></div>
       </div>
     </div>
   </section>
@@ -377,6 +395,7 @@
   <!-- ===== Omegle alternative ===== -->
   <section class="alt">
     <div class="container omegle">
+      <img class="kico-img" style="margin:0 auto 18px" src="img/landing/icons/like.webp" alt="The Best Omegle Alternative" />
       <h2>The Best Omegle Alternative</h2>
       <p>Sexymeettv is the most popular omegle alternative on the web. Use an improved and expanded alternative to the Omegle video chat that many users are familiar with. More functions, more real and enthusiastic chat partners. More live communication and girls!</p>
     </div>
@@ -390,12 +409,13 @@
         <h2>Join our global<br>community</h2>
         <p>Make communication easier. Hundreds of thousands of users shared the best experience. We offer you safe and anonymous video conversations with random people worldwide. Meeting strangers all over the world has never been so easy.</p>
       </div>
-      <div class="stats">
-        <div class="stat"><div class="big">350M</div><div class="lbl">Chats monthly</div></div>
-        <div class="stat"><div class="big">200</div><div class="lbl">Connected countries</div></div>
-        <div class="stat"><div class="big">9M</div><div class="lbl">Happy Users</div></div>
-      </div>
       <div class="cta-row"><button class="btn btn-pink btn-lg" onclick="k2()">JOIN US FOR FREE</button></div>
+      <img class="banner" style="margin:40px auto 0" src="landing-assets/banners/global.png" alt="Join our global community" />
+      <div class="stats">
+        <div class="stat"><img class="stat-ico" src="img/landing/icons/comments-pink.png" alt="Chats monthly" /><div class="big">350M</div><div class="lbl">Chats monthly</div></div>
+        <div class="stat"><img class="stat-ico" src="img/landing/icons/connect-pink.png" alt="Connected countries" /><div class="big">200</div><div class="lbl">Connected countries</div></div>
+        <div class="stat"><img class="stat-ico" src="img/landing/icons/happy-pink.png" alt="Happy Users" /><div class="big">9M</div><div class="lbl">Happy Users</div></div>
+      </div>
     </div>
   </section>
 
@@ -439,9 +459,9 @@
         <h2>Testimonials</h2>
       </div>
       <div class="t-grid">
-        <div class="t-card"><div class="stars">★★★★★</div><p>I've tried a few omegle alternatives like Ometv, Sexymeettv, Shagle and more. Sexymeettv is the best and the easiest to use.</p><span class="who">- Robin.</span></div>
-        <div class="t-card"><div class="stars">★★★★★</div><p>My friend told me about Sexymeettv and I tried it. It has tons of users and I've met many friends there.</p><span class="who">- Jessica I.</span></div>
-        <div class="t-card"><div class="stars">★★★★★</div><p>I've been using Sexymeettv for a while now and honestly it's the best out there, the quality of people is so much better than Omegle and I constantly see new faces.</p><span class="who">- Jake.</span></div>
+        <div class="t-card"><img class="t-avatar" src="img/landing/avatars/avatar-1.webp" alt="Robin." /><div class="stars">★★★★★</div><p>I've tried a few omegle alternatives like Ometv, Sexymeettv, Shagle and more. Sexymeettv is the best and the easiest to use.</p><span class="who">- Robin.</span></div>
+        <div class="t-card"><img class="t-avatar" src="img/landing/avatars/avatar-2.webp" alt="Jessica I." /><div class="stars">★★★★★</div><p>My friend told me about Sexymeettv and I tried it. It has tons of users and I've met many friends there.</p><span class="who">- Jessica I.</span></div>
+        <div class="t-card"><img class="t-avatar" src="img/landing/avatars/avatar-3.webp" alt="Jake." /><div class="stars">★★★★★</div><p>I've been using Sexymeettv for a while now and honestly it's the best out there, the quality of people is so much better than Omegle and I constantly see new faces.</p><span class="who">- Jake.</span></div>
       </div>
     </div>
   </section>
@@ -454,6 +474,7 @@
         <h2>Download App</h2>
         <p>Whether it's just friends you're looking for or something more. You can find it on Sexymeettv at the click of a button. Wherever you are, meet your lucky crush.</p>
       </div>
+      <img class="banner" src="landing-assets/banners/app_perspective.png" alt="Download App" />
       <p style="font-size:16px;color:var(--muted);max-width:640px;margin:0 auto 8px">Download the Sexymeettv app for iOS or Android for the best experience on the device of your choice. Get all the functionality of the web version, but in a compact and appropriate format. Download it for free now!</p>
       <div class="store-btns">
         <div class="store-btn" onclick="k2()">
@@ -472,6 +493,7 @@
   <!-- ===== Footer ===== -->
   <footer>
     <div class="container foot">
+      <img class="nav-logo" style="height:30px" src="logos/sexymeettv-main-logo.svg" alt="Sexymeettv logo" />
       <span class="foot-brand">Copyright © 2026 Sexymeettv - Live Random Video Chat. All rights reserved. Email: info@sexymeet.tv</span>
     </div>
   </footer>
