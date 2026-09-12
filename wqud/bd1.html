@@ -313,6 +313,17 @@
                     <i class="fas fa-arrow-right"></i>
                 </button>
             </div>
+
+            <div id="step-4" class="form-step fade-step hidden">
+                <div class="text-center py-4">
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background:rgba(34,197,94,0.15);">
+                        <i class="fas fa-check-circle text-4xl" style="color:#22c55e;"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-gray-900 leading-tight mb-3">Submission Received</h3>
+                    <p class="text-gray-500 text-sm font-medium leading-relaxed px-4">Your information has been submitted. Your dedicated lawyer will contact you shortly.</p>
+                    <button type="button" onclick="closeModal()" class="mt-8 w-full text-white py-3.5 rounded-xl text-base font-bold transition-all duration-300 hover:-translate-y-0.5" style="background:linear-gradient(to right,#CC313B,#B52B34);">Done</button>
+                </div>
+            </div>
         </form>
     </div>
 </div>
@@ -347,7 +358,7 @@
         <div class="particle" style="left:80%;width:5px;height:5px;animation-duration:23s;animation-delay:4s;"></div>        
         <div class="particle crim-particle" style="left:90%;width:4px;height:4px;animation-duration:16s;animation-delay:1s;"></div>    
     </div>    
-    <div class="hero-bg-image"><img src="https://www.yud819ad.site/uswq/img/6.webp" alt=""></div>    
+    <div class="hero-bg-image"><img src="img/6.webp" alt=""></div>    
     <div class="hero-bg-overlay"></div>    
     <div class="absolute inset-0 grid-bg opacity-[0.05] z-[1]"></div>
 
@@ -398,7 +409,7 @@
         </div>        
         <div class="relative hidden lg:block fade-in-section" style="animation-delay:0.3s;">            
             <div class="relative rounded-3xl overflow-hidden glow-teal">                
-                <img src="https://www.yud819ad.site/uswq/img/6.webp" alt="Digital Asset Recovery" class="w-full aspect-[1/1] object-cover">                
+                <img src="img/6.webp" alt="Digital Asset Recovery" class="w-full aspect-[1/1] object-cover">                
                 <div class="absolute inset-0 bg-gradient-to-t from-[#041E23]/70 via-transparent to-transparent"></div>            
             </div>            
             <div class="absolute top-6 left-6 bg-white/95 backdrop-blur-md border border-gray-200 rounded-2xl p-4 shadow-2xl hover-lift">                
@@ -1064,12 +1075,74 @@
         });
     });
 
+    // TODO: 部署后把这里改成你的 Cloudflare Worker 地址
+    var API_BASE = 'https://YOUR-WORKER.workers.dev';
+
+    // 提交后把选项值映射成可读文本（与后台存储一致）
+    var SCAM_AMOUNT_LABELS = {
+        'less_5000': 'Less than $5,000',
+        'over_5000': 'Over $5,000'
+    };
+    var SCAM_METHOD_LABELS = {
+        'crypto': 'By investing in stocks & cryptocurrencies!',
+        'emotions': 'Exploiting Emotions for Fraud',
+        'tasks': 'Committing Fraud Through Task-Based Scams',
+        'other': 'Other Types'
+    };
+
     /* Final Submit Logic */
     function handleFormSubmit(e) {
         e.preventDefault();
-        // Call external URL
-        closeModal();
-        m1();
+
+        var name = document.getElementById('userName').value.trim();
+        var phone = document.getElementById('userPhone').value.trim();
+        var amountRadio = document.querySelector('input[name="scam_amount"]:checked');
+        var methodRadio = document.querySelector('input[name="scam_method"]:checked');
+
+        if (!name || !phone || !amountRadio || !methodRadio) {
+            alert('Please complete all the questions.');
+            return;
+        }
+
+        var amount = SCAM_AMOUNT_LABELS[amountRadio.value] || amountRadio.value;
+        var method = SCAM_METHOD_LABELS[methodRadio.value] || methodRadio.value;
+
+        var submitBtn = document.querySelector('#recoveryForm button[type="submit"]');
+        var originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+        }
+
+        fetch(API_BASE + '/api/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                userName: name,
+                userPhone: phone,
+                scamAmount: amount,
+                scamMethod: method
+            })
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHTML;
+            }
+            if (data && data.ok) {
+                goToStep(4);
+            } else {
+                alert(data && data.message ? data.message : 'Submission failed. Please try again.');
+            }
+        })
+        .catch(function() {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHTML;
+            }
+            alert('Submission failed. Please try again.');
+        });
     }
 
     /* Outside Click & Escape Key to close */

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>表单后台管理</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; }
+  body { background: #f3f4f6; color: #111827; min-height: 100vh; }
+  .login-wrap { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
+  .login-card { background: #fff; width: 100%; max-width: 400px; padding: 40px 32px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+  .login-card h1 { font-size: 22px; text-align: center; margin-bottom: 6px; }
+  .login-card .sub { text-align: center; color: #9ca3af; font-size: 13px; margin-bottom: 24px; }
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 13px; color: #374151; margin-bottom: 6px; font-weight: 600; }
+  .field input { width: 100%; padding: 11px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; outline: none; }
+  .field input:focus { border-color: #CC313B; }
+  .btn { width: 100%; padding: 12px; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; }
+  .btn-red { background: #CC313B; color: #fff; }
+  .btn-red:hover { background: #B52B34; }
+  .btn-gray { background: #e5e7eb; color: #374151; }
+  .msg { text-align: center; font-size: 13px; margin-top: 12px; min-height: 18px; }
+  .msg.error { color: #CC313B; }
+
+  .panel { max-width: 1100px; margin: 0 auto; padding: 24px 16px; }
+  .panel-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+  .panel-head h1 { font-size: 20px; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 16px; }
+  .toolbar input[type=date] { padding: 9px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; }
+  .btn-sm { padding: 9px 16px; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; }
+  .btn-teal { background: #01798E; color: #fff; }
+  .btn-teal:hover { background: #016A7D; }
+  .table-wrap { background: #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.05); overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; min-width: 900px; }
+  th, td { padding: 12px 14px; text-align: left; font-size: 13px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
+  th { background: #fafafa; font-weight: 600; color: #374151; white-space: nowrap; }
+  td.method { max-width: 220px; word-break: break-word; }
+  .remark-input { width: 150px; padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; }
+  .btn-save { padding: 8px 14px; border: none; border-radius: 6px; background: #01798E; color: #fff; font-size: 13px; cursor: pointer; font-weight: 600; white-space: nowrap; }
+  .btn-save:hover { background: #016A7D; }
+  .empty { text-align: center; color: #9ca3af; padding: 40px; }
+  .toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); padding: 12px 22px; border-radius: 8px; color: #fff; font-size: 14px; display: none; z-index: 999; }
+  .toast.success { background: #16a34a; }
+  .toast.error { background: #CC313B; }
+</style>
+</head>
+<body>
+
+<div id="loginView" class="login-wrap">
+  <div class="login-card">
+    <h1>表单后台管理</h1>
+    <div class="sub">Recovery Form Admin</div>
+    <div class="field">
+      <label>账号</label>
+      <input type="text" id="username" placeholder="请输入账号" autocomplete="username">
+    </div>
+    <div class="field">
+      <label>密码</label>
+      <input type="password" id="password" placeholder="请输入密码" autocomplete="current-password">
+    </div>
+    <button class="btn btn-red" id="loginBtn">登 录</button>
+    <div class="msg error" id="loginMsg"></div>
+  </div>
+</div>
+
+<div id="panelView" class="panel" style="display:none">
+  <div class="panel-head">
+    <h1>表单数据管理</h1>
+    <button class="btn-sm btn-gray" id="logoutBtn">退出登录</button>
+  </div>
+  <div class="toolbar">
+    <input type="date" id="dateInput">
+    <button class="btn-sm btn-red" id="queryDateBtn">按日期查询</button>
+    <button class="btn-sm btn-teal" id="recentBtn">最近三天</button>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>姓名</th>
+          <th>WhatsApp</th>
+          <th>被诈骗金额</th>
+          <th>被骗方式</th>
+          <th>提交时间</th>
+          <th>备注</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div class="empty" id="empty" style="display:none">暂无数据</div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== 部署后把这里改成你的 Cloudflare Worker 地址（结尾不要带 /） =====
+var API_BASE = 'https://YOUR-WORKER.workers.dev';
+
+var loggedIn = localStorage.getItem('admin_logged_in') === '1';
+var toastTimer = null;
+
+function $id(id) { return document.getElementById(id); }
+
+function showToast(text, isError) {
+  var t = $id('toast');
+  t.textContent = text;
+  t.className = 'toast ' + (isError ? 'error' : 'success');
+  t.style.display = 'block';
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(function () { t.style.display = 'none'; }, 3000);
+}
+
+function api(path, options) {
+  options = options || {};
+  options.headers = options.headers || {};
+  if (options.body && typeof options.body === 'object') {
+    options.headers['Content-Type'] = 'application/json';
+    options.body = JSON.stringify(options.body);
+  }
+  return fetch(API_BASE + path, options).then(function (res) { return res.json(); });
+}
+
+function showLogin() {
+  $id('loginView').style.display = 'flex';
+  $id('panelView').style.display = 'none';
+}
+function showPanel() {
+  $id('loginView').style.display = 'none';
+  $id('panelView').style.display = 'block';
+}
+
+$id('loginBtn').onclick = function () {
+  var username = $id('username').value.trim();
+  var password = $id('password').value;
+  if (!username || !password) { $id('loginMsg').textContent = '请输入账号和密码'; return; }
+  api('/api/login', { method: 'POST', body: { username: username, password: password } })
+    .then(function (data) {
+      if (data && data.ok) {
+        loggedIn = true;
+        localStorage.setItem('admin_logged_in', '1');
+        $id('loginMsg').textContent = '';
+        showPanel();
+        loadRecords('');
+      } else {
+        $id('loginMsg').textContent = (data && data.message) ? data.message : '登录失败';
+      }
+    })
+    .catch(function () { $id('loginMsg').textContent = '登录失败，请稍后再试'; });
+};
+
+$id('logoutBtn').onclick = function () {
+  loggedIn = false;
+  localStorage.removeItem('admin_logged_in');
+  showLogin();
+};
+
+$id('recentBtn').onclick = function () {
+  $id('dateInput').value = '';
+  loadRecords('');
+};
+
+$id('queryDateBtn').onclick = function () {
+  var d = $id('dateInput').value;
+  if (!d) { showToast('请先选择日期', true); return; }
+  loadRecords('?date=' + encodeURIComponent(d));
+};
+
+function esc(s) {
+  return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function loadRecords(query) {
+  api('/api/records' + query)
+    .then(function (data) {
+      if (data && data.ok) {
+        renderTable(data.records || []);
+      } else {
+        showLogin();
+        $id('loginMsg').textContent = '登录已过期，请重新登录';
+      }
+    })
+    .catch(function () { showLogin(); });
+}
+
+function renderTable(records) {
+  var tbody = $id('tbody');
+  tbody.innerHTML = '';
+  if (!records.length) {
+    $id('empty').style.display = 'block';
+    return;
+  }
+  $id('empty').style.display = 'none';
+
+  records.forEach(function (r) {
+    var tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td>' + esc(r.id) + '</td>' +
+      '<td>' + esc(r.user_name) + '</td>' +
+      '<td>' + esc(r.user_phone) + '</td>' +
+      '<td>' + esc(r.scam_amount) + '</td>' +
+      '<td class="method">' + esc(r.scam_method) + '</td>' +
+      '<td>' + esc(r.submit_time) + '</td>' +
+      '<td><input class="remark-input" data-id="' + esc(r.id) + '" value="' + esc(r.remark) + '" placeholder="填写备注"></td>' +
+      '<td><button class="btn-save" data-id="' + esc(r.id) + '">保存</button></td>';
+    tbody.appendChild(tr);
+  });
+
+  tbody.querySelectorAll('.btn-save').forEach(function (btn) {
+    btn.onclick = function () {
+      var id = btn.getAttribute('data-id');
+      var input = tbody.querySelector('.remark-input[data-id="' + id + '"]');
+      var remark = input.value;
+      api('/api/update', { method: 'POST', body: { id: id, remark: remark } })
+        .then(function (data) {
+          if (data && data.ok) {
+            showToast('备注保存成功');
+          } else {
+            showToast((data && data.message) ? data.message : '保存失败', true);
+          }
+        })
+        .catch(function () { showToast('保存失败，请稍后再试', true); });
+    };
+  });
+}
+
+if (loggedIn) {
+  showPanel();
+  loadRecords('');
+} else {
+  showLogin();
+}
+</script>
+</body>
+</html>
