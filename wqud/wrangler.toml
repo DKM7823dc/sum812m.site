@@ -1,0 +1,13 @@
+# ============================================================
+#  Cloudflare Worker 配置
+#  部署前：把 database_id 替换成你执行 `wrangler d1 create recovery-db` 拿到的 id
+# ============================================================
+
+name = "recovery-form-worker"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+[[d1_databases]]
+binding = "DB"                         # 代码里用 env.DB 访问
+database_name = "recovery-db"
+database_id = "d4aa54ac-1b28-4e34-9fcd-26c46a2c8175"
