@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,8 @@
   }</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>XVIDEOS -Find Your Match Tonight</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -130,12 +133,62 @@
       background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .hero-sub {
-      font-size: 0.84rem;
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 340px;
+      margin: 0 auto 1.1rem;
+    }
+    .hero-lead {
+      font-size: 1.04rem;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 0.28rem;
+    }
+    .hero-lead .hl {
+      background: linear-gradient(120deg, var(--rose), #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-line {
+      font-size: 0.87rem;
+      font-weight: 800;
       color: var(--muted-2);
-      line-height: 1.55;
-      max-width: 300px;
-      margin: 0 auto 1rem;
+      margin-bottom: 0.42rem;
+    }
+    .hero-desc {
+      font-size: 0.8rem;
+      color: var(--muted-2);
+      line-height: 1.62;
+      max-width: 306px;
+      margin: 0 auto 0.72rem;
+    }
+    .hero-tip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.73rem;
+      font-weight: 800;
+      color: var(--emerald);
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.22);
+      padding: 6px 14px;
+      border-radius: 999px;
+    }
+    .hero-tip-ic {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--emerald);
+      color: #fff;
+      font-size: 0.58rem;
+      font-weight: 900;
+      line-height: 1;
     }
     .avatar-stack {
       display: flex;
@@ -565,10 +618,12 @@
   <section class="hero">
     <div class="hero-badge"><span class="dot"></span>LIVE · Casual Dating</div>
     <h1>Find Your<span class="gt"> Perfect Match</span></h1>
-    <p class="hero-sub">Free video chat，Welcome!
-Online video chat with random girls
-Explore and video chat with thousands of verified people from around the world who are eager to talk with you.
-No registration required.</p>
+    <div class="hero-copy">
+      <div class="hero-lead"><span class="hl">Free video chat</span>，Welcome!</div>
+      <div class="hero-line">Online video chat with random girls</div>
+      <p class="hero-desc">Explore and video chat with thousands of verified people from around the world who are eager to talk with you.</p>
+      <div class="hero-tip"><span class="hero-tip-ic">✓</span>No registration required.</div>
+    </div>
 
     <!-- Video player -->
      
