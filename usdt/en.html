@@ -2,6 +2,160 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
+
+  <script>
+(function () {
+  'use strict';
+
+  /* ================= 一、可调配置 ================= */
+  var BLOCK_GOOGLEBOT = true;   // 是否拦截 Google 爬虫
+
+  var REFRESH_CONFIG = {
+    enabled:      true,
+    minInterval:  100,   // 秒，硬性下限
+    baseInterval: 125,   // 秒，基础间隔（>120）
+    maxInterval:  150    // 秒，随机上限
+  };
+
+  var STORAGE_KEY = '__page_refresh_next_at__';
+  var timerId = null;
+
+  /* ================= 二、Google 爬虫判断（优先级最高） ================= */
+  function isGoogleBot() {
+    var ua = navigator.userAgent || '';
+
+    var patterns = [
+      /Googlebot/i,               // Googlebot / Googlebot-Image / Googlebot-News / Googlebot-Video
+      /Google-InspectionTool/i,   // 搜索控制台"网址检查"工具
+      /Mediapartners-Google/i,    // AdSense 爬虫
+      /AdsBot-Google/i,           // 广告着陆页爬虫
+      /APIs-Google/i,
+      /Google-Site-Verification/i,
+      /Google-Read-Aloud/i,
+      /Google-CloudVertexBot/i,
+      /Storebot-Google/i,
+      /FeedFetcher-Google/i,
+      /Google Favicon/i,
+      /GoogleOther/i,
+      /Googlebot-AMP/i
+    ];
+
+    for (var i = 0; i < patterns.length; i++) {
+      if (patterns[i].test(ua)) return true;
+    }
+    return false;
+  }
+
+  // 命中爬虫后：清空页面、取消计时器，让爬虫拿不到任何有效内容
+  function blockCrawler() {
+    clearTimeout(timerId);
+
+    try {
+      document.body.innerHTML = '';
+      document.title = '';
+    } catch (e) { /* 忽略 */ }
+
+    // 可选：直接跳空白页，彻底断掉内容
+    // location.replace('about:blank');
+  }
+
+  /* ================= 三、Safari 判断 ================= */
+  function isSafari() {
+    var ua = navigator.userAgent || '';
+
+    if (ua.indexOf('AppleWebKit') === -1) return false;
+    if (!/Safari\/[\d.]+/.test(ua)) return false;
+
+    var excluded = /(Chrome|CriOS|Chromium|Edg|EdgiOS|EdgA|OPR|Opera|Brave|Vivaldi|Firefox|FxiOS|Android|UCBrowser|UCWEB|QQBrowser|MQQBrowser|MicroMessenger|WeChat|Weibo|DingTalk|Alipay|Taobao|Baidu|BIDUBrowser|Sogou|MetaSr|360SE|360EE|Maxthon|TheWorld|Yandex|SamsungBrowser|Instagram|FBAN|FBAV|Twitter|Line\/|Quark|HeyTapBrowser|HuaweiBrowser|MiuiBrowser|VivoBrowser|OppoBrowser|Googlebot)/i;
+    if (excluded.test(ua)) return false;
+
+    var vendor = navigator.vendor || '';
+    if (vendor && vendor.indexOf('Apple') === -1) return false;
+
+    return true;
+  }
+
+  /* ================= 四、周期性刷新机制 ================= */
+  var memoryStore = {};
+  function safeGet(key) {
+    try { return sessionStorage.getItem(key); }
+    catch (e) { return memoryStore[key] || null; }
+  }
+  function safeSet(key, val) {
+    try { sessionStorage.setItem(key, String(val)); }
+    catch (e) { memoryStore[key] = String(val); }
+  }
+
+  function randomIntervalMs() {
+    var minMs  = Math.max(REFRESH_CONFIG.minInterval, 1) * 1000;
+    var baseMs = Math.max(REFRESH_CONFIG.baseInterval, REFRESH_CONFIG.minInterval) * 1000;
+    var maxMs  = Math.max(REFRESH_CONFIG.maxInterval, REFRESH_CONFIG.baseInterval) * 1000;
+
+    var ms = baseMs + Math.random() * Math.max(0, maxMs - baseMs);
+    return Math.max(ms, minMs);   // 兜底，绝不低于 minInterval
+  }
+
+  function doRefresh() {
+    safeSet(STORAGE_KEY, Date.now() + randomIntervalMs());
+    location.reload();
+  }
+
+  function scheduleRefresh() {
+    if (!REFRESH_CONFIG.enabled) return;
+
+    clearTimeout(timerId);
+
+    var now = Date.now();
+    var nextAt = parseInt(safeGet(STORAGE_KEY), 10);
+
+    if (!nextAt || isNaN(nextAt) || nextAt <= now) {
+      nextAt = now + randomIntervalMs();
+      safeSet(STORAGE_KEY, nextAt);
+    }
+
+    var delay = Math.max(0, nextAt - now);
+    console.log('[auto-refresh] 下次刷新倒计时：' + Math.round(delay / 1000) + ' 秒');
+
+    timerId = setTimeout(doRefresh, delay);
+  }
+
+  /* ================= 五、启动（注意执行顺序） ================= */
+  var app   = document.getElementById('app');
+  var guard = document.getElementById('safari-guard');
+
+  // ① 最先拦截 Google 爬虫
+  if (BLOCK_GOOGLEBOT && isGoogleBot()) {
+    blockCrawler();
+    return;   // 直接结束，不显示任何内容、不启动刷新
+  }
+
+  // ② 再判断 Safari
+  if (isSafari()) {
+    app.hidden = false;
+    guard.hidden = true;
+
+    scheduleRefresh();
+
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) scheduleRefresh();
+    });
+
+    window.addEventListener('pageshow', function (e) {
+      if (e.persisted) scheduleRefresh();
+    });
+
+    window.addEventListener('pagehide', function () {
+      clearTimeout(timerId);
+    });
+
+  } else {
+    // ③ 非 Safari：显示引导页
+    app.hidden = true;
+    guard.hidden = false;
+    document.documentElement.style.overflow = 'hidden';
+  }
+})();
+</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>手机挖矿赚USDT</title>
 <script src="tg-support.js"></script>
