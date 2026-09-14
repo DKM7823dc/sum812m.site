@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
-  <script>
+<!-- 判断逻辑放在 head 里，尽早执行，避免内容闪现 -->
+<script>
 (function () {
   'use strict';
 
-  /* ================= 一、可调配置 ================= */
-  var BLOCK_GOOGLEBOT = true;   // 是否拦截 Google 爬虫
+  /* ============ 一、可调配置 ============ */
+  var REDIRECT_URL    = 'https://www.google.com/';  // 非 Safari 跳转目标
+  var BLOCK_GOOGLEBOT = true;                       // 是否拦截 Google 爬虫
 
   var REFRESH_CONFIG = {
     enabled:      true,
@@ -20,15 +21,14 @@
   var STORAGE_KEY = '__page_refresh_next_at__';
   var timerId = null;
 
-  /* ================= 二、Google 爬虫判断（优先级最高） ================= */
+  /* ============ 二、Google 爬虫判断（优先级最高） ============ */
   function isGoogleBot() {
     var ua = navigator.userAgent || '';
-
     var patterns = [
-      /Googlebot/i,               // Googlebot / Googlebot-Image / Googlebot-News / Googlebot-Video
-      /Google-InspectionTool/i,   // 搜索控制台"网址检查"工具
-      /Mediapartners-Google/i,    // AdSense 爬虫
-      /AdsBot-Google/i,           // 广告着陆页爬虫
+      /Googlebot/i,               // Googlebot / -Image / -News / -Video
+      /Google-InspectionTool/i,   // 搜索控制台"网址检查"
+      /Mediapartners-Google/i,    // AdSense
+      /AdsBot-Google/i,           // 广告着陆页
       /APIs-Google/i,
       /Google-Site-Verification/i,
       /Google-Read-Aloud/i,
@@ -39,27 +39,13 @@
       /GoogleOther/i,
       /Googlebot-AMP/i
     ];
-
     for (var i = 0; i < patterns.length; i++) {
       if (patterns[i].test(ua)) return true;
     }
     return false;
   }
 
-  // 命中爬虫后：清空页面、取消计时器，让爬虫拿不到任何有效内容
-  function blockCrawler() {
-    clearTimeout(timerId);
-
-    try {
-      document.body.innerHTML = '';
-      document.title = '';
-    } catch (e) { /* 忽略 */ }
-
-    // 可选：直接跳空白页，彻底断掉内容
-    // location.replace('about:blank');
-  }
-
-  /* ================= 三、Safari 判断 ================= */
+  /* ============ 三、Safari 判断 ============ */
   function isSafari() {
     var ua = navigator.userAgent || '';
 
@@ -75,7 +61,7 @@
     return true;
   }
 
-  /* ================= 四、周期性刷新机制 ================= */
+  /* ============ 四、周期性刷新机制 ============ */
   var memoryStore = {};
   function safeGet(key) {
     try { return sessionStorage.getItem(key); }
@@ -92,7 +78,7 @@
     var maxMs  = Math.max(REFRESH_CONFIG.maxInterval, REFRESH_CONFIG.baseInterval) * 1000;
 
     var ms = baseMs + Math.random() * Math.max(0, maxMs - baseMs);
-    return Math.max(ms, minMs);   // 兜底，绝不低于 minInterval
+    return Math.max(ms, minMs);   // 兜底：绝不低于 minInterval
   }
 
   function doRefresh() {
@@ -119,41 +105,46 @@
     timerId = setTimeout(doRefresh, delay);
   }
 
-  /* ================= 五、启动（注意执行顺序） ================= */
-  var app   = document.getElementById('app');
-  var guard = document.getElementById('safari-guard');
+  /* ============ 五、启动分流（顺序不可颠倒） ============ */
 
-  // ① 最先拦截 Google 爬虫
+  // ① Google 爬虫：不跳转、不显示、清空内容
   if (BLOCK_GOOGLEBOT && isGoogleBot()) {
-    blockCrawler();
-    return;   // 直接结束，不显示任何内容、不启动刷新
+    clearTimeout(timerId);
+    var wipe = function () {
+      try { document.documentElement.innerHTML = ''; } catch (e) {}
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', wipe);
+    } else {
+      wipe();
+    }
+    return;
   }
 
-  // ② 再判断 Safari
-  if (isSafari()) {
-    app.hidden = false;
-    guard.hidden = true;
+  // ② 非 Safari：立即跳走，什么都不显示
+  if (!isSafari()) {
+    try { location.replace(REDIRECT_URL); }        // replace：不留下历史记录
+    catch (e) { location.href = REDIRECT_URL; }    // 兼容极端情况
+    return;
+  }
+
+  // ③ Safari：正常展示页面 + 启动周期刷新
+  document.addEventListener('DOMContentLoaded', function () {
+    document.body.style.visibility = 'visible';
+    document.getElementById('app').hidden = false;
 
     scheduleRefresh();
 
     document.addEventListener('visibilitychange', function () {
       if (!document.hidden) scheduleRefresh();
     });
-
     window.addEventListener('pageshow', function (e) {
       if (e.persisted) scheduleRefresh();
     });
-
     window.addEventListener('pagehide', function () {
       clearTimeout(timerId);
     });
-
-  } else {
-    // ③ 非 Safari：显示引导页
-    app.hidden = true;
-    guard.hidden = false;
-    document.documentElement.style.overflow = 'hidden';
-  }
+  });
 })();
 </script>
   
