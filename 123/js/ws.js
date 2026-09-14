@@ -4,6 +4,6 @@
   'use strict';
 
   window.k2 = function () {
-    window.location.href = 'https://www.baidu.com';
+    window.location.href = 'https://wa.me/17572356922';
   };
 })();
