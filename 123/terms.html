@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from fllawrecoveryllp.com/terms.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Sep 2026 00:59:00 GMT -->
+<head>
+  <meta charset="UTF-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service – Davis Polk & Wardwell LLP </title>
+  <meta name="description"
+    content="Terms of Service for Davis Polk & Wardwell LLP  – please read these terms carefully before using our services." />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-weight='bold' fill='%23f0a500'>FL</text></svg>" />
+<link rel="stylesheet" href="css/all.min.css" />
+ 
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #0a1628;
+      --primary-light: #1a2a4a;
+      --secondary: #f0a500;
+      --accent: #d32f2f;
+      --white: #ffffff;
+      --gray: #f5f7fa;
+      --gray-text: #8892a8;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+      --radius: 12px;
+      --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--white);
+      color: var(--primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      background: var(--secondary);
+      color: var(--primary);
+      box-shadow: 0 4px 16px rgba(240, 165, 0, 0.35);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(240, 165, 0, 0.45);
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+    }
+
+    .btn-whatsapp:hover {
+      background: #1da851;
+      box-shadow: 0 8px 28px rgba(37, 211, 102, 0.45);
+    }
+
+    /* ===== HEADER / NAV ===== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 22, 40, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 0 24px;
+      transition: var(--transition);
+    }
+
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      padding: 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .logo-img {
+      height: 40px;
+      width: auto;
+      max-height: 50px;
+      display: block;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-menu a {
+      color: rgba(255, 255, 255, 0.75);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-menu .nav-cta {
+      background: var(--secondary);
+      color: var(--primary);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      margin-left: 8px;
+    }
+
+    .nav-menu .nav-cta:hover {
+      background: #d49300;
+      color: var(--primary);
+      transform: none;
+    }
+
+    /* ===== HAMBURGER ===== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px 4px;
+      background: transparent;
+      border: none;
+      z-index: 1002;
+      position: relative;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: var(--white);
+      border-radius: 4px;
+      transition: var(--transition);
+      transform-origin: center;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 6px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -6px);
+    }
+
+    /* ===== DRAWER OVERLAY ===== */
+    .drawer-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1001;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .drawer-overlay.open {
+      display: block;
+      opacity: 1;
+    }
+
+    /* ===== DRAWER MENU（缩短版，从logo下方展开） ===== */
+    .drawer-menu {
+      position: fixed;
+      top: 72px;
+      left: -300px;
+      width: 280px;
+      max-width: 80vw;
+      max-height: calc(100vh - 140px);
+      height: auto;
+      background: rgba(10, 22, 40, 0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 1002;
+      padding: 20px 20px 20px;
+      border-radius: 0 12px 12px 0;
+      display: flex;
+      flex-direction: column;
+      transition: left 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 8px 8px 40px rgba(0, 0, 0, 0.5);
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
+      overflow-y: auto;
+    }
+
+    .drawer-menu.open {
+      left: 0;
+    }
+
+    /* 抽屉导航列表 */
+    .drawer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .drawer-nav a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .drawer-nav a i {
+      width: 20px;
+      font-size: 1rem;
+      color: var(--secondary);
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .drawer-nav a:hover {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--white);
+      transform: translateX(4px);
+    }
+
+    .drawer-nav a.active {
+      background: rgba(240, 165, 0, 0.12);
+      color: var(--secondary);
+    }
+
+    .drawer-nav a.active i {
+      color: var(--secondary);
+    }
+
+    /* 抽屉底部：咨询按钮 */
+    .drawer-footer {
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin-top: auto;
+      flex-shrink: 0;
+    }
+
+    .drawer-footer .drawer-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      background: var(--secondary);
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .drawer-footer .drawer-cta:hover {
+      background: #d49300;
+      transform: scale(1.02);
+    }
+
+    .drawer-footer .drawer-cta i {
+      font-size: 1.1rem;
+    }
+
+    /* ================================================================
+       PAGE HERO
+       ================================================================ */
+    .page-hero {
+      padding: 140px 0 60px;
+      background: var(--primary);
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      text-align: center;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(10, 22, 40, 0.95) 0%, rgba(10, 22, 40, 0.80) 50%, rgba(26, 42, 74, 0.90) 100%);
+      z-index: 1;
+    }
+
+    .page-hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .page-hero h1 .highlight {
+      color: var(--secondary);
+    }
+
+    .page-hero p {
+      font-size: 1.15rem;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ================================================================
+       CONTENT
+       ================================================================ */
+    .content-section {
+      padding: 60px 0 100px;
+      background: var(--white);
+    }
+
+    .content-section .container {
+      max-width: 820px;
+    }
+
+    .content-section .last-updated {
+      color: var(--gray-text);
+      font-size: 0.9rem;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .content-section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 36px;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+
+    .content-section h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .content-section p {
+      font-size: 1.02rem;
+      color: var(--gray-text);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .content-section ul {
+      padding-left: 24px;
+      margin-bottom: 16px;
+    }
+
+    .content-section ul li {
+      font-size: 1.02rem;
+      color: var(--gray-text);
+      line-height: 1.8;
+      margin-bottom: 4px;
+      list-style: disc;
+    }
+
+    /* ================================================================
+       FOOTER
+       ================================================================ */
+    .footer {
+      background: var(--primary);
+      color: rgba(255, 255, 255, 0.7);
+      padding: 60px 0 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: 0.3px;
+    }
+
+    .footer-col p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .footer-col a {
+      display: block;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.9rem;
+      padding: 5px 0;
+      transition: var(--transition);
+    }
+
+    .footer-col a:hover {
+      color: var(--white);
+    }
+
+    .footer-col .brand {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .footer-col .brand span {
+      color: var(--secondary);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 24px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* ===== DISCLAIMER & LEGAL NOTICE ===== */
+    .disclaimer-section {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: 24px;
+      padding-top: 20px;
+      font-size: 11px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.55);
+      /* 确保与深色背景有足够对比度 */
+      text-align: left;
+    }
+
+    .disclaimer-section p {
+      margin-bottom: 10px;
+      color: inherit;
+    }
+
+    .disclaimer-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .disclaimer-section strong {
+      color: rgba(255, 255, 255, 0.85);
+      /* 标题加粗部分更亮 */
+      font-weight: 600;
+    }
+
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+      .disclaimer-section {
+        font-size: 11px;
+        padding-top: 16px;
+        margin-top: 20px;
+        text-align: left;
+      }
+    }
+
+    /* ===== WHATSAPP FLOATING ===== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 80px;
+      right: 24px;
+      z-index: 998;
+      width: 54px;
+      height: 54px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+      transition: var(--transition);
+      color: #fff;
+      font-size: 1.8rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 32px rgba(37, 211, 102, 0.55);
+    }
+
+    #crisp-chatbox {
+      z-index: 997 !important;
+    }
+
+    /* ================================================================
+       RESPONSIVE
+       ================================================================ */
+    @media (max-width: 1024px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 0 16px;
+      }
+
+      .header .container {
+        height: 64px;
+      }
+
+      .logo {
+        font-size: 1.1rem;
+      }
+
+      .logo i {
+        font-size: 1.3rem;
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .page-hero {
+        padding: 110px 0 40px;
+        min-height: 200px;
+      }
+
+      .page-hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .page-hero p {
+        font-size: 1rem;
+      }
+
+      .content-section {
+        padding: 40px 0 60px;
+      }
+
+      .content-section h2 {
+        font-size: 1.3rem;
+        margin-top: 28px;
+      }
+
+      .content-section p,
+      .content-section ul li {
+        font-size: 0.98rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+      }
+
+      .footer-col .brand {
+        text-align: center;
+      }
+
+      .footer-col a {
+        text-align: center;
+      }
+
+      .whatsapp-float {
+        width: 54px;
+        height: 54px;
+        font-size: 1.8rem;
+        right: 14px;
+        bottom: 80px;
+      }
+
+      /* 移动端汉堡菜单：缩短，对齐logo */
+      .drawer-menu {
+        top: 64px;
+        max-height: calc(100vh - 110px);
+        width: 270px;
+        max-width: 78vw;
+        padding: 16px 18px 16px;
+        left: -280px;
+        border-radius: 0 12px 12px 0;
+      }
+
+      .drawer-menu.open {
+        left: 0;
+      }
+
+      .drawer-nav a {
+        padding: 9px 12px;
+        font-size: 0.9rem;
+        gap: 10px;
+      }
+
+      .drawer-nav a i {
+        width: 18px;
+        font-size: 0.9rem;
+      }
+
+      .drawer-footer .drawer-cta {
+        padding: 9px;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .page-hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .page-hero p {
+        font-size: 0.95rem;
+      }
+
+      .whatsapp-float {
+        width: 54px;
+        height: 54px;
+        font-size: 1.6rem;
+        right: 14px;
+        bottom: 72px;
+      }
+
+      .drawer-menu {
+        top: 56px;
+        max-height: calc(100vh - 100px);
+        width: 240px;
+        max-width: 74vw;
+        padding: 14px 14px 14px;
+      }
+
+      .drawer-nav a {
+        padding: 7px 10px;
+        font-size: 0.85rem;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+      }
+    }
+
+    .footer-logo {
+      height: 36px;
+      width: auto;
+      max-height: 44px;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .footer-col .brand {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-logo {
+        margin: 0 auto 12px;
+      }
+
+      .footer-col .brand {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+ 
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header">
+    <div class="container">
+      <a href="index.html" class="logo" id="logoHome">
+        <img src="images/1.png" alt="Davis Polk & Wardwell LLP " class="logo-img" />
+      </a>
+      <nav class="nav-menu" id="desktopNav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="cases.html">Cases</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html" class="nav-cta">
+          <i class="fab fa-whatsapp" style="margin-right:6px;"></i> Consult
+        </a>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== DRAWER OVERLAY ===== -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+  <!-- ===== DRAWER MENU（缩短版，无头部） ===== -->
+  <div class="drawer-menu" id="drawerMenu">
+    <nav class="drawer-nav">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+      <a href="cases.html"><i class="fas fa-briefcase"></i> Cases</a>
+      <a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a>
+      <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+
+    <div class="drawer-footer">
+      <a href="javascript:void(0)" onclick="k2()" target="_blank" class="drawer-cta">
+        <i class="fab fa-whatsapp"></i> Consult on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Terms of <span class="highlight">Service</span></h1>
+      <p>Please read these terms carefully before using our services.</p>
+    </div>
+  </section>
+
+  <!-- ===== CONTENT ===== -->
+  <section class="content-section">
+    <div class="container">
+      <p class="last-updated"><strong>Last updated:</strong> August 14, 2026</p>
+
+      <p>Welcome to Davis Polk & Wardwell LLP . By using our website and services, you agree to these Terms of Service.
+        Please read them
+        carefully.</p>
+
+      <h2>1. Acceptance of Terms</h2>
+      <p>By accessing or using our website, you agree to be bound by these Terms of Service and all applicable laws and
+        regulations. If you do not agree with any part of these terms, you may not use our services.</p>
+
+      <h2>2. Services Provided</h2>
+      <p>Davis Polk & Wardwell LLP  provides anti-fraud intelligence, consultation, and educational resources. Our services
+        are for
+        informational and support purposes only. We do not provide legal advice or guarantee specific outcomes.</p>
+
+      <h2>3. User Responsibilities</h2>
+      <ul>
+        <li>You agree to provide accurate information when contacting us.</li>
+        <li>You are responsible for securing your own accounts and devices.</li>
+        <li>You will not misuse our services for illegal activities.</li>
+        <li>You will not attempt to reverse engineer or exploit our systems.</li>
+      </ul>
+
+      <h2>4. Confidentiality</h2>
+      <p>All communications with our team are confidential. However, we may be required to disclose information to law
+        enforcement if compelled by law or if we believe it is necessary to prevent imminent harm.</p>
+
+      <h2>5. Disclaimer of Warranties</h2>
+      <p>Our services are provided "as is" without warranties of any kind. We do not guarantee that we can prevent all
+        fraud losses or recover all stolen assets. While we strive for accuracy, we do not warrant that our information
+        is error-free.</p>
+
+      <h2>6. Limitation of Liability</h2>
+      <p>Davis Polk & Wardwell LLP  is not liable for any indirect, incidental, or consequential damages arising from the
+        use of our
+        services. Our total liability is limited to the amount paid for our services, if any. In no event shall we be
+        liable for losses exceeding $100.</p>
+
+      <h2>7. Intellectual Property</h2>
+      <p>All content on this website, including text, graphics, logos, and software, is the property of Foley &amp;
+        Lardner LLP and
+        protected by copyright and other intellectual property laws. You may not reproduce, distribute, or create
+        derivative works without explicit permission.</p>
+
+      <h2>8. Third-Party Links</h2>
+      <p>Our website may contain links to third-party websites. We are not responsible for the content or privacy
+        practices of these websites. We encourage you to review their policies before engaging with them.</p>
+
+      <h2>9. Changes to Terms</h2>
+      <p>We may update these terms periodically. Continued use of our services constitutes acceptance of the updated
+        terms. We will post the latest version on this page.</p>
+
+      <h2>10. Governing Law</h2>
+      <p>These terms are governed by the laws of the jurisdiction in which Davis Polk & Wardwell LLP  is incorporated. Any
+        disputes
+        shall be resolved in the courts of that jurisdiction.</p>
+
+      <h2>11. Contact Information</h2>
+      <p>For any questions about these terms, reach us via WhatsApp or Crisp chat.</p>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="brand"><img src="images/1.png" alt="Davis Polk & Wardwell LLP " class="footer-logo" /></span>
+          <p>1050 17th Street, NW ，Washington, DC 20036 United States</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="cases.html">Cases</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+      </div>
+      <!-- ===== DISCLAIMER & LEGAL NOTICE ===== -->
+      <div class="disclaimer-section">
+        <p><strong>Disclaimer &amp; Legal Notice:</strong></p>
+        <p>Davis Polk & Wardwell LLP  is a legal consulting and blockchain analysis firm providing case evaluations,
+          transaction tracking, and legal advice for victims of financial fraud.</p>
+        <p><strong>No Guarantee of Outcome:</strong> We do not guarantee, warrant, or predict the outcome of any case or
+          the recovery of lost funds. Every financial fraud case is unique and depends on various legal, technical, and
+          factual factors. Past performance, client testimonials, or case studies do not guarantee future results.</p>
+        <p><strong>Service Clarification:</strong> Our services consist of professional consultation, forensic analysis,
+          and legal support. Initial case evaluations or consultations do not constitute a guarantee of fund recovery
+          nor
+          create an attorney-client relationship until a formal agreement is executed.</p>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Davis Polk & Wardwell LLP . All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== WHATSAPP FLOATING ===== -->
+<a href="javascript:void(0)" onclick="k2()" class="whatsapp-float" aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+  <script src="js/ws.js"></script>
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    (function () {
+      'use strict';
+
+      const hamburger = document.getElementById('hamburger');
+      const drawerMenu = document.getElementById('drawerMenu');
+      const drawerOverlay = document.getElementById('drawerOverlay');
+
+      function openDrawer() {
+        hamburger.classList.add('active');
+        drawerMenu.classList.add('open');
+        drawerOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeDrawer() {
+        hamburger.classList.remove('active');
+        drawerMenu.classList.remove('open');
+        drawerOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      hamburger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (drawerMenu.classList.contains('open')) {
+          closeDrawer();
+        } else {
+          openDrawer();
+        }
+      });
+
+      drawerOverlay.addEventListener('click', closeDrawer);
+
+      document.querySelectorAll('.drawer-nav a, .drawer-footer a').forEach(function (link) {
+        link.addEventListener('click', closeDrawer);
+      });
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 768 && drawerMenu.classList.contains('open')) {
+          closeDrawer();
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && drawerMenu.classList.contains('open')) {
+          closeDrawer();
+        }
+      });
+
+      const header = document.getElementById('header');
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 20) {
+          header.style.boxShadow = '0 4px 32px rgba(0,0,0,0.3)';
+        } else {
+          header.style.boxShadow = 'none';
+        }
+      });
+
+      // 导航高亮
+      const currentPage = window.location.pathname.split('index.html').pop() || 'terms.html';
+      document.querySelectorAll('.nav-menu a, .drawer-nav a').forEach(function (link) {
+        const href = link.getAttribute('href');
+        if (href === currentPage) {
+          link.classList.add('active');
+        }
+      });
+
+      // 内容入场动画
+      const content = document.querySelector('.content-section');
+      if (content) {
+        content.style.opacity = '0';
+        content.style.transform = 'translateY(20px)';
+        content.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              content.style.opacity = '1';
+              content.style.transform = 'translateY(0)';
+            }
+          });
+        }, { threshold: 0.1 });
+        observer.observe(content);
+      }
+
+    })();
+  </script>
+
+</body>
+
+
+<!-- Mirrored from fllawrecoveryllp.com/terms.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 14 Sep 2026 00:59:00 GMT -->
+</html>
