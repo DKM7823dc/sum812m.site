@@ -4,6 +4,6 @@
   'use strict';
 
   window.k2 = function () {
-    window.location.href = 'https://www.baidu.com';
+   MeetU.download(event);
   };
 })();
