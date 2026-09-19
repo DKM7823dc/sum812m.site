@@ -1,7 +1,11 @@
 <!DOCTYPE html><html lang="ja"><head>
-
-
-   <script src="https://api.wenk918d.site/js/meetu-sdk.js"></script>
+    <script async="" src="js/gtm.js"></script><script>
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768) {
+    if (!window.location.pathname.endsWith("sp_index.html")) {
+        window.location.replace("./sp_index.html" + window.location.search);
+    }
+}
+</script>
 
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -17,11 +21,18 @@
     <!-- ===== CTA 统一跳转方法 k2 ===== -->
     <script>
         function k2(url) {
-		MeetU.download(event);
+            window.location.href = url || 'https://qq.com';
         }
     </script>
     <!-- ===== /CTA 统一跳转方法 k2 ===== -->
- 
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PLC9LTZ');</script>
+    
+    
 
     <title>東京マリオネットドールズ X - FANZA GAMES</title>
     <meta charset="utf-8">
@@ -53,151 +64,16 @@
         <link rel="stylesheet" href="css/index.min_2.css">
     
 
-    <!-- ===== 5秒後ポップアップ CSS ===== -->
-    <style>
-    .dl-overlay{
-        position: fixed;
-        inset: 0;
-        z-index: 9999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        background: rgba(0,0,0,.72);
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity .3s ease, visibility .3s ease;
-        -webkit-backdrop-filter: blur(3px);
-        backdrop-filter: blur(3px);
-    }
-    .dl-overlay.is-show{
-        opacity: 1;
-        visibility: visible;
-    }
-    .dl-card{
-        position: relative;
-        width: 100%;
-        max-width: 420px;
-        box-sizing: border-box;
-        padding: 30px 22px 22px;
-        border-radius: 18px;
-        background: linear-gradient(160deg,#1b1a2b 0%,#241a2e 55%,#2b1420 100%);
-        border: 1px solid rgba(255,110,170,.35);
-        box-shadow: 0 18px 50px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.04);
-        color: #fff;
-        text-align: center;
-        transform: translateY(18px) scale(.96);
-        opacity: 0;
-        transition: transform .35s cubic-bezier(.2,.9,.3,1.2), opacity .3s ease;
-    }
-    .dl-overlay.is-show .dl-card{
-        transform: translateY(0) scale(1);
-        opacity: 1;
-    }
-    .dl-close{
-        position: absolute;
-        top: 8px;
-        right: 10px;
-        width: 34px;
-        height: 34px;
-        border: 0;
-        border-radius: 50%;
-        background: rgba(255,255,255,.1);
-        color: #fff;
-        font-size: 19px;
-        line-height: 1;
-        cursor: pointer;
-        -webkit-tap-highlight-color: transparent;
-    }
-    .dl-close:hover{ background: rgba(255,255,255,.2); }
-    .dl-card h3{
-        margin: 0 0 10px;
-        font-size: 21px;
-        font-weight: 700;
-        letter-spacing: .02em;
-        color: #ff6aa8;
-    }
-    .dl-sub{
-        margin: 0 0 18px;
-        font-size: 13px;
-        line-height: 1.7;
-        color: #cfc9d8;
-    }
-    .dl-list{
-        text-align: left;
-        margin: 0 auto 4px;
-        max-width: 320px;
-    }
-    .dl-item{
-        display: flex;
-        align-items: flex-start;
-        gap: 8px;
-        font-size: 13.5px;
-        line-height: 1.6;
-        color: #f2eef6;
-        padding: 5px 0;
-    }
-    .dl-chk{
-        flex: 0 0 auto;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 18px;
-        height: 18px;
-        margin-top: 2px;
-        border-radius: 50%;
-        background: linear-gradient(135deg,#ff5f9e,#ff8b3d);
-        color: #fff;
-        font-size: 11px;
-        font-weight: 700;
-    }
-    .dl-btn{
-        display: block;
-        margin-top: 20px;
-        padding: 15px 10px;
-        border-radius: 999px;
-        background: linear-gradient(90deg,#ff5f9e,#ff8b3d);
-        color: #fff;
-        font-size: 15px;
-        font-weight: 700;
-        letter-spacing: .02em;
-        cursor: pointer;
-        user-select: none;
-        -webkit-tap-highlight-color: transparent;
-        box-shadow: 0 8px 20px rgba(255,95,158,.4);
-        transition: transform .2s ease, box-shadow .2s ease;
-        animation: dl-pulse 2.2s ease-in-out infinite;
-    }
-    .dl-btn:hover{
-        transform: translateY(-2px);
-        box-shadow: 0 12px 26px rgba(255,95,158,.55);
-    }
-    .dl-btn:active{ transform: translateY(0); }
-    @keyframes dl-pulse{
-        0%,100%{ box-shadow: 0 8px 20px rgba(255,95,158,.40); }
-        50%    { box-shadow: 0 8px 28px rgba(255,139,61,.65); }
-    }
-    .dl-note{
-        margin-top: 14px;
-        font-size: 11.5px;
-        line-height: 1.6;
-        color: #9b93a6;
-    }
-    @media (max-width: 480px){
-        .dl-card{ padding: 26px 16px 18px; border-radius: 14px; }
-        .dl-card h3{ font-size: 18px; }
-        .dl-sub{ font-size: 12px; }
-        .dl-item{ font-size: 12.5px; }
-        .dl-btn{ font-size: 14px; padding: 14px 8px; }
-    }
-    </style>
-    <!-- ===== /5秒後ポップアップ CSS ===== -->
+
+    
 </head>
 <body>
         <script src="js/fetch.umd.js"></script>
 <script src="js/polyfill.min.js"></script>
 
- 
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PLC9LTZ"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
         <header class="common-header">
@@ -471,54 +347,7 @@
     
     <script src="js/index.min_1.js"></script>
 
-    <!-- ===== 5秒後ポップアップ HTML ===== -->
-    <div class="dl-overlay" id="dlOverlay" role="dialog" aria-modal="true" aria-labelledby="dlTitle" onclick="closeDownload()">
-        <div class="dl-card" onclick="event.stopPropagation()">
-            <button class="dl-close" type="button" onclick="event.stopPropagation(); closeDownload()" aria-label="閉じる">×</button>
+    <script src="js/config.js"></script>
 
-            <h3 id="dlTitle">フルアクセスを解放</h3>
-            <p class="dl-sub">アプリをダウンロードして、すべての動画を無料で視聴 — すべての動画、カテゴリー、コレクション。</p>
-            <div class="dl-list">
-                <div class="dl-item"><span class="dl-chk">✓</span>視聴は100%無料</div>
-                <div class="dl-item"><span class="dl-chk">✓</span>すべての動画＆カテゴリーにアクセス</div>
-                <div class="dl-item"><span class="dl-chk">✓</span>HD動画をバッファリングなしで視聴</div>
-            </div>
-            <span class="dl-btn" role="button" tabindex="0" onclick="k2()">アプリを無料で入手 · 今すぐ視聴</span>
-            <div class="dl-note">🔒 安全＆プライベート — クレジットカード不要</div>
-        </div>
-    </div>
-    <!-- ===== /5秒後ポップアップ HTML ===== -->
-
-    <!-- ===== 5秒後ポップアップ JS ===== -->
-    <script>
-    (function () {
-        var DELAY = 5000; // 5秒
-        var overlay = document.getElementById('dlOverlay');
-        if (!overlay) return;
-
-        var closed = false;
-
-        function openDownload() {
-            if (closed) return;
-            overlay.classList.add('is-show');
-        }
-
-        window.closeDownload = function () {
-            closed = true;
-            overlay.classList.remove('is-show');
-        };
-
-        // 5秒後に表示
-        setTimeout(openDownload, DELAY);
-
-        // ESCキーで閉じる
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' || e.keyCode === 27) {
-                window.closeDownload();
-            }
-        });
-    })();
-    </script>
-    <!-- ===== /5秒後ポップアップ JS ===== -->
 
 </body></html>
