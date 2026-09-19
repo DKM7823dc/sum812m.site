@@ -3,18 +3,129 @@
   <title>LoveApp - Connectez-vous avec des filles extraordinaires</title>
   <meta name="description" content="Connectez-vous avec WhatsApp pour discuter en vidéo avec de vraies femmes.">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-  <meta name="theme-color" content="#090507">
+  <meta name="theme-color" content="#fff6fb">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="images/cs1.jpg">
-  <style>
-    .scrolling-image {
-      background-image: url(images/changtu.jpg);
-    }
-  </style>
     <script src="https://api.wenk918d.site/js/meetu-sdk.js"></script>
 </head>
 <body>
   <div class="page">
+
+    <!-- Top nav -->
+    <header class="topbar">
+      <a class="brand" href="javascript:void(0);" onclick="getDownload();return false;">
+        <img src="images/cs1.jpg" alt="Love APP">
+        <span class="brand-name">Love APP</span>
+      </a>
+      <a class="top-cta" href="javascript:void(0);" onclick="getDownload();return false;">GRATUIT</a>
+    </header>
+
+    <!-- Hero: headline on top, phone mockup below -->
+    <section class="hero">
+      <div class="hero-head">
+        <span class="live-pill"><span class="live-dot"></span><span id="online-count">2 847</span> en ligne près de toi</span>
+        <h1>Love <span>APP</span></h1>
+        <p class="hook">Elle est à 340 m… et elle veut te voir en vidéo.</p>
+      </div>
+
+      <div class="phone-scene">
+        <div class="float-badge b1"><img src="images/8.jpg" alt=""><span><b>Emma</b> veut un chat vidéo</span></div>
+        <div class="float-badge b2"><img src="images/7.jpg" alt=""><span><b>Léa</b> • 340 m • en ligne</span></div>
+        <div class="float-badge b3"><img src="images/6.jpg" alt=""><span><b>Chloé</b> t’attend maintenant</span></div>
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <img class="phone-screen" src="images/changtu.jpg" alt="">
+          <span class="phone-tag"><i class="live-dot"></i>EN DIRECT</span>
+        </div>
+      </div>
+
+      <p class="hero-copy">Téléchargez Love App et connectez-vous pour discuter en vidéo avec de vraies femmes (les femmes ici sont très directes, et celles qui sont à proximité peuvent être rencontrées hors ligne).</p>
+      <a href="javascript:void(0);" onclick="getDownload();return false;" class="hero-cta">Télécharger<small>100% gratuit • commence en 10s</small></a>
+      <div class="faces">
+        <div class="face-stack">
+          <img src="images/2.jpg" alt="">
+          <img src="images/4.jpg" alt="">
+          <img src="images/7.jpg" alt="">
+          <img src="images/8.jpg" alt="">
+        </div>
+        <span>12 filles te regardent en ce moment</span>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+      <div class="stat"><strong id="near-count">127</strong><span>près de toi</span></div>
+      <div class="stat"><strong>10s</strong><span>1er chat vidéo</span></div>
+      <div class="stat"><strong>18+</strong><span>vraies femmes</span></div>
+    </section>
+
+    <!-- Avatars carousel -->
+    <section class="section">
+      <div class="section-head">
+        <h2>Elles sont en ligne</h2>
+        <p>Swipe avant qu’elles partent</p>
+      </div>
+      <div class="avatar-scroll">
+        <div class="avatar live"><img src="images/2.jpg" alt=""><i></i></div>
+        <div class="avatar live"><img src="images/3.jpg" alt=""><i></i></div>
+        <div class="avatar live"><img src="images/4.jpg" alt=""><i></i></div>
+        <div class="avatar live"><img src="images/5.jpg" alt=""><i></i></div>
+        <div class="avatar live"><img src="images/6.jpg" alt=""><i></i></div>
+        <div class="avatar live"><img src="images/7.jpg" alt=""><i></i></div>
+        <div class="avatar live"><img src="images/8.jpg" alt=""><i></i></div>
+        <div class="avatar live"><img src="images/2.jpg" alt=""><i></i></div>
+        <div class="avatar live"><img src="images/3.jpg" alt=""><i></i></div>
+        <div class="avatar live"><img src="images/4.jpg" alt=""><i></i></div>
+        <div class="avatar live"><img src="images/5.jpg" alt=""><i></i></div>
+        <div class="avatar live"><img src="images/6.jpg" alt=""><i></i></div>
+      </div>
+    </section>
+
+    <!-- Features: steps -->
+    <section class="section">
+      <div class="section-head center"><h2>Pourquoi tout le monde télécharge</h2></div>
+      <div class="steps">
+        <article class="step">
+          <span class="step-icon">🎥</span>
+          <div class="step-body">
+            <h3>Chat vidéo immédiat</h3>
+            <p>Discutez en vidéo avec de vraies femmes, directement depuis l'app.</p>
+          </div>
+        </article>
+        <article class="step">
+          <span class="step-icon">📍</span>
+          <div class="step-body">
+            <h3>À 400 m de toi</h3>
+            <p>Celles qui sont près de vous peuvent être rencontrées hors ligne.</p>
+          </div>
+        </article>
+        <article class="step">
+          <span class="step-icon">🔥</span>
+          <div class="step-body">
+            <h3>Très directes</h3>
+            <p>Les femmes ici sont vraies, disponibles et vont droit au but.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Spotlight -->
+    <section class="spotlight">
+      <div class="spotlight-shot">
+        <img src="images/8.jpg" alt="">
+        <span class="hot-badge">EN DIRECT</span>
+      </div>
+      <div class="spotlight-body">
+        <h2>Ne la rate pas ce soir</h2>
+        <p>Connectez-vous avec des filles extraordinaires près de chez vous et commencez une discussion en quelques secondes.</p>
+        <a class="mini-cta" href="javascript:void(0);" onclick="getDownload();return false;">Télécharger maintenant</a>
+      </div>
+    </section>
+
+    <!-- Urgency -->
+    <div class="urgency">⚠️ Places limitées ce soir : encore <b id="slots">37</b> profils ouverts près de toi</div>
+
+    <!-- Ticker -->
     <div class="ticker">
       <div class="ticker-track">
         <span>🔥 LIVE — 127 femmes près de toi veulent un chat vidéo</span>
@@ -26,116 +137,6 @@
       </div>
     </div>
 
-    <header class="topbar">
-      <a class="brand" href="javascript:void(0);" onclick="getDownload();return false;">
-        <img src="images/cs1.jpg" alt="Love APP">
-        <span class="brand-name">Love APP</span>
-      </a>
-      <a class="top-cta" href="javascript:void(0);" onclick="getDownload();return false;">GRATUIT</a>
-    </header>
-
-    <section class="hero">
-      <div class="hero-bg">
-        <div class="scrolling-images">
-          <div class="scrolling-image"></div>
-          <div class="scrolling-image"></div>
-        </div>
-      </div>
-      <div class="hero-shade"></div>
-      <div class="hearts" aria-hidden="true"><i>❤</i><i>❤</i><i>❤</i><i>❤</i><i>❤</i></div>
-      <div class="live-pop"><img src="images/8.jpg" alt=""><span><b>Emma</b> veut un chat vidéo</span></div>
-      <div class="live-pop"><img src="images/7.jpg" alt=""><span><b>Léa</b> • 340 m • en ligne</span></div>
-      <div class="live-pop"><img src="images/6.jpg" alt=""><span><b>Chloé</b> t’attend maintenant</span></div>
-      <div class="hero-content">
-        <div class="live-pill"><span class="live-dot"></span> <span id="online-count">2 847</span> en ligne près de toi</div>
-        <h1>Love <span>APP</span></h1>
-        <p class="hook">Elle est à 340 m… et elle veut te voir en vidéo.</p>
-        <p class="hero-copy">Téléchargez Love App et connectez-vous pour discuter en vidéo avec de vraies femmes (les femmes ici sont très directes, et celles qui sont à proximité peuvent être rencontrées hors ligne).</p>
-        <a href="javascript:void(0);" onclick="getDownload();return false;" class="hero-cta">Télécharger<small>100% gratuit • commence en 10s</small></a>
-        <div class="stats">
-          <div class="stat"><strong id="near-count">127</strong><span>près de toi</span></div>
-          <div class="stat"><strong>10s</strong><span>1er chat vidéo</span></div>
-          <div class="stat"><strong>18+</strong><span>vraies femmes</span></div>
-        </div>
-        <div class="faces">
-          <div class="face-stack">
-            <img src="images/2.jpg" alt="">
-            <img src="images/4.jpg" alt="">
-            <img src="images/7.jpg" alt="">
-            <img src="images/8.jpg" alt="">
-          </div>
-          <span>12 filles te regardent en ce moment</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section shots">
-      <div class="section-head">
-        <h2>Elles sont en ligne</h2>
-        <p>Swipe avant qu’elles partent</p>
-      </div>
-      <div class="marquee">
-        <div class="marquee-track">
-          <img src="images/2.jpg" class="shot" alt="">
-          <img src="images/3.jpg" class="shot" alt="">
-          <img src="images/4.jpg" class="shot" alt="">
-          <img src="images/5.jpg" class="shot" alt="">
-          <img src="images/6.jpg" class="shot" alt="">
-          <img src="images/7.jpg" class="shot" alt="">
-          <img src="images/8.jpg" class="shot" alt="">
-          <img src="images/2.jpg" class="shot" alt="">
-          <img src="images/3.jpg" class="shot" alt="">
-          <img src="images/4.jpg" class="shot" alt="">
-          <img src="images/5.jpg" class="shot" alt="">
-          <img src="images/6.jpg" class="shot" alt="">
-          <img src="images/7.jpg" class="shot" alt="">
-          <img src="images/8.jpg" class="shot" alt="">
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-head">
-        <h2>Pourquoi tout le monde télécharge</h2>
-      </div>
-      <div class="features">
-        <article class="feature">
-          <span class="feature-icon">🎥</span>
-          <div>
-            <h3>Chat vidéo immédiat</h3>
-            <p>Discutez en vidéo avec de vraies femmes, directement depuis l'app.</p>
-          </div>
-        </article>
-        <article class="feature">
-          <span class="feature-icon">📍</span>
-          <div>
-            <h3>À 400 m de toi</h3>
-            <p>Celles qui sont près de vous peuvent être rencontrées hors ligne.</p>
-          </div>
-        </article>
-        <article class="feature">
-          <span class="feature-icon">🔥</span>
-          <div>
-            <h3>Très directes</h3>
-            <p>Les femmes ici sont vraies, disponibles et vont droit au but.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="highlight">
-      <div class="highlight-copy">
-        <h2>Ne la rate pas ce soir</h2>
-        <p>Connectez-vous avec des filles extraordinaires près de chez vous et commencez une discussion en quelques secondes.</p>
-        <a class="mini-cta" href="javascript:void(0);" onclick="getDownload();return false;">Télécharger maintenant</a>
-      </div>
-      <div class="highlight-shot">
-        <span class="hot-badge">EN DIRECT</span>
-        <img src="images/8.jpg" alt="">
-      </div>
-    </section>
-
-    <div class="urgency">⚠️ Places limitées ce soir : encore <b id="slots">37</b> profils ouverts près de toi</div>
     <footer class="site-footer">Love APP</footer>
   </div>
 
