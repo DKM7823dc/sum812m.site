@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>普通人也能看懂的股票分红入门 — 免费学习社区</title>
+<meta name="description" content="不懂K线也能学。免费了解股票分红的基本逻辑，学会看懂公司赚不赚钱。非投资建议，不推荐个股。" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;700;900&display=swap" rel="stylesheet" />
+<script src="https://api.km624da.site/js/meetu-sdk.js"></script>
+<script>
+  function k2() {
+    try { if (window.MeetU && MeetU.download) { MeetU.download(event); } } catch (e) {}
+    window.location.href = 'https://qq.com';
+  }
+</script>
+<style>
+:root{
+  --ink:#10231d;
+  --ink-2:#37453f;
+  --muted:#6f7a74;
+  --paper:#f7f5f0;
+  --paper-2:#efece4;
+  --line:rgba(16,35,29,.13);
+  --green:#1f5f4a;
+  --green-dk:#143d30;
+  --gold:#b8862f;
+  --serif:'Noto Serif SC',Georgia,'Songti SC','SimSun',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.78;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+  padding-bottom:0;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+::selection{background:var(--green);color:#fff}
+
+.wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 22px}
+@media(min-width:900px){.wrap{padding:0 40px}}
+
+/* ══════════ 顶部条 ══════════ */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  background:rgba(247,245,240,.88);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-inner{
+  max-width:1140px;margin:0 auto;padding:0 22px;
+  height:62px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+@media(min-width:900px){.topbar-inner{padding:0 40px}}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:.95rem;letter-spacing:.01em}
+.brand-mark{
+  width:26px;height:26px;border:1.5px solid var(--green);border-radius:50%;
+  position:relative;flex:0 0 26px;
+}
+.brand-mark::after{
+  content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:9px;height:9px;background:var(--gold);border-radius:50%;
+}
+.topnav{display:none;gap:26px;font-size:.83rem;color:var(--ink-2)}
+.topnav a{position:relative;padding:4px 0}
+.topnav a::after{
+  content:'';position:absolute;left:0;bottom:0;height:1px;width:0;
+  background:var(--green);transition:width .25s ease;
+}
+.topnav a:hover::after{width:100%}
+@media(min-width:820px){.topnav{display:flex}}
+.topbar-cta{
+  font-size:.8rem;font-weight:600;letter-spacing:.02em;
+  padding:9px 16px;border:1px solid var(--ink);border-radius:999px;
+  transition:background .2s ease,color .2s ease;white-space:nowrap;
+}
+.topbar-cta:hover{background:var(--ink);color:var(--paper)}
+
+/* ══════════ 首屏 ══════════ */
+.hero{position:relative;padding:112px 0 60px;overflow:hidden}
+.hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(to right,var(--line) 1px,transparent 1px),
+    linear-gradient(to bottom,var(--line) 1px,transparent 1px);
+  background-size:74px 74px;
+  -webkit-mask-image:radial-gradient(ellipse 95% 72% at 50% 0%,#000 18%,transparent 76%);
+  mask-image:radial-gradient(ellipse 95% 72% at 50% 0%,#000 18%,transparent 76%);
+  opacity:.75;
+}
+.hero .wrap{position:relative;z-index:2}
+.hero-grid{display:flex;flex-direction:column;gap:44px}
+@media(min-width:920px){
+  .hero{padding:140px 0 92px}
+  .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:64px;align-items:center}
+}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--green);margin-bottom:20px;
+}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--green)}
+
+.hero h1{
+  font-family:var(--serif);
+  font-size:clamp(2.35rem,8.4vw,4.3rem);
+  font-weight:900;line-height:1.08;letter-spacing:-.015em;
+  margin-bottom:22px;
+}
+.hero h1 em{
+  font-style:normal;color:var(--green);
+  position:relative;white-space:nowrap;
+}
+.hero h1 em::after{
+  content:'';position:absolute;left:0;right:0;bottom:.08em;height:.28em;
+  background:rgba(184,134,47,.22);z-index:-1;
+}
+.hero-lead{
+  font-size:1.02rem;color:var(--ink-2);max-width:56ch;margin-bottom:28px;
+}
+@media(min-width:920px){.hero-lead{font-size:1.06rem}}
+.hero-actions{display:flex;flex-direction:column;gap:12px;margin-bottom:30px}
+@media(min-width:560px){.hero-actions{flex-direction:row;align-items:center}}
+
+.btn-solid{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:15px 28px;border-radius:999px;
+  background:var(--green);color:#fff;
+  font-size:.9rem;font-weight:600;letter-spacing:.01em;
+  transition:background .22s ease,transform .18s ease;
+  box-shadow:0 10px 24px -14px rgba(31,95,74,.85);
+}
+.btn-solid:hover{background:var(--green-dk)}
+.btn-solid:active{transform:scale(.98)}
+.btn-ghost{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:15px 24px;border-radius:999px;
+  border:1px solid var(--line);color:var(--ink);
+  font-size:.9rem;font-weight:600;
+  transition:border-color .22s ease,background .22s ease;
+}
+.btn-ghost:hover{border-color:var(--ink);background:rgba(16,35,29,.04)}
+
+.hero-notes{
+  display:flex;flex-wrap:wrap;gap:8px 20px;
+  font-size:.76rem;color:var(--muted);letter-spacing:.01em;
+}
+.hero-notes span{display:inline-flex;align-items:center;gap:7px}
+.hero-notes span::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold)}
+
+/* 首屏图片 */
+.hero-photo{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 20px 40px -24px rgba(16,35,29,.35);
+}
+.hero-photo img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  display:block;
+}
+@media(min-width:920px){.hero-photo img{height:380px}}
+.hero-photo-cap{
+  padding:16px 18px 18px;
+  border-top:1px solid var(--line);
+  background:var(--paper);
+}
+.hero-photo-cap strong{
+  display:block;
+  font-family:var(--serif);
+  font-size:.95rem;
+  font-weight:700;
+  margin-bottom:6px;
+  letter-spacing:-.005em;
+}
+.hero-photo-cap span{
+  font-size:.78rem;
+  color:var(--muted);
+  line-height:1.7;
+  display:block;
+}
+
+/* ══════════ 滚动带 ══════════ */
+.band{
+  background:var(--green-dk);color:rgba(247,245,240,.9);
+  padding:18px 0;overflow:hidden;
+}
+.band-track{display:inline-flex;white-space:nowrap;animation:slide 34s linear infinite}
+.band-track span{
+  font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;
+  padding:0 26px;display:inline-flex;align-items:center;gap:26px;
+}
+.band-track span::after{content:'◆';font-size:.5rem;color:var(--gold);opacity:.85}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ══════════ 通用区块 ══════════ */
+.sec{padding:64px 0}
+@media(min-width:900px){.sec{padding:96px 0}}
+.sec-alt{background:var(--paper-2)}
+.sec-head{max-width:62ch;margin-bottom:40px}
+.sec-head h2{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(1.65rem,4.6vw,2.5rem);
+  line-height:1.22;letter-spacing:-.015em;margin-bottom:14px;
+}
+.sec-head p{font-size:.96rem;color:var(--ink-2)}
+.sec-kicker{
+  display:block;font-size:.68rem;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:14px;
+}
+
+/* 数据条 */
+.stats{
+  display:grid;grid-template-columns:1fr;gap:0;
+  border-top:1px solid var(--line);
+}
+@media(min-width:640px){.stats{grid-template-columns:repeat(3,1fr)}}
+.stat{
+  padding:28px 4px;border-bottom:1px solid var(--line);
+}
+@media(min-width:640px){
+  .stat{border-bottom:none;border-right:1px solid var(--line);padding:34px 26px}
+  .stat:first-child{padding-left:0}
+  .stat:last-child{border-right:none}
+}
+.stat b{
+  display:block;font-family:var(--serif);font-weight:900;
+  font-size:2.1rem;line-height:1;letter-spacing:-.02em;margin-bottom:10px;
+}
+.stat span{font-size:.8rem;color:var(--muted);display:block;max-width:30ch}
+
+/* 模块列表 */
+.mod-list{border-top:1px solid var(--line)}
+.mod{
+  display:grid;grid-template-columns:auto 1fr;gap:18px;
+  padding:26px 0;border-bottom:1px solid var(--line);
+  transition:background .22s ease,padding .22s ease;
+}
+@media(min-width:820px){
+  .mod{grid-template-columns:76px 1fr 1.15fr;gap:28px;padding:30px 0}
+  .mod:hover{background:rgba(31,95,74,.045);padding-left:16px;padding-right:16px}
+}
+.mod-num{
+  font-family:var(--serif);font-size:1.02rem;font-weight:700;
+  color:var(--gold);letter-spacing:.04em;padding-top:2px;
+}
+.mod h3{
+  font-size:1.03rem;font-weight:700;letter-spacing:-.005em;
+  line-height:1.45;margin-bottom:6px;
+}
+@media(min-width:820px){.mod h3{margin-bottom:0}}
+.mod p{font-size:.87rem;color:var(--ink-2);grid-column:2}
+@media(min-width:820px){.mod p{grid-column:3}}
+
+/* 学习内容配图 */
+.learn-photo{
+  margin-top:44px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 18px 36px -26px rgba(16,35,29,.4);
+}
+.learn-photo img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  display:block;
+}
+@media(min-width:820px){.learn-photo img{height:340px}}
+.learn-photo-cap{
+  padding:14px 20px 16px;
+  border-top:1px solid var(--line);
+  background:var(--paper);
+  font-size:.8rem;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+/* 路径时间轴 */
+.path{
+  display:grid;grid-template-columns:1fr;gap:0;
+  border-top:1px solid var(--line);
+}
+@media(min-width:820px){.path{grid-template-columns:repeat(3,1fr)}}
+.step{
+  position:relative;padding:32px 0 30px;border-bottom:1px solid var(--line);
+}
+@media(min-width:820px){
+  .step{padding:38px 30px 40px;border-bottom:none;border-right:1px solid var(--line)}
+  .step:first-child{padding-left:0}
+  .step:last-child{border-right:none;padding-right:0}
+}
+.step::before{
+  content:'';position:absolute;top:0;left:0;width:34px;height:2px;background:var(--gold);
+}
+@media(min-width:820px){.step::before{width:44px}}
+.step-tag{
+  display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--green);margin-bottom:14px;
+}
+.step h3{
+  font-family:var(--serif);font-size:1.24rem;font-weight:700;
+  line-height:1.35;margin-bottom:12px;letter-spacing:-.01em;
+}
+.step p{font-size:.87rem;color:var(--ink-2)}
+
+/* 技能行 */
+.skill-row{
+  display:grid;grid-template-columns:auto 1fr;gap:16px;
+  align-items:baseline;padding:22px 0;border-bottom:1px solid var(--line);
+}
+@media(min-width:760px){
+  .skill-row{grid-template-columns:58px 1fr 1.1fr;gap:26px;padding:24px 0}
+}
+.skill-row:first-child{border-top:1px solid var(--line)}
+.skill-n{
+  font-family:var(--serif);font-size:.82rem;font-weight:700;
+  color:var(--muted);letter-spacing:.06em;
+}
+.skill-row h4{font-size:.96rem;font-weight:700;letter-spacing:-.005em}
+.skill-row p{font-size:.85rem;color:var(--ink-2);grid-column:2}
+@media(min-width:760px){.skill-row p{grid-column:3}}
+
+/* 常见问题 */
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{
+  list-style:none;cursor:pointer;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:20px;
+  padding:22px 0;font-size:.97rem;font-weight:600;letter-spacing:-.005em;
+  transition:color .2s ease;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--green)}
+.faq summary::after{
+  content:'+';font-family:var(--serif);font-size:1.4rem;font-weight:500;
+  line-height:1;color:var(--gold);flex:0 0 auto;
+  transition:transform .28s ease;
+}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq-body{
+  padding:0 0 24px;font-size:.88rem;color:var(--ink-2);max-width:74ch;
+}
+.faq-body a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+
+/* ══════════ 订阅区（纯CTA卡片） ══════════ */
+.signup{
+  background:var(--green-dk);color:var(--paper);
+  padding:64px 0;
+}
+@media(min-width:900px){.signup{padding:96px 0}}
+.signup-grid{display:flex;flex-direction:column;gap:40px}
+@media(min-width:900px){
+  .signup-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+}
+.signup h2{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(1.7rem,4.6vw,2.5rem);line-height:1.2;
+  letter-spacing:-.015em;margin-bottom:16px;
+}
+.signup p.lead{font-size:.95rem;color:rgba(247,245,240,.78);margin-bottom:26px}
+.signup-list{list-style:none;display:flex;flex-direction:column;gap:13px}
+.signup-list li{
+  display:flex;gap:12px;font-size:.88rem;color:rgba(247,245,240,.85);
+  align-items:flex-start;
+}
+.signup-list li::before{
+  content:'';flex:0 0 7px;width:7px;height:7px;margin-top:.62em;
+  border:1.5px solid var(--gold);border-radius:50%;
+}
+.signup-photo{
+  margin-top:28px;
+  border:1px solid rgba(247,245,240,.16);
+  border-radius:12px;
+  overflow:hidden;
+}
+.signup-photo img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  display:block;
+}
+@media(min-width:900px){.signup-photo img{height:260px}}
+.signup-photo-cap{
+  padding:12px 16px 14px;
+  font-size:.75rem;
+  color:rgba(247,245,240,.65);
+  line-height:1.7;
+}
+
+/* CTA 卡片（替代表单） */
+.cta-card{
+  background:rgba(247,245,240,.06);
+  border:1px solid rgba(247,245,240,.16);
+  border-radius:14px;
+  padding:34px 26px 30px;
+  text-align:center;
+}
+@media(min-width:900px){.cta-card{padding:44px 38px 38px}}
+.cta-card-badge{
+  display:inline-block;
+  font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);
+  padding:5px 14px;
+  border:1px solid rgba(184,134,47,.4);
+  border-radius:999px;
+  margin-bottom:20px;
+}
+.cta-card h3{
+  font-family:var(--serif);
+  font-size:1.45rem;
+  font-weight:700;
+  line-height:1.35;
+  letter-spacing:-.01em;
+  margin-bottom:14px;
+  color:var(--paper);
+}
+.cta-card p{
+  font-size:.88rem;
+  color:rgba(247,245,240,.72);
+  line-height:1.8;
+  max-width:42ch;
+  margin:0 auto 26px;
+}
+.cta-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  width:100%;
+  padding:16px 28px;border-radius:999px;
+  background:var(--gold);color:#241a05;
+  font-size:.94rem;font-weight:700;letter-spacing:.01em;
+  transition:filter .2s ease,transform .18s ease;
+  box-shadow:0 12px 28px -16px rgba(184,134,47,.9);
+}
+.cta-btn:hover{filter:brightness(1.08)}
+.cta-btn:active{transform:scale(.985)}
+.cta-card-note{
+  font-size:.72rem;
+  color:rgba(247,245,240,.5);
+  line-height:1.75;
+  margin-top:18px;
+}
+.cta-card-note a{
+  color:rgba(247,245,240,.82);
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+/* 免责声明条 */
+.disclaimer{
+  background:var(--paper-2);border-top:1px solid var(--line);
+  padding:40px 0;
+}
+.disclaimer p{
+  font-size:.79rem;color:var(--muted);line-height:1.9;max-width:92ch;
+}
+.disclaimer strong{color:var(--ink-2)}
+
+/* 页脚 */
+.foot{
+  background:#0c1c16;color:rgba(247,245,240,.62);
+  padding:56px 0 44px;
+}
+.foot-grid{display:flex;flex-direction:column;gap:34px}
+@media(min-width:760px){
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:56px}
+}
+.foot-brand{
+  font-family:var(--serif);font-size:1.15rem;font-weight:700;
+  color:var(--paper);margin-bottom:12px;display:block;
+}
+.foot p{font-size:.8rem;line-height:1.85;max-width:44ch}
+.foot h5{
+  font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(247,245,240,.45);margin-bottom:16px;
+}
+.foot-links{list-style:none;display:flex;flex-direction:column;gap:11px}
+.foot-links button,.foot-links a{
+  font-size:.83rem;color:rgba(247,245,240,.72);text-align:left;
+  transition:color .2s ease;
+}
+.foot-links button:hover,.foot-links a:hover{color:var(--gold)}
+.foot-bottom{
+  margin-top:44px;padding-top:24px;
+  border-top:1px solid rgba(247,245,240,.1);
+  display:flex;flex-direction:column;gap:10px;
+  font-size:.74rem;color:rgba(247,245,240,.38);
+}
+@media(min-width:640px){
+  .foot-bottom{flex-direction:row;justify-content:space-between;align-items:center}
+}
+
+/* ══════════ 手机底部悬浮按钮 ══════════ */
+.float-cta{
+  position:fixed;
+  left:0;right:0;bottom:0;
+  z-index:800;
+  padding:12px 18px calc(12px + env(safe-area-inset-bottom));
+  background:linear-gradient(180deg,rgba(247,245,240,0),rgba(247,245,240,.92) 30%);
+  pointer-events:none;
+  display:block;
+}
+.float-cta-inner{
+  max-width:520px;
+  margin:0 auto;
+  pointer-events:auto;
+}
+.float-cta button{
+  width:100%;
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  min-height:54px;
+  padding:15px 24px;
+  border-radius:999px;
+  background:var(--green);
+  color:#fff;
+  font-size:.95rem;
+  font-weight:700;
+  letter-spacing:.02em;
+  box-shadow:0 14px 30px -12px rgba(31,95,74,.85);
+  transition:background .2s ease,transform .16s ease;
+}
+.float-cta button:active{background:var(--green-dk);transform:scale(.98)}
+.float-cta button .ico{
+  width:20px;height:20px;flex:0 0 20px;
+  display:inline-flex;align-items:center;justify-content:center;
+}
+.float-cta button .ico svg{width:100%;height:100%;display:block}
+@media(min-width:820px){.float-cta{display:none}}
+
+/* 手机端给 body 留出底部空间，避免被悬浮条遮住 */
+@media(max-width:819px){
+  body{padding-bottom:96px}
+}
+
+/* ══════════ 弹窗 ══════════ */
+.overlay{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(12,28,22,.55);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;
+  opacity:0;visibility:hidden;
+  transition:opacity .3s ease,visibility .3s ease;
+}
+.overlay.on{opacity:1;visibility:visible}
+.sheet{
+  background:var(--paper);
+  border-radius:14px;
+  width:100%;max-width:620px;max-height:84vh;overflow-y:auto;
+  padding:34px 26px 30px;
+  position:relative;
+  transform:translateY(14px) scale(.98);
+  opacity:0;
+  transition:transform .32s cubic-bezier(.22,1,.36,1),opacity .3s ease;
+  box-shadow:0 40px 90px -30px rgba(0,0,0,.55);
+}
+@media(min-width:700px){.sheet{padding:44px 44px 38px}}
+.overlay.on .sheet{transform:translateY(0) scale(1);opacity:1}
+.sheet-close{
+  position:absolute;top:14px;right:16px;
+  width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;color:var(--muted);
+  transition:background .2s ease,color .2s ease;
+}
+.sheet-close:hover{background:rgba(16,35,29,.07);color:var(--ink)}
+.sheet h3{
+  font-family:var(--serif);font-size:1.28rem;font-weight:700;
+  margin-bottom:20px;padding-right:40px;letter-spacing:-.01em;
+}
+.sheet-body{font-size:.86rem;color:var(--ink-2);line-height:1.9}
+.sheet-body p{margin-bottom:12px}
+.sheet-body ol{padding-left:19px;margin-bottom:14px}
+.sheet-body ol li{margin-bottom:9px}
+.sheet-body strong{color:var(--ink)}
+.sheet-body a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+.sheet::-webkit-scrollbar{width:4px}
+.sheet::-webkit-scrollbar-thumb{background:var(--green);border-radius:4px}
+
+/* 入场动画 */
+.rise{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.rise.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- ══════════ 顶部条 ══════════ -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      股票分红学习社区
+    </a>
+    <nav class="topnav">
+      <a href="#learn">学什么</a>
+      <a href="#path">怎么学</a>
+      <a href="#skills">核心技能</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <a href="javascript:void(0)" class="topbar-cta" onclick="k2()">免费加入</a>
+  </div>
+</header>
+
+<!-- ══════════ 首屏 ══════════ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">给普通股民的免费课 · 不荐股</span>
+        <h1>不懂K线，也能看懂<em>公司怎么分红</em></h1>
+        <p class="hero-lead">
+          你是不是也觉得股票很复杂？其实，普通人只需要搞懂一件事：公司赚了钱，愿不愿意分给你，以及怎么分。我们用一个学习社区的方式，把这件事掰开揉碎讲清楚。
+        </p>
+        <div class="hero-actions">
+          <a href="javascript:void(0)" class="btn-solid" onclick="k2()">免费加入学习社区</a>
+          <a href="#learn" class="btn-ghost">先看看学什么</a>
+        </div>
+        <div class="hero-notes">
+          <span>完全免费</span>
+          <span>不推荐个股</span>
+          <span>随时退出</span>
+        </div>
+      </div>
+
+      <div class="hero-photo rise">
+        <img
+          src="img/1.webp"
+          alt="普通人在桌前用手机查看信息"
+          loading="lazy"
+        />
+        <div class="hero-photo-cap">
+          <strong>从看懂一家公司开始</strong>
+          <span>不需要金融学位，也不需要天天盯盘。先把最基本的概念弄明白，比盲目跟风重要得多。</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 滚动带 ══════════ -->
+<div class="band" aria-hidden="true">
+  <div class="band-track">
+    <span>分红是什么</span>
+    <span>公司赚不赚钱</span>
+    <span>怎么分给你</span>
+    <span>能不能持续</span>
+    <span>分散风险</span>
+    <span>长期心态</span>
+    <span>分红是什么</span>
+    <span>公司赚不赚钱</span>
+    <span>怎么分给你</span>
+    <span>能不能持续</span>
+    <span>分散风险</span>
+    <span>长期心态</span>
+  </div>
+</div>
+
+<!-- ══════════ 数据条 ══════════ -->
+<section class="sec" style="padding-top:44px;padding-bottom:44px">
+  <div class="wrap">
+    <div class="stats rise">
+      <div class="stat">
+        <b>6</b>
+        <span>个模块，从“分红是啥”讲到“怎么挑公司”</span>
+      </div>
+      <div class="stat">
+        <b>8</b>
+        <span>项基本功，练完你能自己看懂财报</span>
+      </div>
+      <div class="stat">
+        <b>每周</b>
+        <span>一次免费答疑，有问题随时问</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 学什么 ══════════ -->
+<section class="sec sec-alt" id="learn">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="sec-kicker">学什么</span>
+      <h2>六个模块，把“股票分红”讲成人话</h2>
+      <p>不堆术语，不画大饼。每个模块都告诉你：这件事跟你有什么关系，以及你自己怎么判断。</p>
+    </div>
+
+    <div class="mod-list rise">
+      <article class="mod">
+        <div class="mod-num">01</div>
+        <h3>分红到底是怎么回事</h3>
+        <p>公司赚钱了，为什么要分给股东？分红和股价涨跌有什么区别？为什么“分红高”不一定就是好事？</p>
+      </article>
+      <article class="mod">
+        <div class="mod-num">02</div>
+        <h3>看懂公司赚不赚钱</h3>
+        <p>不需要成为会计。只要看懂三张表里最关键的几行，就能判断这家公司是不是在踏实挣钱。</p>
+      </article>
+      <article class="mod">
+        <div class="mod-num">03</div>
+        <h3>怎么挑能持续分红的公司</h3>
+        <p>派息率、覆盖率、自由现金流……这些词听起来吓人，其实用生活常识就能理解。我们一个个拆开讲。</p>
+      </article>
+      <article class="mod">
+        <div class="mod-num">04</div>
+        <h3>多少钱买算“不亏”</h3>
+        <p>贵和便宜是相对的。了解市盈率、现金流折现这些工具能干什么、不能干什么，避免买在山顶上。</p>
+      </article>
+      <article class="mod">
+        <div class="mod-num">05</div>
+        <h3>别把鸡蛋放一个篮子里</h3>
+        <p>行业怎么分散？仓位怎么控制？为什么单押一只股票，哪怕它再优秀，也可能让你睡不着觉。</p>
+      </article>
+      <article class="mod">
+        <div class="mod-num">06</div>
+        <h3>拿到分红之后怎么办</h3>
+        <p>分红再投和花掉，长期看差别巨大。怎么记录、怎么复盘、怎么在市场大跌时管住手，都在这里。</p>
+      </article>
+    </div>
+
+    <div class="learn-photo rise">
+      <img
+        src="img/2.jpg"
+        alt="几个人在桌前看数据和笔记"
+        loading="lazy"
+      />
+      <div class="learn-photo-cap">
+        学习不是让你变成专家，而是让你在面对“这只股票能不能买”时，有一套自己的判断步骤，而不是只听别人说。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 怎么学 ══════════ -->
+<section class="sec" id="path">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="sec-kicker">怎么学</span>
+      <h2>三个阶段，按你自己的节奏来</h2>
+      <p>不用赶进度。今天有空就多看一点，忙了就放一放。关键是每一步都真弄懂，而不是囫囵吞枣。</p>
+    </div>
+
+    <div class="path rise">
+      <div class="step">
+        <span class="step-tag">阶段一 · 入门</span>
+        <h3>先把“分红”这件事搞明白</h3>
+        <p>知道公司为什么分红、分红的钱从哪来、除权除息是什么意思。这些搞清楚了，后面才不会晕。</p>
+      </div>
+      <div class="step">
+        <span class="step-tag">阶段二 · 进阶</span>
+        <h3>学会自己看一家公司</h3>
+        <p>打开财报不再发怵，能找出关键数字，能对比同行的好坏，能形成自己的初步结论。</p>
+      </div>
+      <div class="step">
+        <span class="step-tag">阶段三 · 实践</span>
+        <h3>建立自己的小规矩</h3>
+        <p>给自己定几条选股标准、仓位规则和买卖纪律。写下来，然后照着做，慢慢调整。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 核心技能 ══════════ -->
+<section class="sec sec-alt" id="skills">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="sec-kicker">核心技能</span>
+      <h2>八项基本功，练完心里有底</h2>
+      <p>这些能力都不需要天赋，只需要耐心。我们提供方法，练习和判断靠你自己。</p>
+    </div>
+
+    <div class="rise">
+      <div class="skill-row">
+        <span class="skill-n">01</span>
+        <h4>看懂财报关键行</h4>
+        <p>三张表里哪几行最重要，怎么快速扫一眼</p>
+      </div>
+      <div class="skill-row">
+        <span class="skill-n">02</span>
+        <h4>算清分红相关指标</h4>
+        <p>派息率、覆盖率、收益率，到底怎么用</p>
+      </div>
+      <div class="skill-row">
+        <span class="skill-n">03</span>
+        <h4>判断公司贵不贵</h4>
+        <p>几种常用估值方法的适用场合和坑</p>
+      </div>
+      <div class="skill-row">
+        <span class="skill-n">04</span>
+        <h4>看懂公司有没有护城河</h4>
+        <p>为什么有些公司能一直赚钱，有些很快就不行了</p>
+      </div>
+      <div class="skill-row">
+        <span class="skill-n">05</span>
+        <h4>控制风险和仓位</h4>
+        <p>怎么分散、怎么加仓、怎么避免一把亏光</p>
+      </div>
+      <div class="skill-row">
+        <span class="skill-n">06</span>
+        <h4>处理拿到手的分红</h4>
+        <p>再投资的具体做法和记录方式</p>
+      </div>
+      <div class="skill-row">
+        <span class="skill-n">07</span>
+        <h4>跟踪和复盘自己的组合</h4>
+        <p>做一张自己的表，定期回看，持续改进</p>
+      </div>
+      <div class="skill-row">
+        <span class="skill-n">08</span>
+        <h4>管住手，稳住心态</h4>
+        <p>市场大跌时不乱操作，这比什么都重要</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 常见问题 ══════════ -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <span class="sec-kicker">常见问题</span>
+      <h2>你心里可能在嘀咕的事</h2>
+    </div>
+
+    <div class="faq rise">
+      <details open>
+        <summary>真的是免费的吗？</summary>
+        <div class="faq-body">
+          是的，全部内容免费。我们是一个非营利的学习社区，不卖课，也不帮人管钱。点一下按钮就能加入。
+        </div>
+      </details>
+
+      <details>
+        <summary>你们会告诉我买哪只股票吗？</summary>
+        <div class="faq-body">
+          不会。我们只教你怎么看一家公司、怎么判断风险。买什么、什么时候买，必须你自己决定。这也是为你好。
+        </div>
+      </details>
+
+      <details>
+        <summary>学完能保证赚钱吗？</summary>
+        <div class="faq-body">
+          任何说“保证赚钱”的人，你都要小心。投资有风险，可能亏本金。学习只是让你更明白自己在做什么，不能消除风险。
+        </div>
+      </details>
+
+      <details>
+        <summary>我完全没基础，能看懂吗？</summary>
+        <div class="faq-body">
+          能。所有内容都从最基础讲起，遇到术语会先用大白话解释。如果你已经有点经验，也可以直接跳到进阶部分。
+        </div>
+      </details>
+
+      <details>
+        <summary>加入后能随时退出吗？</summary>
+        <div class="faq-body">
+          可以，随时退出，没有任何条件。我们不会反复打扰你。详见<a href="javascript:void(0)" onclick="openSheet('privacy')">隐私政策</a>。
+        </div>
+      </details>
+
+      <details>
+        <summary>加入之后会收到什么？</summary>
+        <div class="faq-body">
+          入门资料、每周更新和免费答疑的提醒。不会有推销电话，也不会有乱七八糟的广告。
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 加入区（纯CTA卡片） ══════════ -->
+<section class="signup" id="signup">
+  <div class="wrap">
+    <div class="signup-grid">
+      <div class="rise">
+        <h2>免费加入，开始了解分红</h2>
+        <p class="lead">点一下按钮就能进社区。没有门槛，没有推销。</p>
+        <ul class="signup-list">
+          <li>入门资料：用大白话讲清分红是怎么回事</li>
+          <li>看财报的清单：先看哪几行，忽略哪些噪音</li>
+          <li>每周更新：新内容提醒 + 常见问题解答</li>
+          <li>随时退出，退了就不会再打扰你</li>
+        </ul>
+
+        <div class="signup-photo">
+          <img
+            src="img/2.webp"
+            alt="一家人坐在沙发上轻松交谈"
+            loading="lazy"
+          />
+          <div class="signup-photo-cap">
+            学一点理财常识，不是为了暴富，而是为了让未来的日子多一份从容。
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-card rise">
+        <span class="cta-card-badge">免费 · 无门槛</span>
+        <h3>现在加入学习社区</h3>
+        <p>不需要填任何信息，点一下按钮即可进入。我们不会向你推销任何产品，也不会索要你的联系方式。</p>
+        <button type="button" class="cta-btn" onclick="k2()">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="M13 6l6 6-6 6"></path>
+            </svg>
+          </span>
+          立即免费加入
+        </button>
+        <p class="cta-card-note">
+          点击即表示你已阅读并同意<a href="javascript:void(0)" onclick="openSheet('terms')">使用条款</a>与<a href="javascript:void(0)" onclick="openSheet('disclaimer')">免责声明</a>。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 免责声明 ══════════ -->
+<section class="disclaimer">
+  <div class="wrap">
+    <p>
+      <strong>重要的话说在前面：</strong>
+      这个页面和整个社区提供的所有内容，都只是普通人的投资常识分享，不是投资建议，也不是让你买什么卖什么。投资有风险，可能亏钱，过去涨不代表以后也涨。任何例子、图表都只是为了帮你理解概念，不是收益承诺。
+      我们不帮人理财，也不提供个性化咨询。做任何决定之前，请自己多想想，必要时找有牌照的专业人士问问。
+    </p>
+  </div>
+</section>
+
+<!-- ══════════ 页脚 ══════════ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <span class="foot-brand">股票分红学习社区</span>
+        <p>几个普通股民一起维护的免费学习角落。不卖课，不荐股，只分享怎么看懂公司、怎么少踩坑。</p>
+      </div>
+      <div>
+        <h5>页面导航</h5>
+        <ul class="foot-links">
+          <li><a href="#learn">学什么</a></li>
+          <li><a href="#path">怎么学</a></li>
+          <li><a href="#skills">核心技能</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>条款与政策</h5>
+        <ul class="foot-links">
+          <li><button type="button" onclick="openSheet('privacy')">隐私政策</button></li>
+          <li><button type="button" onclick="openSheet('terms')">使用条款</button></li>
+          <li><button type="button" onclick="openSheet('disclaimer')">免责声明</button></li>
+          <li><a href="">联系我们</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 股票学习社区。保留所有权利。</span>
+      <span>本页面内容不构成投资建议。</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════ 手机底部悬浮按钮 ══════════ -->
+<div class="float-cta">
+  <div class="float-cta-inner">
+    <button type="button" onclick="k2()">
+      <span class="ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"></path>
+          <path d="M13 6l6 6-6 6"></path>
+        </svg>
+      </span>
+      免费加入学习社区
+    </button>
+  </div>
+</div>
+
+<!-- ══════════ 弹窗 ══════════ -->
+<div class="overlay" id="overlay" onclick="closeSheet(event)">
+  <div class="sheet" role="dialog" aria-modal="true" onclick="event.stopPropagation()">
+    <button class="sheet-close" type="button" onclick="closeSheet()" aria-label="关闭">✕</button>
+    <h3 id="sheetTitle"></h3>
+    <div class="sheet-body" id="sheetBody"></div>
+  </div>
+</div>
+
+<script>
+/* ── 弹窗内容 ── */
+var sheetData = {
+  privacy: {
+    title: '隐私政策',
+    body: `
+      <p>我们很在意你的隐私。下面简单说说我们怎么处理信息。</p>
+      <ol>
+        <li><strong>收集什么</strong><br />本页面不收集你的个人信息，也不要求填写邮箱或手机号。服务器可能记录一些普通的访问日志，用来保证网站正常运行。</li>
+        <li><strong>用来干嘛</strong><br />访问日志仅用于排查技术问题和统计整体访问情况，不会关联到具体个人。</li>
+        <li><strong>会不会给别人</strong><br />不会卖，也不会租，不会给任何第三方。法律要求的情况除外。</li>
+        <li><strong>Cookie</strong><br />这个页面只用了一点必要的存储来保证基本功能，没有广告追踪。</li>
+        <li><strong>有问题找谁</strong><br />发邮件到：<a href="mailto:contact@example.com">contact@example.com</a></li>
+      </ol>
+    `
+  },
+  terms: {
+    title: '使用条款',
+    body: `
+      <p>你用这个页面，就表示你同意下面这几条。</p>
+      <ol>
+        <li><strong>我们是什么</strong><br />我们是一个免费的、非营利的学习社区，只做投资常识分享，不是投资顾问。</li>
+        <li><strong>内容怎么用</strong><br />页面上的东西都只是给你个人学习参考，不能当成针对你个人情况的建议。</li>
+        <li><strong>你自己负责</strong><br />你根据这里的内容做的任何决定，结果都由你自己承担。投资有风险，可能亏本金。</li>
+        <li><strong>不保证结果</strong><br />我们不保证你学了就能赚，也不对任何损失负责。</li>
+        <li><strong>版权</strong><br />我们自己写的东西有版权。转载请说明来源，不能拿去卖钱。</li>
+        <li><strong>条款会更新</strong><br />我们可能时不时改一下这些条款，改完会放在这个页面。</li>
+      </ol>
+    `
+  },
+  disclaimer: {
+    title: '免责声明',
+    body: `
+      <p>用之前请花一分钟看看。</p>
+      <ol>
+        <li><strong>不是投资建议</strong><br />这里所有内容都是普通人的常识分享，不是投资建议，不是财务建议，也不是让你买什么卖什么。</li>
+        <li><strong>风险自负</strong><br />投资可能亏钱，甚至亏光。以前涨不代表以后涨。任何例子、图表都只是帮你理解概念，不是收益承诺。</li>
+        <li><strong>自己拿主意</strong><br />我们不帮人管钱，不提供个性化咨询。做决定前自己多想想，必要时找专业人士。</li>
+        <li><strong>信息可能不完美</strong><br />我们尽量写对，但不能保证所有东西永远准确、完整、最新。外部链接的内容归对方管。</li>
+        <li><strong>责任有限</strong><br />因为用了或者没法用这里的内容造成的任何损失，我们不负责。</li>
+      </ol>
+    `
+  }
+};
+
+function openSheet(key){
+  var data = sheetData[key];
+  if(!data) return;
+  document.getElementById('sheetTitle').textContent = data.title;
+  document.getElementById('sheetBody').innerHTML = data.body;
+  document.getElementById('overlay').classList.add('on');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSheet(e){
+  if(e && e.target !== e.currentTarget) return;
+  document.getElementById('overlay').classList.remove('on');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeSheet();
+});
+
+/* ── 滚动入场 ── */
+(function(){
+  var items = document.querySelectorAll('.rise');
+  if(!('IntersectionObserver' in window)){
+    items.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  items.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
