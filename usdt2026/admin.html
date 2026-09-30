@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claim Admin</title>
+<style>
+:root{--bg:#eef2f6;--surface:#ffffff;--ink:#0a2f52;--muted:#47617c;--dim:#5c7186;--blue:#0b3d66;--yellow:#ffc400;--line:rgba(11,61,102,.14);--line-soft:rgba(11,61,102,.08);--font:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5;padding:24px 16px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto}
+h1{font-size:20px;margin-bottom:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px;max-width:400px;margin:40px auto;box-shadow:0 14px 40px -24px rgba(11,61,102,.3)}
+label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:6px}
+input{width:100%;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:10px;font-size:15px;font-family:var(--font);margin-bottom:16px;background:#fbfdff}
+input:focus{outline:none;border-color:var(--blue)}
+button{min-height:44px;padding:0 24px;border:0;border-radius:10px;background:var(--yellow);color:var(--ink);font-weight:700;font-size:14px;cursor:pointer}
+button:active{transform:scale(.98)}
+button.ghost{background:transparent;border:1px solid var(--line);color:var(--blue);min-height:38px;padding:0 16px}
+.err{color:#c0392b;font-size:13px;margin-top:12px;min-height:18px}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.bar h1{margin:0}
+.bar .btns{display:flex;gap:8px}
+#info{color:var(--muted);font-size:13px;margin-bottom:12px}
+.tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:760px}
+th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line-soft);white-space:nowrap}
+th{background:#eef3f8;color:var(--blue);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:0}
+td.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px}
+.empty{color:var(--dim);text-align:center;padding:32px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card" id="loginView">
+    <h1>Admin login</h1>
+    <label for="username">Account</label>
+    <input id="username" autocomplete="username" placeholder="uand">
+    <label for="password">Password</label>
+    <input id="password" type="password" autocomplete="current-password" placeholder="••••••••">
+    <button id="loginBtn" style="width:100%">Login</button>
+    <p class="err" id="loginErr"></p>
+  </div>
+
+  <div id="dataView" hidden>
+    <div class="bar">
+      <h1>Claims · last 3 days</h1>
+      <div class="btns">
+        <button class="ghost" id="refreshBtn">Refresh</button>
+        <button class="ghost" id="logoutBtn">Logout</button>
+      </div>
+    </div>
+    <p id="info"></p>
+    <div class="tbl">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nickname</th>
+            <th>Contact</th>
+            <th>Network</th>
+            <th>Reward type</th>
+            <th>Wallet address</th>
+            <th>Submit time (+8)</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+const API = 'https://YOUR_WORKER.workers.dev'; // TODO: replace with your deployed worker URL
+let token = localStorage.getItem('claim_token') || '';
+
+const loginView = document.getElementById('loginView');
+const dataView = document.getElementById('dataView');
+const loginErr = document.getElementById('loginErr');
+const info = document.getElementById('info');
+const tbody = document.getElementById('tbody');
+
+document.getElementById('loginBtn').addEventListener('click', login);
+document.getElementById('refreshBtn').addEventListener('click', load);
+document.getElementById('logoutBtn').addEventListener('click', logout);
+document.getElementById('password').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+
+function showLogin(){ loginView.hidden = false; dataView.hidden = true; }
+function showData(){ loginView.hidden = true; dataView.hidden = false; }
+
+async function login(){
+  loginErr.textContent = '';
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value;
+  if(!username || !password){ loginErr.textContent = 'Enter account and password.'; return; }
+  try{
+    const res = await fetch(API + '/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password })
+    });
+    const data = await res.json().catch(() => ({}));
+    if(res.ok && data.ok && data.token){
+      token = data.token;
+      localStorage.setItem('claim_token', token);
+      showData();
+      await load();
+    }else{
+      loginErr.textContent = data.error || 'Login failed.';
+    }
+  }catch(e){ loginErr.textContent = 'Network error.'; }
+}
+
+async function load(){
+  try{
+    const res = await fetch(API + '/api/claims?token=' + encodeURIComponent(token));
+    if(res.status === 401){ logout(); return; }
+    const data = await res.json().catch(() => ({}));
+    if(!res.ok){ info.textContent = data.error || 'Load failed.'; return; }
+    render(data.rows || []);
+  }catch(e){ info.textContent = 'Network error.'; }
+}
+
+function render(rows){
+  info.textContent = rows.length + ' claim(s) in the last 3 days.';
+  tbody.innerHTML = '';
+  if(!rows.length){ tbody.innerHTML = '<tr><td colspan="7" class="empty">No data.</td></tr>'; return; }
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  rows.forEach(r => {
+    const tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td>' + r.id + '</td>' +
+      '<td>' + esc(r.nickname) + '</td>' +
+      '<td>' + esc(r.contact) + '</td>' +
+      '<td>' + esc(r.network) + '</td>' +
+      '<td>' + esc(r.reward_type) + '</td>' +
+      '<td class="mono">' + (esc(r.wallet_address) || '—') + '</td>' +
+      '<td class="mono">' + esc(r.submit_time) + '</td>';
+    tbody.appendChild(tr);
+  });
+}
+
+function logout(){ token = ''; localStorage.removeItem('claim_token'); showLogin(); }
+
+if(token){ showData(); load(); } else { showLogin(); }
+</script>
+</body>
+</html>
