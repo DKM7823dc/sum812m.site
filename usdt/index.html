@@ -122,10 +122,14 @@
     return;
   }
 
-  // ② 非 Safari：立即跳走，什么都不显示
+  // ② 非 Safari：隐藏落地页 + 显示弹窗提示，不再跳转
   if (!isSafari()) {
-    try { location.replace(REDIRECT_URL); }        // replace：不留下历史记录
-    catch (e) { location.href = REDIRECT_URL; }    // 兼容极端情况
+    document.addEventListener('DOMContentLoaded', function () {
+      var app = document.getElementById('app');
+      if (app) app.style.display = 'none';
+      var modal = document.getElementById('safari-modal');
+      if (modal) modal.classList.add('show');
+    });
     return;
   }
 
@@ -543,6 +547,28 @@ nav span:active{opacity:.7;}
   padding:22px 30px 10px;line-height:1.8;letter-spacing:.02em;
 }
 
+/* ===== SAFARI MODAL ===== */
+.safari-modal{
+  position:fixed;inset:0;z-index:1000;
+  display:none;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.8);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  padding:24px;
+}
+.safari-modal.show{display:flex}
+.safari-modal-box{
+  width:100%;max-width:340px;
+  background:linear-gradient(180deg,#161e2c,#111822);
+  border:1px solid var(--border);
+  border-radius:18px;padding:30px 22px 22px;
+  text-align:center;
+  animation:up .3s cubic-bezier(.16,1,.3,1);
+}
+.safari-modal-icon{font-size:44px;line-height:1;margin-bottom:14px;}
+.safari-modal-title{font-size:16px;font-weight:700;color:var(--ink);letter-spacing:.02em;margin-bottom:8px;}
+.safari-modal-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:22px;}
+.safari-modal-box .btn{margin-top:0;}
+
 /* ===== REDUCED MOTION ===== */
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -661,6 +687,16 @@ nav span:active{opacity:.7;}
   </div>
 </div>
 <div class="toast" id="toast"></div>
+
+<!-- ===== SAFARI 提示弹窗 ===== -->
+<div class="safari-modal" id="safari-modal">
+  <div class="safari-modal-box">
+    <div class="safari-modal-icon">🧭</div>
+    <div class="safari-modal-title">For the best experience, please use Safari</div>
+    <div class="safari-modal-desc">Please open this page in the Safari browser to continue</div>
+    <button class="btn" id="safari-modal-confirm" onclick="document.getElementById('safari-modal').classList.remove('show')">OK</button>
+  </div>
+</div>
 
 <script>
 /* ============ 1. INIT PROGRESS RING (~16 sec) ============ */
