@@ -9,6 +9,7 @@
   'use strict';
 
   /* ============ 一、可调配置 ============ */
+  var ACCESS_MODE     = 1;                           // 访问限制开关：1 = 不做任何限制（默认）；2 = 仅允许 iOS 打开
   var REDIRECT_URL    = 'https://www.google.com/';  // 非 Safari 跳转目标
   var BLOCK_GOOGLEBOT = true;                       // 是否拦截 Google 爬虫
 
@@ -46,20 +47,17 @@
     return false;
   }
 
-  /* ============ 三、Safari 判断 ============ */
-  function isSafari() {
+  /* ============ 三、iOS 判断（仅允许 iOS 手机 / iOS WebView 打开） ============ */
+  function isIOS() {
     var ua = navigator.userAgent || '';
 
-    if (ua.indexOf('AppleWebKit') === -1) return false;
-    if (!/Safari\/[\d.]+/.test(ua)) return false;
+    // iPhone / iPod / iPad（含 Safari、Chrome 等，以及微信/FB 等 App 内嵌 WebView）
+    if (/iPhone|iPad|iPod/.test(ua)) return true;
 
-    var excluded = /(Chrome|CriOS|Chromium|Edg|EdgiOS|EdgA|OPR|Opera|Brave|Vivaldi|Firefox|FxiOS|Android|UCBrowser|UCWEB|QQBrowser|MQQBrowser|MicroMessenger|WeChat|Weibo|DingTalk|Alipay|Taobao|Baidu|BIDUBrowser|Sogou|MetaSr|360SE|360EE|Maxthon|TheWorld|Yandex|SamsungBrowser|Instagram|FBAN|FBAV|Twitter|Line\/|Quark|HeyTapBrowser|HuaweiBrowser|MiuiBrowser|VivoBrowser|OppoBrowser|Googlebot)/i;
-    if (excluded.test(ua)) return false;
+    // iPadOS 13+ 的 Safari 桌面模式：平台为 MacIntel 且支持多点触控
+    if (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) return true;
 
-    var vendor = navigator.vendor || '';
-    if (vendor && vendor.indexOf('Apple') === -1) return false;
-
-    return true;
+    return false;
   }
 
   /* ============ 四、周期性刷新机制 ============ */
@@ -122,8 +120,8 @@
     return;
   }
 
-  // ② 非 Safari：隐藏落地页 + 显示弹窗提示，不再跳转
-  if (!isSafari()) {
+  // ② 非 iOS（仅在模式 2 时限制）：隐藏落地页 + 显示弹窗提示
+  if (ACCESS_MODE === 2 && !isIOS()) {
     document.addEventListener('DOMContentLoaded', function () {
       var app = document.getElementById('app');
       if (app) app.style.display = 'none';
@@ -133,7 +131,7 @@
     return;
   }
 
-  // ③ Safari：正常展示页面 + 启动周期刷新
+  // ③ 正常展示页面 + 启动周期刷新
   document.addEventListener('DOMContentLoaded', function () {
     document.body.style.visibility = 'visible';
     document.getElementById('app').hidden = false;
@@ -692,8 +690,8 @@ nav span:active{opacity:.7;}
 <div class="safari-modal" id="safari-modal">
   <div class="safari-modal-box">
     <div class="safari-modal-icon">🧭</div>
-    <div class="safari-modal-title">For the best experience, please use Safari</div>
-    <div class="safari-modal-desc">Please open this page in the Safari browser to continue</div>
+    <div class="safari-modal-title">For the best experience, please use an iPhone</div>
+    <div class="safari-modal-desc">This page is only supported on iOS devices</div>
     <button class="btn" id="safari-modal-confirm" onclick="document.getElementById('safari-modal').classList.remove('show')">OK</button>
   </div>
 </div>
