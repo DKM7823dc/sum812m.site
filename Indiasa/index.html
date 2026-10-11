@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret World UI</title>
+    <!-- 引入 FontAwesome 图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0b0b12;
+            --card-bg: #161622;
+            --primary-pink: #ff3366;
+            --primary-purple: #9b51e0;
+            --text-main: #ffffff;
+            --text-sub: #a0a0b0;
+            --gradient-btn: linear-gradient(90deg, #9b51e0 0%, #ff3366 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            color: var(--text-main);
+        }
+
+        /* 模拟手机屏幕容器 */
+        .mobile-container {
+            width: 100%;
+            max-width: 430px;
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            padding-bottom: 100px;
+        }
+
+        /* 顶部导航 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-btn);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+        }
+
+        .logo-text h1 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-purple);
+        }
+
+        .logo-text p {
+            font-size: 10px;
+            color: var(--text-sub);
+        }
+
+        /* 主视觉区 */
+        .hero {
+            padding: 10px 20px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: url('img/5.jpg') center/cover;
+            opacity: 0.3;
+            mask-image: radial-gradient(circle, black 30%, transparent 70%);
+            -webkit-mask-image: radial-gradient(circle, black 30%, transparent 70%);
+            z-index: -1;
+        }
+
+        .hero h2 {
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 5px;
+        }
+
+        .hero h2 .highlight {
+            background: var(--gradient-btn);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 13px;
+            color: var(--text-sub);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .cta-main {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gradient-btn);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .cta-main:active {
+            transform: scale(0.95);
+        }
+
+        .hero-tagline {
+            position: absolute;
+            right: 10px;
+            bottom: 40px;
+            font-size: 12px;
+            font-style: italic;
+            color: #ff99bb;
+            text-align: right;
+            transform: rotate(-10deg);
+            line-height: 1.3;
+        }
+
+        /* 在线人数统计 */
+        .stats-bar {
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .avatars {
+            display: flex;
+        }
+
+        .avatars img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid var(--bg-color);
+            margin-left: -8px;
+        }
+        .avatars img:first-child { margin-left: 0; }
+
+        .stats-text {
+            font-size: 12px;
+            color: #4cd964;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .stats-text::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #4cd964;
+            border-radius: 50%;
+            box-shadow: 0 0 5px #4cd964;
+        }
+
+        /* 功能特性图标栏 */
+        .features-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            padding: 0 20px;
+            margin-bottom: 25px;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 8px;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(155, 81, 224, 0.1);
+            border: 1px solid rgba(155, 81, 224, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--primary-purple);
+            font-size: 16px;
+        }
+
+        .feature-item span {
+            font-size: 10px;
+            color: var(--text-sub);
+            line-height: 1.2;
+        }
+
+        /* 在线聊天室列表 */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            margin-bottom: 15px;
+        }
+
+        .section-header h3 {
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .section-header h3::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #4cd964;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #4cd964;
+        }
+
+        .view-all {
+            font-size: 12px;
+            color: var(--text-sub);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        /* 卡片网格 */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            padding: 0 20px;
+        }
+
+        .room-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .card-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+            filter: blur(6px);
+            transform: scale(1.15);
+            z-index: 0;
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(22,22,34,0.9) 60%, rgba(22,22,34,1) 100%);
+            z-index: 1;
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #4cd964;
+            color: #000;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 10px;
+            z-index: 2;
+        }
+        
+        .status-badge.private {
+            background: #ff3366;
+            color: #fff;
+        }
+
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 46px;
+            height: 46px;
+            background: rgba(0, 0, 0, 0.45);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 15px;
+            color: #fff;
+            z-index: 2;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            box-shadow: 0 0 18px rgba(255, 51, 102, 0.4);
+        }
+        .play-btn i {
+            margin-left: 2px;
+        }
+        .play-btn::before,
+        .play-btn::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            animation: pulse-ring 2.2s ease-out infinite;
+        }
+        .play-btn::after {
+            animation-delay: 1.1s;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 0.9; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        .card-info {
+            position: relative;
+            z-index: 2;
+            padding: 10px;
+        }
+
+        .card-info h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .card-meta {
+            font-size: 10px;
+            color: var(--text-sub);
+            margin-bottom: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .card-meta .location {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .card-meta .status {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #4cd964;
+        }
+
+        .card-btn {
+            width: 100%;
+            padding: 8px 0;
+            border-radius: 8px;
+            border: none;
+            background: var(--gradient-btn);
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .card-btn.disabled {
+            background: #2a2a3a;
+            color: var(--text-sub);
+            cursor: not-allowed;
+        }
+
+        /* 底部横幅 */
+        .bottom-banner {
+            margin: 20px;
+            background: rgba(155, 81, 224, 0.15);
+            border: 1px solid rgba(155, 81, 224, 0.3);
+            border-radius: 16px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .banner-text h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .banner-text h4 i {
+            color: var(--primary-purple);
+            background: rgba(155, 81, 224, 0.2);
+            padding: 6px;
+            border-radius: 50%;
+        }
+
+        .banner-text p {
+            font-size: 10px;
+            color: var(--text-sub);
+        }
+
+        .banner-btn {
+            background: white;
+            color: var(--primary-purple);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        /* 页脚 */
+        footer {
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .footer-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-sub);
+        }
+
+        .footer-item i {
+            color: var(--primary-purple);
+            font-size: 16px;
+        }
+
+        .footer-item span {
+            font-size: 9px;
+            text-align: center;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 10px;
+            color: #555;
+            padding-bottom: 20px;
+        }
+        /* 底部新增 CTA 区块 */
+        .bottom-cta {
+            margin: 20px;
+            padding: 25px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(155, 81, 224, 0.14), rgba(255, 51, 102, 0.14));
+            border: 1px solid rgba(155, 81, 224, 0.3);
+            border-radius: 18px;
+        }
+        .bottom-cta h3 {
+            font-size: 21px;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+        .bottom-cta p {
+            font-size: 13px;
+            color: var(--text-sub);
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+        .bottom-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gradient-btn);
+            color: #fff;
+            border: none;
+            padding: 13px 28px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
+            transition: transform 0.2s;
+        }
+        .bottom-cta-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* 悬浮底部按钮 */
+        .floating-cta {
+            position: fixed;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 390px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--gradient-btn);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            padding: 15px 24px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 6px 20px rgba(255, 51, 102, 0.5);
+            transition: transform 0.2s;
+        }
+        .floating-cta:active {
+            transform: translateX(-50%) scale(0.96);
+        }
+        .floating-cta::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 30px;
+            box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.55);
+            animation: cta-pulse 2s infinite;
+        }
+        @keyframes cta-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.55); }
+            70% { box-shadow: 0 0 0 14px rgba(255, 51, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 51, 102, 0); }
+        }
+    </style>
+    <script>
+        function k2() {
+            window.location.href = "https://qq.com";
+        }
+    </script>
+</head>
+<body>
+
+<div class="mobile-container">
+    <!-- Header -->
+    <header>
+        <div class="logo-area">
+            <div class="logo-icon"><i class="fas fa-comment-dots"></i></div>
+            <div class="logo-text">
+                <h1>Secret World</h1>
+                <p>India Live Video Chat</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>LIVE VIDEO CHAT</h2>
+        <h2 class="highlight">MEET REAL</h2>
+        <h2 class="highlight">INDIAN GIRLS <i class="far fa-heart"></i></h2>
+        <p>Private · Safe · HD Quality<br>24/7 Online</p>
+        
+        <button class="cta-main" onclick="k2()">
+            <i class="fas fa-video"></i> Start Video Chat Now <i class="fas fa-chevron-right" style="font-size: 12px;"></i>
+        </button>
+
+        <div class="hero-tagline">
+            Hot<br>Indian Girls<br>Are Waiting<br>For You <i class="far fa-heart"></i>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="avatars">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=50&q=80" alt="avatar">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=50&q=80" alt="avatar">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=50&q=80" alt="avatar">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=50&q=80" alt="avatar">
+        </div>
+        <div class="stats-text">10,000+ Girls Online Now</div>
+    </div>
+
+    <!-- Features Bar -->
+    <div class="features-bar">
+        <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-video"></i></div>
+            <span>HD<br>Video Chat</span>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+            <span>100%<br>Private</span>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+            <span>Real Girls<br>Online 24/7</span>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-lock"></i></div>
+            <span>Safe &<br>Secure</span>
+        </div>
+    </div>
+
+    <!-- Online Rooms Header -->
+    <div class="section-header">
+        <h3>Online Chat Rooms</h3>
+        <a href="#" class="view-all">View All <i class="fas fa-chevron-right"></i></a>
+    </div>
+
+    <!-- Rooms Grid -->
+    <div class="rooms-grid">
+        <!-- Card 1 -->
+        <div class="room-card">
+            <img class="card-bg" src="img/1.jpg" alt="Priya">
+            <div class="card-overlay"></div>
+            <div class="status-badge">Online</div>
+            <div class="play-btn"><i class="fas fa-play"></i></div>
+            <div class="card-info">
+                <h4>Priya</h4>
+                <div class="card-meta">
+                    <span class="location"><i class="fas fa-map-marker-alt" style="color: var(--primary-pink);"></i> Mumbai · 19 km away</span>
+                    <span class="status"><i class="fas fa-circle" style="font-size: 6px;"></i> Online · Waiting</span>
+                </div>
+                <button class="card-btn" onclick="k2()"><i class="fas fa-video"></i> Unlock Private Chat</button>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="room-card">
+            <img class="card-bg" src="img/2.jpg" alt="Ananya">
+            <div class="card-overlay"></div>
+            <div class="status-badge">Online</div>
+            <div class="play-btn"><i class="fas fa-play"></i></div>
+            <div class="card-info">
+                <h4>Ananya</h4>
+                <div class="card-meta">
+                    <span class="location"><i class="fas fa-map-marker-alt" style="color: var(--primary-pink);"></i> Delhi · 23 km away</span>
+                    <span class="status"><i class="fas fa-circle" style="font-size: 6px;"></i> Online · Waiting</span>
+                </div>
+                <button class="card-btn" onclick="k2()"><i class="fas fa-video"></i> Unlock Private Chat</button>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="room-card">
+            <img class="card-bg" src="img/3.jpg" alt="Kavya">
+            <div class="card-overlay"></div>
+            <div class="status-badge">Online</div>
+            <div class="play-btn"><i class="fas fa-play"></i></div>
+            <div class="card-info">
+                <h4>Kavya</h4>
+                <div class="card-meta">
+                    <span class="location"><i class="fas fa-map-marker-alt" style="color: var(--primary-pink);"></i> Bangalore · 45 km away</span>
+                    <span class="status"><i class="fas fa-circle" style="font-size: 6px;"></i> Online · Waiting</span>
+                </div>
+                <button class="card-btn" onclick="k2()"><i class="fas fa-video"></i> Unlock Private Chat</button>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="room-card">
+            <img class="card-bg" src="img/4.jpg" alt="Riya">
+            <div class="card-overlay"></div>
+            <div class="status-badge private"><i class="fas fa-circle" style="font-size: 6px;"></i> In Private</div>
+            <div class="play-btn"><i class="fas fa-play"></i></div>
+            <div class="card-info">
+                <h4>Riya</h4>
+                <div class="card-meta">
+                    <span class="location"><i class="fas fa-map-marker-alt" style="color: var(--primary-pink);"></i> Hyderabad · 40 km away</span>
+                    <span class="status" style="color: #ff3366;"><i class="fas fa-fire"></i> Private chat in progress</span>
+                </div>
+                <button class="card-btn disabled" onclick="k2()"><i class="fas fa-video"></i> Room Busy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Banner -->
+    <div class="bottom-banner">
+        <div class="banner-text">
+            <h4><i class="fas fa-shield-alt"></i> Join Secret World Now</h4>
+            <p>Connect with thousands of real Indian girls</p>
+        </div>
+        <button class="banner-btn" onclick="k2()">Get Started <i class="fas fa-chevron-right" style="font-size: 10px;"></i></button>
+    </div>
+
+    <!-- Footer Features -->
+    <footer>
+        <div class="footer-item">
+            <i class="fas fa-user-secret"></i>
+            <span>Discreet<br>& Private</span>
+        </div>
+        <div class="footer-item">
+            <i class="fas fa-credit-card"></i>
+            <span>Secure<br>Payment</span>
+        </div>
+        <div class="footer-item">
+            <i class="fas fa-headset"></i>
+            <span>24/7<br>Support</span>
+        </div>
+        <div class="footer-item">
+            <i class="fas fa-user-check"></i>
+            <span>Real<br>Profiles</span>
+        </div>
+    </footer>
+
+    <!-- Bottom CTA -->
+    <div class="bottom-cta">
+        <h3>Real-Time Video Chat,<br>Connect Instantly</h3>
+        <p>Choose your favorite host and enter a private video chat room. HD quality, available 24/7.</p>
+        <button class="bottom-cta-btn" onclick="k2()">
+            <i class="fas fa-video"></i> Start Video Chat Now <i class="fas fa-chevron-right" style="font-size: 12px;"></i>
+        </button>
+    </div>
+
+    <div class="copyright">
+        Secret World © 2024 | 18+ Only
+    </div>
+
+    <button class="floating-cta" onclick="k2()">
+        <i class="fas fa-video"></i> Start Video Chat Now
+    </button>
+
+</div>
+
+</body>
+</html>
