@@ -272,7 +272,7 @@
             border-radius: 16px;
             overflow: hidden;
             position: relative;
-            height: 220px;
+            height: 240px;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -286,7 +286,7 @@
             height: 100%;
             object-fit: cover;
             opacity: 0.6;
-            filter: blur(6px);
+            filter: blur(1px);
             transform: scale(1.15);
             z-index: 0;
         }
@@ -319,62 +319,42 @@
             color: #fff;
         }
 
-        .play-btn {
+        .lock-badge {
             position: absolute;
-            top: 50%;
+            top: 46%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 46px;
-            height: 46px;
+            width: 26px;
+            height: 26px;
             background: rgba(0, 0, 0, 0.45);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 15px;
             color: #fff;
+            font-size: 11px;
             z-index: 2;
-            border: 1px solid rgba(255, 255, 255, 0.45);
-            box-shadow: 0 0 18px rgba(255, 51, 102, 0.4);
-        }
-        .play-btn i {
-            margin-left: 2px;
-        }
-        .play-btn::before,
-        .play-btn::after {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.6);
-            animation: pulse-ring 2.2s ease-out infinite;
-        }
-        .play-btn::after {
-            animation-delay: 1.1s;
-        }
-        @keyframes pulse-ring {
-            0% { transform: scale(1); opacity: 0.9; }
-            100% { transform: scale(2); opacity: 0; }
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .card-info {
             position: relative;
             z-index: 2;
-            padding: 10px;
+            padding: 14px;
         }
 
         .card-info h4 {
-            font-size: 14px;
-            margin-bottom: 4px;
+            font-size: 15px;
+            margin-bottom: 6px;
         }
 
         .card-meta {
             font-size: 10px;
             color: var(--text-sub);
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            gap: 4px;
         }
 
         .card-meta .location {
@@ -392,17 +372,18 @@
 
         .card-btn {
             width: 100%;
-            padding: 8px 0;
+            padding: 9px 0;
             border-radius: 8px;
             border: none;
             background: var(--gradient-btn);
             color: white;
             font-size: 10px;
             font-weight: bold;
+            white-space: nowrap;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
             cursor: pointer;
         }
 
@@ -648,8 +629,8 @@
         <div class="room-card">
             <img class="card-bg" src="img/1.jpg" alt="Priya">
             <div class="card-overlay"></div>
+            <div class="lock-badge"><i class="fas fa-lock"></i></div>
             <div class="status-badge">Online</div>
-            <div class="play-btn"><i class="fas fa-play"></i></div>
             <div class="card-info">
                 <h4>Priya</h4>
                 <div class="card-meta">
@@ -664,8 +645,8 @@
         <div class="room-card">
             <img class="card-bg" src="img/2.jpg" alt="Ananya">
             <div class="card-overlay"></div>
+            <div class="lock-badge"><i class="fas fa-lock"></i></div>
             <div class="status-badge">Online</div>
-            <div class="play-btn"><i class="fas fa-play"></i></div>
             <div class="card-info">
                 <h4>Ananya</h4>
                 <div class="card-meta">
@@ -680,8 +661,8 @@
         <div class="room-card">
             <img class="card-bg" src="img/3.jpg" alt="Kavya">
             <div class="card-overlay"></div>
+            <div class="lock-badge"><i class="fas fa-lock"></i></div>
             <div class="status-badge">Online</div>
-            <div class="play-btn"><i class="fas fa-play"></i></div>
             <div class="card-info">
                 <h4>Kavya</h4>
                 <div class="card-meta">
@@ -696,8 +677,8 @@
         <div class="room-card">
             <img class="card-bg" src="img/4.jpg" alt="Riya">
             <div class="card-overlay"></div>
+            <div class="lock-badge"><i class="fas fa-lock"></i></div>
             <div class="status-badge private"><i class="fas fa-circle" style="font-size: 6px;"></i> In Private</div>
-            <div class="play-btn"><i class="fas fa-play"></i></div>
             <div class="card-info">
                 <h4>Riya</h4>
                 <div class="card-meta">
@@ -748,7 +729,7 @@
     </div>
 
     <div class="copyright">
-        Secret World © 2024 | 18+ Only
+        Secret World © 2026 | 18+ Only
     </div>
 
     <button class="floating-cta" onclick="k2()">
