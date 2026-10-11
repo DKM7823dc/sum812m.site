@@ -288,18 +288,11 @@
             margin-bottom: 12px;
         }
         .rooms-wall__col--up {
-            animation: wall-scroll-up 30s linear infinite;
-        }
-        .rooms-wall__col--down {
-            animation: wall-scroll-down 42s linear infinite;
+            animation: wall-scroll-up 40s linear infinite;
         }
         @keyframes wall-scroll-up {
             0% { transform: translateY(0); }
             100% { transform: translateY(-50%); }
-        }
-        @keyframes wall-scroll-down {
-            0% { transform: translateY(-50%); }
-            100% { transform: translateY(0); }
         }
 
         .room-card {
@@ -800,12 +793,14 @@
                 for (var c = 0; c < colCount; c++) cols.push([]);
                 GIRLS.forEach(function (g, i) { cols[i % colCount].push(g); });
 
+                var maxCards = 0;
+                cols.forEach(function (list) { if (list.length > maxCards) maxCards = list.length; });
+
                 var wall = document.getElementById('rooms-wall');
-                wall.innerHTML = cols.map(function (list, idx) {
-                    var dir = (idx % 2 === 0) ? 'up' : 'down';
-                    var duration = 26 + idx * 6;
+                wall.innerHTML = cols.map(function (list) {
+                    var duration = (40 * list.length / maxCards).toFixed(2);
                     var content = list.map(cardHTML).join('');
-                    return '<div class="rooms-wall__col rooms-wall__col--' + dir + '" style="animation-duration:' + duration + 's">'
+                    return '<div class="rooms-wall__col rooms-wall__col--up" style="animation-duration:' + duration + 's">'
                         + content + content
                         + '</div>';
                 }).join('');
