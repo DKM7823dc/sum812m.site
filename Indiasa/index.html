@@ -264,12 +264,42 @@
             gap: 3px;
         }
 
-        /* 卡片网格 */
-        .rooms-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        /* 照片墙：上下错开滚动 */
+        .rooms-wall {
+            position: relative;
+            height: 900px;
+            overflow: hidden;
+            margin: 0 20px;
+            display: flex;
+            align-items: flex-start;
             gap: 12px;
-            padding: 0 20px;
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 6%, #000 94%, transparent 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, #000 6%, #000 94%, transparent 100%);
+        }
+        .rooms-wall__col {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            will-change: transform;
+        }
+        .rooms-wall__col .room-card {
+            flex-shrink: 0;
+            margin-bottom: 12px;
+        }
+        .rooms-wall__col--a {
+            animation: wall-scroll-up 30s linear infinite;
+        }
+        .rooms-wall__col--b {
+            animation: wall-scroll-down 42s linear infinite;
+        }
+        @keyframes wall-scroll-up {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+        @keyframes wall-scroll-down {
+            0% { transform: translateY(-50%); }
+            100% { transform: translateY(0); }
         }
 
         .room-card {
@@ -290,10 +320,14 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.6;
-            filter: blur(1px);
-            transform: scale(1.15);
+            opacity: 0.9;
             z-index: 0;
+        }
+
+        .room-card.is-locked .card-bg {
+            filter: blur(6px);
+            transform: scale(1.15);
+            opacity: 0.55;
         }
 
         .card-overlay {
@@ -628,71 +662,10 @@
         <a href="#" class="view-all">View All <i class="fas fa-chevron-right"></i></a>
     </div>
 
-    <!-- Rooms Grid -->
-    <div class="rooms-grid">
-        <!-- Card 1 -->
-        <div class="room-card">
-            <img class="card-bg" src="img/1.jpg" alt="Priya">
-            <div class="card-overlay"></div>
-            <div class="lock-badge"><i class="fas fa-lock"></i></div>
-            <div class="status-badge">Online</div>
-            <div class="card-info">
-                <h4>Priya</h4>
-                <div class="card-meta">
-                    <span class="location"><i class="fas fa-map-marker-alt" style="color: var(--primary-pink);"></i> Mumbai · 19 km away</span>
-                    <span class="status"><i class="fas fa-circle" style="font-size: 6px;"></i> Online · Waiting</span>
-                </div>
-                <button class="card-btn" onclick="k2()"><i class="fas fa-video"></i> Unlock Private Chat</button>
-            </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="room-card">
-            <img class="card-bg" src="img/2.jpg" alt="Ananya">
-            <div class="card-overlay"></div>
-            <div class="lock-badge"><i class="fas fa-lock"></i></div>
-            <div class="status-badge">Online</div>
-            <div class="card-info">
-                <h4>Ananya</h4>
-                <div class="card-meta">
-                    <span class="location"><i class="fas fa-map-marker-alt" style="color: var(--primary-pink);"></i> Delhi · 23 km away</span>
-                    <span class="status"><i class="fas fa-circle" style="font-size: 6px;"></i> Online · Waiting</span>
-                </div>
-                <button class="card-btn" onclick="k2()"><i class="fas fa-video"></i> Unlock Private Chat</button>
-            </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="room-card">
-            <img class="card-bg" src="img/3.jpg" alt="Kavya">
-            <div class="card-overlay"></div>
-            <div class="lock-badge"><i class="fas fa-lock"></i></div>
-            <div class="status-badge">Online</div>
-            <div class="card-info">
-                <h4>Kavya</h4>
-                <div class="card-meta">
-                    <span class="location"><i class="fas fa-map-marker-alt" style="color: var(--primary-pink);"></i> Bangalore · 45 km away</span>
-                    <span class="status"><i class="fas fa-circle" style="font-size: 6px;"></i> Online · Waiting</span>
-                </div>
-                <button class="card-btn" onclick="k2()"><i class="fas fa-video"></i> Unlock Private Chat</button>
-            </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="room-card">
-            <img class="card-bg" src="img/4.jpg" alt="Riya">
-            <div class="card-overlay"></div>
-            <div class="lock-badge"><i class="fas fa-lock"></i></div>
-            <div class="status-badge private"><i class="fas fa-circle" style="font-size: 6px;"></i> In Private</div>
-            <div class="card-info">
-                <h4>Riya</h4>
-                <div class="card-meta">
-                    <span class="location"><i class="fas fa-map-marker-alt" style="color: var(--primary-pink);"></i> Hyderabad · 40 km away</span>
-                    <span class="status" style="color: #ff3366;"><i class="fas fa-fire"></i> Private chat in progress</span>
-                </div>
-                <button class="card-btn disabled" onclick="k2()"><i class="fas fa-video"></i> Room Busy</button>
-            </div>
-        </div>
+    <!-- Rooms Wall (staggered vertical scroll photo wall) -->
+    <div class="rooms-wall">
+        <div class="rooms-wall__col rooms-wall__col--a" id="rooms-col-a"></div>
+        <div class="rooms-wall__col rooms-wall__col--b" id="rooms-col-b"></div>
     </div>
 
     <!-- Bottom Banner -->
@@ -742,6 +715,57 @@
     </button>
 
 </div>
+
+    <script>
+        (function () {
+            const GIRLS = [
+                { img: "1.jpg",    name: "Priya",  city: "Mumbai",    dist: 19, locked: true  },
+                { img: "2.jpg",    name: "Ananya", city: "Delhi",     dist: 23, locked: false },
+                { img: "3.jpg",    name: "Kavya",  city: "Bangalore", dist: 45, locked: true  },
+                { img: "4.jpg",    name: "Riya",   city: "Hyderabad", dist: 40, locked: true  },
+                { img: "4-1.jpg",  name: "Meera",  city: "Pune",      dist: 12, locked: false },
+                { img: "5.jpg",    name: "Ishita", city: "Chennai",   dist: 33, locked: true  },
+                { img: "6-1.jpg",  name: "Sanya",  city: "Kolkata",   dist: 27, locked: false },
+                { img: "8-1.webp", name: "Aarohi", city: "Jaipur",    dist: 18, locked: true  },
+                { img: "14.jpg",   name: "Diya",   city: "Goa",       dist: 9,  locked: true  },
+                { img: "b1.jpg",   name: "Tanvi",  city: "Lucknow",   dist: 31, locked: false },
+                { img: "b2.jpg",   name: "Nisha",  city: "Surat",     dist: 22, locked: true  },
+                { img: "b3.jpg",   name: "Pooja",  city: "Indore",    dist: 16, locked: true  },
+                { img: "b4.jpg",   name: "Ritu",   city: "Noida",     dist: 11, locked: false }
+            ];
+
+            function cardHTML(g) {
+                const lockClass = g.locked ? ' is-locked' : '';
+                const lock = g.locked
+                    ? '<div class="lock-badge"><i class="fas fa-lock"></i></div>'
+                    : '';
+                return '<div class="room-card' + lockClass + '">'
+                    + '<img class="card-bg" src="img/' + g.img + '" alt="' + g.name + '">'
+                    + '<div class="card-overlay"></div>'
+                    + lock
+                    + '<div class="status-badge">Online</div>'
+                    + '<div class="card-info">'
+                    + '<h4>' + g.name + '</h4>'
+                    + '<div class="card-meta">'
+                    + '<span class="location"><i class="fas fa-map-marker-alt" style="color: var(--primary-pink);"></i> ' + g.city + ' · ' + g.dist + ' km away</span>'
+                    + '<span class="status"><i class="fas fa-circle" style="font-size: 6px;"></i> Online · Waiting</span>'
+                    + '</div>'
+                    + '<button class="card-btn" onclick="k2()"><i class="fas fa-video"></i> Unlock Private Chat</button>'
+                    + '</div>'
+                    + '</div>';
+            }
+
+            const colA = GIRLS.filter(function (_, i) { return i % 2 === 0; });
+            const colB = GIRLS.filter(function (_, i) { return i % 2 === 1; });
+
+            function columnHTML(list) {
+                return list.map(cardHTML).join('');
+            }
+
+            document.getElementById('rooms-col-a').innerHTML = columnHTML(colA) + columnHTML(colA);
+            document.getElementById('rooms-col-b').innerHTML = columnHTML(colB) + columnHTML(colB);
+        })();
+    </script>
 
 </body>
 </html>
