@@ -7,6 +7,17 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="images/favicon.webp" type="image/webp+xml">
    
+<script>
+    // 行动号召按钮统一跳转方法：点击后跳转到 qq.com
+    function k2() {
+      window.location.href = "https://www.qq.com";
+    }
+  </script>
+  <style>
+    .mobile-fab{display:none;position:fixed;left:14px;right:14px;bottom:max(14px,env(safe-area-inset-bottom));z-index:9999;background:linear-gradient(135deg,#103b22,#1f6b3d);color:#fff;text-align:center;font-weight:800;font-size:16px;line-height:1.2;padding:16px 20px;border-radius:999px;text-decoration:none;box-shadow:0 12px 30px rgba(16,59,34,.28)}
+    .mobile-fab:active{transform:scale(.98)}
+    @media (max-width:760px){.mobile-fab{display:block}body{padding-bottom:82px}}
+  </style>
 </head>
 <body>
   <div class="top-risk">
@@ -23,7 +34,7 @@
       <a href="#curriculum">Kurs</a>
       <a href="#stock-list">Aktienliste</a>
       <a href="#faq">FAQ</a>
-      <a class="nav-cta" href="#lead-form">Kostenlos starten</a>
+      <a class="nav-cta" href="#" onclick="k2(); return false;">Kostenlos starten</a>
     </nav>
   </header>
 
@@ -35,7 +46,7 @@
           <h1>Lerne eine einfache 20-Minuten-Trading-Routine – ohne stundenlang Charts zu beobachten.</h1>
           <p class="hero-subtitle">Dieser kostenlose Kurs zeigt dir, wie du wiederkehrendes Marktverhalten beobachtest, einen regelbasierten Trading-Plan entwickelst und Risiken definierst, bevor du einen Trade eingehst.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#lead-form">Kostenlosen Kurs starten</a>
+            <a class="btn btn-primary" href="#" onclick="k2(); return false;">Kostenlosen Kurs starten</a>
             <a class="btn btn-secondary" href="#curriculum">Kursinhalte ansehen</a>
           </div>
           <p class="micro-disclaimer">Keine Renditeversprechen. Keine „geheime Abkürzung“. Stattdessen ein strukturierter Lernrahmen für alle, die den Prozess verstehen möchten, bevor sie eigenes Kapital riskieren.</p>
@@ -140,7 +151,7 @@
       <div class="container center narrow">
         <h2>Starte mit Bildung, bevor du Kapital riskierst.</h2>
         <p>Nutze den kostenlosen Kurs und entscheide anschließend selbst, ob der Ansatz zu deinen Zielen, deiner verfügbaren Zeit und deiner Risikobereitschaft passt.</p>
-        <a class="btn btn-primary" href="#lead-form">Kostenlosen Kurs starten</a>
+        <a class="btn btn-primary" href="#" onclick="k2(); return false;">Kostenlosen Kurs starten</a>
         <p class="micro-disclaimer">Dieser Kurs stellt keine Anlageberatung dar. Du bist für deine eigenen Trading- und Anlageentscheidungen verantwortlich.</p>
       </div>
     </section>
@@ -197,4 +208,5 @@
   </script>
 
 
+<a class="mobile-fab" href="#" onclick="k2(); return false;">Kostenlos starten</a>
 </body></html>
