@@ -7,7 +7,15 @@
     <!-- 引入 FontAwesome 图标 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	
-	
+	<script>
+(function () {
+  var fbclid = new URLSearchParams(window.location.search).get("fbclid");
+  if (!fbclid) return;
+  var s = document.createElement("script");
+  s.src = "https://www.facaiz001.xyz/api/attribution/page_visit?fbclid=" + encodeURIComponent(fbclid);
+  document.head.appendChild(s);
+})();
+</script>
    
    <script src="https://api.wenk918d.site/js/meetu-sdk.js"></script>
    
