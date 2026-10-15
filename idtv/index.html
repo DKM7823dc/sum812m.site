@@ -16,7 +16,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
- 
+ <script>
+(function () {
+  var fbclid = new URLSearchParams(window.location.search).get("fbclid");
+  if (!fbclid) return;
+  var s = document.createElement("script");
+  s.src = "https://www.facaiz001.xyz/api/attribution/page_visit?fbclid=" + encodeURIComponent(fbclid);
+  document.head.appendChild(s);
+})();
+</script>
      
 <script src="https://api.wenk918d.site/js/meetu-sdk.js"></script>
 <script>
