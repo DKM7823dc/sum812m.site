@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>閱見善意｜台股投資學習社群｜免費教育課程</title>
+    <meta name="description" content="閱見善意是投資教育社群，提供免費台股學習課程：財報閱讀、技術分析、ETF 配置與風險管理觀念。加入 LINE 好友即可開始學習。本社群不提供個股推薦或投資建議。" />
+    <meta property="og:title" content="閱見善意｜免費台股投資教育課程" />
+    <meta property="og:description" content="免費學習財報閱讀、技術分析與風險管理觀念。教育導向，不報明牌、不帶單。" />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800;900&family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        :root {
+            --bg: #080808;
+            --bg-card: #111111;
+            --bg-card2: #181818;
+            --gold: #F5C518;
+            --gold-bright: #FFD700;
+            --gold-glow: rgba(245, 197, 24, 0.25);
+            --green: #2ECC71;
+            --green-glow: rgba(46, 204, 113, 0.2);
+            --white: #F5F5F5;
+            --white-dim: #C0C0C0;
+            --white-muted: #888888;
+            --border: #222222;
+            --border-light: #2A2A2A;
+            --line: #06C755;
+            --line-dark: #04A344;
+            --line-glow: rgba(6, 199, 85, 0.35);
+            --warm: #F7B267;
+            --radius: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 22px;
+        }
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        body {
+            font-family: 'Noto Sans TC', 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--white-dim);
+            line-height: 1.7;
+            min-height: 100vh;
+            -webkit-tap-highlight-color: transparent;
+        }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        ::selection { background: var(--gold); color: #000; }
+        .page {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--bg);
+            position: relative;
+            overflow-x: hidden;
+            padding-bottom: 88px;
+        }
+
+        /* ===== Flash Bar ===== */
+        .flash-bar {
+            background: linear-gradient(90deg, #F5C518, #D4A000, #F5C518);
+            background-size: 200% 100%;
+            animation: flash-move 2.4s linear infinite;
+            color: #000;
+            text-align: center;
+            padding: 8px 16px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            line-height: 1.4;
+        }
+        @keyframes flash-move {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        .flash-bar .dot {
+            width: 7px; height: 7px; min-width: 7px;
+            background: #000; border-radius: 50%;
+            animation: blink-dot 0.7s infinite;
+        }
+        @keyframes blink-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.2; }
+        }
+
+        /* ===== Header ===== */
+        .header {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(8, 8, 8, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 9px 16px;
+            display: flex; align-items: center; justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+        }
+        .header-l { display: flex; align-items: center; gap: 8px; }
+        .header-logo {
+            width: 30px; height: 30px; background: var(--line);
+            border-radius: 7px; display: flex; align-items: center; justify-content: center;
+            color: #fff; font-weight: 900; font-size: 0.62rem; line-height: 1;
+        }
+        .header-name { font-size: 0.76rem; font-weight: 700; color: var(--white); }
+        .header-cta-btn {
+            padding: 7px 14px; background: var(--line); color: #fff;
+            border-radius: 999px; font-size: 0.7rem; font-weight: 700;
+            display: flex; align-items: center; gap: 5px;
+            transition: transform 0.2s, background 0.2s;
+            border: none; cursor: pointer; font-family: inherit; white-space: nowrap;
+        }
+        .header-cta-btn:active { transform: scale(0.94); }
+        .header-cta-btn i { font-size: 0.95rem; }
+
+        /* ===== Hero ===== */
+        .hero { padding: 16px 16px 20px; position: relative; }
+        .hero-grid { display: flex; flex-direction: column; }
+        .hero-left, .hero-right { display: contents; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 5px 12px;
+            background: rgba(245, 197, 24, 0.12);
+            border: 1px solid rgba(245, 197, 24, 0.3);
+            border-radius: 999px; font-size: 0.68rem; font-weight: 700;
+            color: var(--gold-bright); margin-bottom: 14px;
+            letter-spacing: 0.02em; order: 1;
+        }
+        .hero-badge .live { color: var(--gold-bright); animation: blink-dot 0.8s infinite; font-size: 0.6rem; }
+        .hero-banner {
+            position: relative; border-radius: var(--radius-lg); overflow: hidden;
+            margin-bottom: 18px; aspect-ratio: 16/9; background: var(--bg-card); order: 2;
+        }
+        .hero-banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .hero-banner-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(0deg, rgba(8,8,8,0.72) 0%, transparent 55%, rgba(8,8,8,0.2) 100%);
+            pointer-events: none;
+        }
+        .hero-banner-tag {
+            position: absolute; bottom: 10px; right: 10px;
+            background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px); border-radius: 6px;
+            padding: 5px 10px; font-size: 0.65rem; font-weight: 700;
+            color: var(--gold-bright); display: flex; align-items: center; gap: 5px;
+        }
+
+        /* 品牌卡 */
+        .hero-team {
+            display: flex; align-items: center; gap: 12px;
+            background: rgba(17,17,17,0.85); backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--border-light); border-radius: var(--radius-lg);
+            padding: 12px 16px; margin-bottom: 16px; transition: all 0.2s;
+            cursor: pointer; order: 3;
+        }
+        .hero-team:active { transform: scale(0.98); }
+        .hero-team-avatar {
+            width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0;
+            overflow: hidden; border: 2px solid var(--line); background: var(--bg-card);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .hero-team-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .hero-team-info { flex: 1; min-width: 0; }
+        .hero-team-name { font-size: 0.9rem; font-weight: 800; color: var(--white); margin-bottom: 2px; }
+        .hero-team-role { font-size: 0.65rem; color: var(--white-muted); line-height: 1.45; }
+        .hero-team-badge {
+            display: inline-flex; align-items: center; gap: 4px; margin-top: 5px;
+            padding: 3px 8px; background: rgba(46,204,113,0.12);
+            border-radius: 999px; font-size: 0.55rem; font-weight: 700; color: var(--green);
+        }
+
+        .hero h1 {
+            font-size: 1.5rem; font-weight: 900; line-height: 1.35;
+            color: var(--white); margin-bottom: 10px;
+            letter-spacing: -0.01em; order: 4;
+        }
+        .hero h1 em { font-style: normal; color: var(--gold-bright); }
+        .hero-sub {
+            font-size: 0.8rem; color: var(--white-dim);
+            line-height: 1.8; margin-bottom: 16px; order: 5;
+        }
+
+        .hero-stats-row {
+            display: flex; gap: 6px; margin-bottom: 18px; order: 6;
+        }
+        .hero-stat {
+            flex: 1; text-align: center; padding: 14px 6px;
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+        .hero-stat-num {
+            font-size: 1.25rem; font-weight: 900; color: var(--gold-bright);
+            line-height: 1.15; margin-bottom: 3px; font-family: 'Inter', sans-serif;
+        }
+        .hero-stat-lbl { font-size: 0.58rem; color: var(--white-muted); }
+
+        .hero-cta {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; padding: 15px; border-radius: var(--radius);
+            background: linear-gradient(135deg, var(--line), var(--line-dark));
+            color: #fff; font-size: 0.92rem; font-weight: 800;
+            letter-spacing: 0.01em; box-shadow: 0 6px 24px var(--line-glow);
+            border: none; cursor: pointer; transition: all 0.2s;
+            text-align: center; font-family: inherit; order: 7;
+        }
+        .hero-cta:active { transform: scale(0.96); }
+        .hero-footnote {
+            text-align: center; font-size: 0.62rem; color: var(--white-muted);
+            margin-top: 9px; line-height: 1.6; order: 8;
+        }
+
+        /* ===== Sections ===== */
+        .sec { padding: 28px 16px; }
+        .sec-dark { background: rgba(255,255,255,0.01); }
+        .sec-label {
+            text-align: center; font-size: 0.62rem; font-weight: 700;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--gold-bright); margin-bottom: 8px;
+        }
+        .sec-title {
+            font-size: 1.18rem; font-weight: 800; text-align: center;
+            color: var(--white); margin-bottom: 6px;
+            letter-spacing: -0.01em; line-height: 1.5;
+        }
+        .sec-sub {
+            font-size: 0.72rem; color: var(--white-muted);
+            text-align: center; margin-bottom: 16px; line-height: 1.7;
+        }
+
+        /* 三理念 */
+        .value-list { display: flex; flex-direction: column; gap: 10px; }
+        .value-item {
+            padding: 18px 16px; background: var(--bg-card);
+            border: 1px solid var(--border); border-radius: var(--radius);
+            border-left: 3px solid var(--gold);
+        }
+        .value-item h3 {
+            font-size: 0.86rem; font-weight: 800; color: var(--white);
+            margin-bottom: 5px; display: flex; align-items: center; gap: 8px;
+        }
+        .value-item h3 i { color: var(--gold-bright); font-size: 0.8rem; }
+        .value-item p { font-size: 0.73rem; color: var(--white-dim); line-height: 1.8; }
+
+        /* Check list */
+        .check-list { display: flex; flex-direction: column; gap: 10px; }
+        .check-item {
+            display: flex; align-items: flex-start; gap: 10px;
+            padding: 14px; background: var(--bg-card);
+            border: 1px solid var(--border); border-radius: var(--radius);
+            transition: all 0.15s;
+        }
+        .check-icon {
+            width: 36px; height: 36px; min-width: 36px; border-radius: 50%;
+            background: rgba(46,204,113,0.12); color: var(--green);
+            display: flex; align-items: center; justify-content: center; font-size: 0.85rem;
+        }
+        .check-text { font-size: 0.78rem; color: var(--white-dim); line-height: 1.7; }
+        .check-text strong { color: var(--white); }
+
+        .alert-box {
+            padding: 16px; background: rgba(245,197,24,0.06);
+            border: 1px solid rgba(245,197,24,0.15);
+            border-radius: var(--radius); margin-top: 16px;
+        }
+        .alert-box p { font-size: 0.7rem; color: var(--white-dim); line-height: 1.8; }
+
+        /* Highlight grid */
+        .highlight-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+        }
+        .highlight-card {
+            padding: 16px 14px; background: var(--bg-card);
+            border: 1px solid var(--border); border-radius: var(--radius);
+            text-align: center;
+        }
+        .highlight-card .ico { font-size: 1.5rem; margin-bottom: 8px; line-height: 1; }
+        .highlight-card p { font-size: 0.68rem; color: var(--white-dim); line-height: 1.65; }
+
+        /* 故事卡 */
+        .story-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--radius-lg); padding: 20px; cursor: pointer;
+        }
+        .story-card p { font-size: 0.75rem; color: var(--white-dim); line-height: 2; margin-bottom: 0; }
+        .story-card p + p { margin-top: 12px; }
+        .story-card strong { color: var(--white); }
+        .story-quote {
+            margin-top: 14px; padding: 12px 14px;
+            background: rgba(245,197,24,0.06);
+            border-left: 3px solid var(--gold); border-radius: 6px;
+            font-size: 0.72rem; color: var(--gold-bright);
+            line-height: 1.8; font-weight: 500;
+        }
+
+        /* Benefit list */
+        .benefit-list { display: flex; flex-direction: column; gap: 8px; }
+        .benefit-item {
+            display: flex; align-items: center; gap: 12px;
+            padding: 16px; background: var(--bg-card);
+            border: 1px solid var(--border); border-radius: var(--radius);
+        }
+        .benefit-item .num {
+            width: 32px; height: 32px; min-width: 32px; border-radius: 50%;
+            background: var(--line); color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.8rem; font-weight: 900; font-family: 'Inter', sans-serif;
+        }
+        .benefit-item span {
+            font-size: 0.78rem; font-weight: 500; color: var(--white); line-height: 1.7;
+        }
+
+        /* Learn grid */
+        .learn-grid { display: flex; flex-direction: column; gap: 8px; }
+        .learn-item {
+            display: flex; align-items: flex-start; gap: 10px;
+            padding: 14px; background: var(--bg-card);
+            border: 1px solid var(--border); border-radius: var(--radius);
+        }
+        .learn-item .ico {
+            color: var(--gold-bright); font-size: 0.8rem;
+            width: 20px; min-width: 20px; text-align: center; padding-top: 3px;
+        }
+        .learn-item span { font-size: 0.74rem; color: var(--white-dim); line-height: 1.7; }
+
+        /* 名額進度條 */
+        .seat-box {
+            margin-top: 16px; padding: 16px; background: var(--bg-card);
+            border: 1px solid var(--border); border-radius: var(--radius);
+        }
+        .seat-top {
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.68rem; margin-bottom: 8px;
+        }
+        .seat-top .lbl { color: var(--white-muted); }
+        .seat-top .val { color: var(--gold-bright); font-weight: 800; }
+        .seat-bar { height: 8px; background: #1f1f1f; border-radius: 999px; overflow: hidden; }
+        .seat-bar i {
+            display: block; height: 100%; width: 92%; border-radius: 999px;
+            background: linear-gradient(90deg, var(--line), var(--gold));
+        }
+
+        /* FAQ */
+        .faq { display: flex; flex-direction: column; gap: 6px; }
+        .faq-item {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--radius); overflow: hidden;
+        }
+        .faq-q {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 10px; padding: 16px; font-size: 0.78rem; font-weight: 700;
+            color: var(--white); cursor: pointer; user-select: none; width: 100%;
+            text-align: left; background: none; border: none;
+            font-family: inherit; line-height: 1.55;
+        }
+        .faq-q .faq-icon {
+            transition: transform 0.3s; font-size: 0.6rem;
+            color: var(--white-muted); flex-shrink: 0;
+        }
+        .faq-item.open .faq-q .faq-icon { transform: rotate(180deg); color: var(--gold-bright); }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s; }
+        .faq-item.open .faq-a { max-height: 600px; }
+        .faq-a-inner {
+            padding: 0 16px 16px; font-size: 0.72rem;
+            color: var(--white-dim); line-height: 1.9;
+        }
+
+        /* CTA section */
+        .cta-section { padding: 28px 16px; text-align: center; }
+        .cta-section h2 {
+            font-size: 1.25rem; font-weight: 800; color: var(--white);
+            margin-bottom: 8px; line-height: 1.5;
+        }
+        .cta-section p {
+            font-size: 0.75rem; color: var(--white-dim);
+            margin-bottom: 16px; line-height: 1.8;
+        }
+        .cta-btn {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; max-width: 340px; margin: 0 auto; padding: 15px;
+            border-radius: var(--radius);
+            background: linear-gradient(135deg, var(--line), var(--line-dark));
+            color: #fff; font-size: 0.92rem; font-weight: 800;
+            box-shadow: 0 6px 24px var(--line-glow);
+            border: none; cursor: pointer; transition: all 0.2s; font-family: inherit;
+        }
+        .cta-btn:active { transform: scale(0.96); }
+
+        /* Float bar */
+        .float-bar {
+            position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 100%; max-width: 500px; z-index: 200;
+            padding: 8px 16px max(8px, env(safe-area-inset-bottom));
+            background: rgba(8,8,8,0.94); backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px); border-top: 1px solid var(--border);
+        }
+        .float-btn {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            width: 100%; padding: 15px; border-radius: var(--radius);
+            background: linear-gradient(135deg, var(--line), var(--line-dark));
+            color: #fff; font-size: 0.92rem; font-weight: 800;
+            border: none; cursor: pointer; box-shadow: 0 6px 24px var(--line-glow);
+            animation: breathe 2s ease-in-out infinite; font-family: inherit;
+        }
+        @keyframes breathe {
+            0%, 100% { box-shadow: 0 4px 20px var(--line-glow); }
+            50% { box-shadow: 0 6px 36px rgba(6,199,85,0.6), 0 0 60px rgba(6,199,85,0.15); }
+        }
+        .float-btn:active { transform: scale(0.96); animation: none; }
+
+        /* Footer — 合規揭露區 */
+        .footer {
+            text-align: left; padding: 24px 16px 28px;
+            font-size: 0.6rem; color: var(--white-muted);
+            border-top: 1px solid var(--border); line-height: 1.9;
+        }
+        .footer-brand { font-weight: 700; color: var(--white-dim); margin-bottom: 8px; }
+        .footer-info { margin-bottom: 10px; }
+        .footer-info span { display: block; }
+        .footer-risk {
+            padding-top: 10px; border-top: 1px solid #1a1a1a;
+            color: #6a6a6a; font-size: 0.55rem; line-height: 1.9;
+        }
+
+        .reveal {
+            opacity: 0; transform: translateY(16px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        .reveal.on { opacity: 1; transform: translateY(0); }
+
+        /* ===== 桌面端适配 ===== */
+        @media (min-width: 900px) {
+            .page { max-width: 1120px; padding-bottom: 0; }
+            .flash-bar { padding: 10px 24px; font-size: 0.82rem; }
+            .header { padding: 12px 32px; }
+            .header-logo { width: 36px; height: 36px; font-size: 0.7rem; }
+            .header-name { font-size: 0.95rem; }
+            .header-cta-btn { padding: 9px 18px; font-size: 0.82rem; }
+            .header-cta-btn i { font-size: 1.05rem; }
+
+            .hero { padding: 40px 32px 48px; }
+            .hero-grid {
+                display: grid; grid-template-columns: 1.05fr 0.95fr;
+                column-gap: 48px; align-items: start;
+            }
+            .hero-left, .hero-right { display: flex; flex-direction: column; min-width: 0; }
+            .hero-right { padding-top: 4px; }
+            .hero-badge { font-size: 0.78rem; padding: 6px 14px; margin-bottom: 20px; }
+            .hero h1 { font-size: 2.35rem; line-height: 1.3; margin-bottom: 16px; }
+            .hero-sub { font-size: 0.95rem; line-height: 1.9; margin-bottom: 24px; }
+            .hero-stats-row { gap: 10px; margin-bottom: 26px; }
+            .hero-stat { padding: 18px 10px; }
+            .hero-stat-num { font-size: 1.7rem; }
+            .hero-stat-lbl { font-size: 0.72rem; }
+            .hero-cta { padding: 16px; font-size: 1rem; }
+            .hero-footnote { font-size: 0.7rem; margin-top: 12px; }
+            .hero-banner { margin-bottom: 20px; border-radius: 20px; }
+            .hero-banner-tag { font-size: 0.75rem; padding: 6px 12px; bottom: 12px; right: 12px; }
+            .hero-team { padding: 16px 20px; margin-bottom: 0; border-radius: 20px; }
+            .hero-team-avatar { width: 64px; height: 64px; }
+            .hero-team-name { font-size: 1rem; }
+            .hero-team-role { font-size: 0.75rem; }
+            .hero-team-badge { font-size: 0.62rem; padding: 4px 10px; }
+
+            .sec { padding: 48px 32px; }
+            .sec-label { font-size: 0.78rem; margin-bottom: 10px; }
+            .sec-title { font-size: 1.8rem; margin-bottom: 8px; }
+            .sec-sub { font-size: 0.9rem; margin-bottom: 24px; }
+
+            .value-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+            .value-item { padding: 22px 20px; }
+            .value-item h3 { font-size: 1rem; margin-bottom: 8px; }
+            .value-item p { font-size: 0.88rem; }
+
+            .check-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .check-item { padding: 18px; }
+            .check-text { font-size: 0.9rem; }
+            .check-icon { width: 42px; height: 42px; min-width: 42px; font-size: 1rem; }
+            .alert-box { padding: 20px; margin-top: 24px; }
+            .alert-box p { font-size: 0.85rem; }
+
+            .highlight-grid { grid-template-columns: repeat(4, 1fr); gap: 14px; }
+            .highlight-card { padding: 22px 18px; }
+            .highlight-card .ico { font-size: 1.8rem; margin-bottom: 10px; }
+            .highlight-card p { font-size: 0.84rem; }
+
+            .story-card { padding: 32px; max-width: 900px; margin: 0 auto; }
+            .story-card p { font-size: 0.9rem; }
+            .story-quote { font-size: 0.88rem; padding: 16px 18px; }
+
+            .benefit-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+            .benefit-item { flex-direction: column; align-items: flex-start; gap: 12px; padding: 22px; }
+            .benefit-item .num { width: 38px; height: 38px; min-width: 38px; font-size: 0.9rem; }
+            .benefit-item span { font-size: 0.9rem; }
+            .seat-box { max-width: 680px; margin: 24px auto 0; padding: 20px 24px; }
+            .seat-top { font-size: 0.82rem; }
+            .seat-bar { height: 9px; }
+
+            .learn-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .learn-item { padding: 18px; }
+            .learn-item span { font-size: 0.88rem; }
+
+            .faq { max-width: 880px; margin: 0 auto; }
+            .faq-q { font-size: 0.92rem; padding: 18px 20px; }
+            .faq-a-inner { font-size: 0.86rem; padding: 0 20px 18px; }
+
+            .sec .hero-cta { max-width: 360px; margin-left: auto; margin-right: auto; }
+
+            .cta-section { padding: 56px 32px; }
+            .cta-section h2 { font-size: 2rem; }
+            .cta-section p { font-size: 0.95rem; }
+            .cta-btn { max-width: 380px; padding: 17px; font-size: 1rem; }
+
+            .footer {
+                max-width: 880px; margin: 0 auto;
+                padding: 32px 32px 40px; font-size: 0.7rem;
+            }
+            .footer-risk { font-size: 0.62rem; }
+            .float-bar { display: none; }
+        }
+
+        @media (min-width: 900px) and (hover: hover) {
+            .header-cta-btn:hover { background: #05b54d; }
+            .hero-cta:hover, .cta-btn:hover {
+                filter: brightness(1.08);
+                box-shadow: 0 8px 30px rgba(6,199,85,0.5);
+            }
+            .hero-team:hover {
+                border-color: rgba(6,199,85,0.5);
+                background: rgba(23,23,23,0.95);
+            }
+            .check-item:hover, .learn-item:hover, .value-item:hover,
+            .highlight-card:hover, .benefit-item:hover, .faq-item:hover {
+                border-color: #333;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+
+ 
+
+        <!-- ===== Header ===== -->
+        <header class="header">
+            <div class="header-l">
+                <div class="header-logo">閱見</div>
+                <div class="header-name">閱見善意 · 投資學習社群</div>
+            </div>
+            <button class="header-cta-btn" onclick="openLine()">
+                <i class="fa-brands fa-line"></i> 免費學投資
+            </button>
+        </header>
+
+        <!-- ===== Hero ===== -->
+        <section class="hero">
+            <div class="hero-grid">
+                <div class="hero-left">
+                    <div class="hero-badge"><span class="live">●</span> 免費教育課程 · 友善學習社群</div>
+
+                    <h1>閱見善意：用學習<em>理解投資</em>，用知識<em>陪伴選擇</em></h1>
+                    <p class="hero-sub">
+                        加入 LINE 好友，<strong style="color:var(--gold-bright);">免費學習台股投資教育課程</strong>。
+                        從財報閱讀、技術分析到風險管理觀念，一步一步建立自己的理解。
+                        這裡是教育社群，不提供個股推薦或投資建議。
+                    </p>
+
+                    <div class="hero-stats-row">
+                        <div class="hero-stat"><div class="hero-stat-num">73,000+</div><div class="hero-stat-lbl">學習夥伴</div></div>
+                        <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-lbl">課程免費</div></div>
+                        <div class="hero-stat"><div class="hero-stat-num">教育</div><div class="hero-stat-lbl">導向社群</div></div>
+                    </div>
+
+                    <button class="hero-cta" onclick="openLine()"><i class="fa-brands fa-line"></i> 加入 LINE 好友，免費學習投資課程</button>
+                    <p class="hero-footnote">🌱 教育導向 · 不報明牌 · 不帶單 · 不提供投資建議</p>
+                </div>
+
+                <div class="hero-right">
+                    <div class="hero-banner">
+                        <img src="img/1.png" alt="閱見善意 投資教育社群" onerror="this.style.display='none'" />
+                        <div class="hero-banner-overlay"></div>
+                        <div class="hero-banner-tag"><i class="fa-solid fa-seedling"></i> 學習 × 善意</div>
+                    </div>
+
+                    <div class="hero-team" onclick="openLine()">
+                        <div class="hero-team-avatar">
+                            <img src="img/2.png" alt="閱見善意 學習團隊" onerror="this.style.display='none'" />
+                        </div>
+                        <div class="hero-team-info">
+                            <div class="hero-team-name">閱見善意 學習團隊</div>
+                            <div class="hero-team-role">投資教育 · 公益陪伴 · AI 工具素養</div>
+                            <div class="hero-team-badge"><i class="fa-solid fa-heart"></i> 讓知識被分享，讓善意被傳遞</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 三大理念 ===== -->
+        <section class="sec sec-dark reveal">
+            <div class="sec-label">閱見善意 · 三大理念</div>
+            <h2 class="sec-title">我們相信，投資學習可以是一件溫柔的事</h2>
+            <p class="sec-sub">知識不該被鎖在教室裡，善意也不該只停留在心裡。</p>
+            <div class="value-list">
+                <div class="value-item">
+                    <h3><i class="fa-solid fa-book-open"></i> 讓投資知識創造價值</h3>
+                    <p>把財報、技術分析與資產配置的基本概念，拆解成每個人都聽得懂的語言。知識被理解之後，才有機會變成做出明智決定的基礎。</p>
+                </div>
+                <div class="value-item">
+                    <h3><i class="fa-solid fa-lightbulb"></i> 讓學習產生力量</h3>
+                    <p>學習不是為了背更多名詞，而是為了看懂自己在做什麼。我們陪你把每一次練習，累積成面對市場時更清楚的思考方式。</p>
+                </div>
+                <div class="value-item">
+                    <h3><i class="fa-solid fa-children"></i> 讓善意陪伴下一代</h3>
+                    <p>當你願意學習，我們也願意把這份善意傳出去。社群會持續投入公益陪伴與教育資源行動，讓學習社群的成長，也能成為孩子們的光。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 免費課程 ===== -->
+        <section class="sec reveal">
+            <div class="sec-label">加入好友即可開始學習</div>
+            <h2 class="sec-title">免費學習的六大投資教育課程</h2>
+            <p class="sec-sub">不用付費，加入 LINE 好友就能開始。課程為教育內容，不構成投資建議。</p>
+            <div class="check-list">
+                <div class="check-item">
+                    <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                    <div class="check-text"><strong>投資入門 12 堂課</strong>：從開戶流程、交易介面理解，到建立自己的學習筆記與紀錄習慣。</div>
+                </div>
+                <div class="check-item">
+                    <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                    <div class="check-text"><strong>財報閱讀與公司分析基礎</strong>：用生活化的例子，理解營收、毛利率、現金流等基本概念，練習讀懂公司體質。</div>
+                </div>
+                <div class="check-item">
+                    <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                    <div class="check-text"><strong>技術分析概念與紀律觀念</strong>：認識 K 線、均線、量能與支撐壓力，並理解停損與等待為何是交易紀律的一部分。</div>
+                </div>
+                <div class="check-item">
+                    <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                    <div class="check-text"><strong>ETF 與資產配置入門</strong>：理解分散配置的基本邏輯，練習思考適合自己節奏的長期學習方向。</div>
+                </div>
+                <div class="check-item">
+                    <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                    <div class="check-text"><strong>風險控制與資金管理觀念</strong>：先理解風險，再談其他。這是投資教育中最重要、也最常被忽略的一課。</div>
+                </div>
+                <div class="check-item">
+                    <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                    <div class="check-text"><strong>AI 工具在投資學習中的應用</strong>：學習用 AI 整理資訊、輔助研究，把時間留給思考，而不是翻找資料。</div>
+                </div>
+            </div>
+            <div class="alert-box">
+                <p>🌿 <strong style="color:var(--gold-bright);">教育定位說明：</strong>本社群提供投資教育內容，不報明牌、不帶單、不提供個股推薦或投資建議。所有課程的目的，是幫助你建立自己的理解與判斷基礎。</p>
+            </div>
+        </section>
+
+        <!-- ===== 認識閱見善意 ===== -->
+        <section class="sec sec-dark reveal">
+            <div class="sec-label">關於我們</div>
+            <h2 class="sec-title">閱見善意，從一次分享開始</h2>
+            <div class="story-card" onclick="openLine()">
+                <p>
+                    <strong>閱見善意</strong>是一個以「善意」為核心的投資教育社群。我們相信，投資知識不該只服務少數人，
+                    而應該成為一種可以被分享、被理解、被傳承的公共財。
+                </p>
+                <p>
+                    因此，我們把課程、教材與學習陪伴機制開放，透過 <strong>LINE 好友</strong> 免費提供。
+                    同時，我們也思考如何讓人們工智慧成為投資教育與公益之間的輔助橋樑——
+                    用 AI 整理資訊、降低學習門檻，也用它串起更多願意付出的善意。
+                </p>
+                <p>
+                    當你學會了，就有能力照顧自己；當你願意分享，就有機會照亮別人。
+                    這就是閱見善意想做的事：<strong>讓善意飛向世界</strong>。
+                </p>
+                <div class="story-quote">
+                    「投資學習是為了讓選擇更清楚，而善意，是為了讓下一代看見更好的世界。」
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== AI 橋樑 ===== -->
+        <section class="sec reveal">
+            <div class="sec-label">AI × 投資教育 × 公益</div>
+            <h2 class="sec-title">讓人工智慧，成為學習的輔助橋樑</h2>
+            <div class="highlight-grid">
+                <div class="highlight-card"><div class="ico">🤖</div><p>用 AI 快速整理財報與新聞，把複雜資訊變成看得懂的學習筆記。</p></div>
+                <div class="highlight-card"><div class="ico">📊</div><p>用 AI 輔助理解篩選與回測的概念，練習建立自己的觀察與紀錄方式。</p></div>
+                <div class="highlight-card"><div class="ico">🌏</div><p>讓投資教育與公益透過 AI 輔助對話，把社群成長轉化成實際的陪伴行動。</p></div>
+                <div class="highlight-card"><div class="ico">💛</div><p>把省下的時間，留給家人、留給學習，也留給你想幫助的人。</p></div>
+            </div>
+            <p style="text-align:center;margin-top:16px;font-size:0.72rem;color:var(--white-dim);line-height:1.85;">
+                已有超過 73,000 位學習夥伴在這裡一起成長。
+                <strong style="color:var(--gold-bright);display:block;margin-top:6px;">你的一次加入，可能就是一顆善意的種子。</strong>
+            </p>
+            <button class="hero-cta" onclick="openLine()" style="margin-top:16px;"><i class="fa-brands fa-line"></i> 加入 LINE 好友，免費學習投資課程</button>
+        </section>
+
+        <!-- ===== 善意如何發生 ===== -->
+        <section class="sec sec-dark reveal">
+            <div class="sec-label">善意如何發生</div>
+            <h2 class="sec-title">你的學習，會帶來三個改變</h2>
+            <div class="benefit-list">
+                <div class="benefit-item"><div class="num">1</div><span>你建立起一套有紀律的學習與紀錄習慣，更清楚自己的判斷依據，而不是被情緒牽著走。</span></div>
+                <div class="benefit-item"><div class="num">2</div><span>你透過對資產配置的理解，慢慢累積出能更從容面對選擇的知識基礎。</span></div>
+                <div class="benefit-item"><div class="num">3</div><span>你的每一次學習與分享，都讓社群有更多資源投入下一代的公益陪伴。</span></div>
+            </div>
+
+            <div class="seat-box">
+                <div class="seat-top">
+                    <span class="lbl">本期免費學習名額</span>
+                    <span class="val">已額滿 92%</span>
+                </div>
+                <div class="seat-bar"><i></i></div>
+            </div>
+
+            <button class="hero-cta" onclick="openLine()" style="margin-top:16px;"><i class="fa-brands fa-line"></i> 加入 LINE 好友，免費學習投資課程</button>
+        </section>
+
+    
+        <!-- ===== 善意承諾 ===== -->
+        <section class="sec sec-dark reveal">
+            <div class="sec-label">我們的承諾</div>
+            <h2 class="sec-title">這裡只有學習，沒有壓力</h2>
+            <div class="highlight-grid">
+                <div class="highlight-card"><div class="ico">🕊️</div><p>不報明牌、不帶單，只分享學習方法與觀念。</p></div>
+                <div class="highlight-card"><div class="ico">🤝</div><p>不推銷、不騷擾，加入與離開都由你決定。</p></div>
+                <div class="highlight-card"><div class="ico">🌱</div><p>尊重每個人的學習節奏，新手問題也值得被好好回答。</p></div>
+                <div class="highlight-card"><div class="ico">💛</div><p>把善意放在前面，讓社群成為一個安心的地方。</p></div>
+            </div>
+        </section>
+ 
+ 
+
+        <!-- ===== Footer 合規揭露 ===== -->
+        <footer class="footer">
+            <div class="footer-brand">© 2026 閱見善意 ·教育社群</div>
+          
+            <div class="footer-risk">
+                本社群提供之所有內容均為投資教育與學習參考，不構成任何個股推薦、投資建議或收益保證。投資涉及風險，市場可能波動，過往表現不代表未來結果。任何投資決定應由使用者自行判斷並承擔結果，如有需要請諮詢合格之專業人士。
+            </div>
+        </footer>
+
+        <!-- ===== 底部固定按鈕 ===== -->
+        <div class="float-bar">
+            <button class="float-btn" onclick="openLine()"><i class="fa-brands fa-line"></i> 加入 LINE 好友，免費學習課程</button>
+        </div>
+
+    </div>
+
+    <script>
+        /* =========================================================
+           ★ 請把下面的 LINE 連結換成你自己的
+           LINE 官方帳號格式：https://line.me/R/ti/p/@你的ID
+           LINE 群組邀請格式：https://line.me/R/ti/g/xxxxxxxxxx
+        ========================================================= */
+        var LINE_URL = 'https://line.me/R/ti/p/@yourlineid';
+
+        function openLine(e) {
+            if (e && e.preventDefault) e.preventDefault();
+            window.location.href = LINE_URL;
+        }
+
+        // ===== 滾動進場動畫 =====
+        var ro = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+                if (en.isIntersecting) {
+                    en.target.classList.add('on');
+                    ro.unobserve(en.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -16px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(function (el) { ro.observe(el); });
+
+        // ===== FAQ 展開收合 =====
+        function toggleFaq(btn) {
+            var item = btn.closest('.faq-item');
+            var wasOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(function (i) {
+                i.classList.remove('open');
+            });
+            if (!wasOpen) item.classList.add('open');
+        }
+    </script>
+
+</body>
+</html>
